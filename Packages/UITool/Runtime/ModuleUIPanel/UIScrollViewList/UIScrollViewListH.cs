@@ -17,10 +17,7 @@ namespace MuHua {
 			Items = new ModuleUIItems<T, Data>(Container, templateAsset, generate);
 		}
 		/// <summary> 释放资源 </summary>
-		public override void Dispose() {
-			base.Dispose();
-			Items.Dispose();
-		}
+		public void Release() => Items.Dispose();
 		/// <summary> 创建UI项 </summary>
 		public void Create(List<Data> datas) => Items.Create(datas);
 		/// <summary> 创建UI项 </summary>
