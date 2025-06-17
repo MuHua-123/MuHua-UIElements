@@ -15,6 +15,10 @@ namespace MuHua {
 		public UIScrollViewList(VisualElement element, VisualElement canvas, VisualTreeAsset templateAsset, Func<Data, VisualElement, T> generate) : base(element, canvas) {
 			Items = new ModuleUIItems<T, Data>(Container, templateAsset, generate);
 		}
+		public override void Dispose() {
+			base.Dispose();
+			Items.Dispose();
+		}
 		/// <summary> 释放资源 </summary>
 		public void Release() => Items.Dispose();
 		/// <summary> 创建UI项 </summary>
