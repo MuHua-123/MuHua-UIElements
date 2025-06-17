@@ -8,7 +8,7 @@ namespace MuHua {
 	/// <summary>
 	/// 下拉框
 	/// </summary>
-	public class UIDropdown<T> : ModuleUIPanel {
+	public class UIDropdown<T> : ModuleUIPanel, IDisposable {
 		/// <summary> 绑定的画布 </summary>
 		internal readonly VisualElement canvas;
 		/// <summary> 下拉框容器 </summary>
@@ -50,16 +50,18 @@ namespace MuHua {
 			DropdownScrollView.EnableInClassList("dropdown-hide", false);
 			DropdownContainer.Add(DropdownScrollView);
 
-			scrollView = new UIScrollView(DropdownScrollView, DropdownContainer, UIDirection.FromTopToBottom);
+			scrollView = new UIScrollView(DropdownScrollView, DropdownContainer);
 			DropdownItems = new ModuleUIItems<UIDropdownItem, T>(scrollView.Container, TemplateAsset,
 			(data, element) => new UIDropdownItem(data, element, this));
 
 			Input.RegisterCallback<ClickEvent>(evt => OpenDropdown());
 			DropdownContainer.RegisterCallback<PointerDownEvent>(evt => CloseDropdown());
 		}
-		public virtual void Release() {
+		public virtual void Dispose() {
 			canvas.Remove(DropdownContainer);
-			DropdownItems.Release();
+			DropdownItems.Dispose();
+			Input.UnregisterCallback<ClickEvent>(evt => OpenDropdown());
+			DropdownContainer.UnregisterCallback<PointerDownEvent>(evt => CloseDropdown());
 		}
 		public virtual void Update() {
 			scrollView.Update();

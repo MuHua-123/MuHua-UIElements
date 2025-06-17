@@ -8,6 +8,7 @@ namespace MuHua {
 	/// <summary>
 	/// 滑块
 	/// </summary>
+	[Obsolete("使用 UISliderV 或者 UISliderH 替换")]
 	public class UISlider : ModuleUIPanel {
 		/// <summary> 绑定的画布 </summary>
 		public readonly VisualElement canvas;
@@ -23,8 +24,8 @@ namespace MuHua {
 
 		public readonly UISliderFunc sliderFunc;
 
-		public VisualElement Container => Q<VisualElement>("Container");
 		public VisualElement Title => Q<VisualElement>("Title");
+		public VisualElement Container => Q<VisualElement>("Container");
 		public VisualElement Tracker => Q<VisualElement>("Tracker");
 		public VisualElement Dragger => Q<VisualElement>("Dragger");
 

@@ -6,9 +6,9 @@ using UnityEngine.UIElements;
 
 namespace MuHua {
 	/// <summary>
-	/// 滚动条 - 垂直
+	/// 滚动条 - 水平
 	/// </summary>
-	public class UIScrollerV : ModuleUIPanel, IDisposable {
+	public class UIScrollerH : ModuleUIPanel, IDisposable {
 		/// <summary> 绑定的画布 </summary>
 		public readonly VisualElement canvas;
 		/// <summary> 元素方向 </summary>
@@ -20,8 +20,8 @@ namespace MuHua {
 		/// 方向
 		/// </summary>
 		public enum UIDirection {
-			FromTopToBottom = 0,
-			FromBottomToTop = 1,
+			FromLeftToRight = 0,
+			FromRightToLeft = 1,
 		}
 
 		public float value;
@@ -31,13 +31,13 @@ namespace MuHua {
 
 		public readonly VisualElement Dragger;
 
-		public UIScrollerV(VisualElement element, VisualElement canvas, UIDirection direction = UIDirection.FromTopToBottom) : base(element) {
+		public UIScrollerH(VisualElement element, VisualElement canvas, UIDirection direction = UIDirection.FromLeftToRight) : base(element) {
 			this.canvas = canvas;
 			this.direction = direction;
 
 			Dragger = Q<VisualElement>("Dragger");
 
-			element.style.flexDirection = direction == UIDirection.FromTopToBottom ? FlexDirection.Column : FlexDirection.ColumnReverse;
+			element.style.flexDirection = direction == UIDirection.FromLeftToRight ? FlexDirection.Row : FlexDirection.RowReverse;
 
 			//设置事件
 			Dragger.RegisterCallback<PointerDownEvent>(DraggerDown);
@@ -56,16 +56,16 @@ namespace MuHua {
 		/// <summary> 拖拽按下 </summary>
 		private void DraggerDown(PointerDownEvent evt) {
 			isDragger = true;
-			originalPosition = Dragger.transform.position.y;
-			pointerPosition = Screen.height - UITool.GetMousePosition().y;
+			originalPosition = Dragger.transform.position.x;
+			pointerPosition = UITool.GetMousePosition().x;
 		}
 		/// <summary> 元素按下 </summary>
 		private void ElementDown(PointerDownEvent evt) {
-			float offset = evt.localPosition.y - Dragger.resolvedStyle.height * 0.5f;
-			float max = element.resolvedStyle.height - Dragger.resolvedStyle.height;
+			float offset = evt.localPosition.x - Dragger.resolvedStyle.width * 0.5f;
+			float max = element.resolvedStyle.width - Dragger.resolvedStyle.width;
 			float value1 = Mathf.InverseLerp(0, max, offset);
 			float value2 = Mathf.InverseLerp(max, 0, offset);
-			float value = direction == UIDirection.FromTopToBottom ? value1 : value2;
+			float value = direction == UIDirection.FromLeftToRight ? value1 : value2;
 			UpdateValue(value);
 		}
 		/// <summary> 鼠标松开或离开 </summary>
@@ -76,10 +76,10 @@ namespace MuHua {
 		/// <summary> 更新状态 </summary>
 		public void Update() {
 			if (!isDragger) { return; }
-			float differ = Screen.height - UITool.GetMousePosition().y - pointerPosition;
+			float differ = UITool.GetMousePosition().x - pointerPosition;
 			float offset = differ + originalPosition;
-			offset *= direction == UIDirection.FromTopToBottom ? 1 : -1;
-			float max = element.resolvedStyle.height - Dragger.resolvedStyle.height;
+			offset *= direction == UIDirection.FromLeftToRight ? 1 : -1;
+			float max = element.resolvedStyle.width - Dragger.resolvedStyle.width;
 			float value = Mathf.InverseLerp(0, max, offset);
 			UpdateValue(value);
 		}
@@ -87,10 +87,10 @@ namespace MuHua {
 		public void UpdateValue(float value, bool send = true) {
 			this.value = value;
 			if (send) { ValueChanged?.Invoke(value); }
-			float max = element.resolvedStyle.height - Dragger.resolvedStyle.height;
+			float max = element.resolvedStyle.width - Dragger.resolvedStyle.width;
 			float position = Mathf.Lerp(0, max, value);
-			position *= direction == UIDirection.FromTopToBottom ? 1 : -1;
-			Dragger.transform.position = new Vector2(0, position);
+			position *= direction == UIDirection.FromLeftToRight ? 1 : -1;
+			Dragger.transform.position = new Vector2(position, 0);
 		}
 	}
 }

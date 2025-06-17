@@ -7,15 +7,15 @@ using UnityEngine.UIElements;
 
 namespace MuHua {
 	/// <summary>
-	/// 滚动视图 - 垂直
+	/// 滚动视图 - 水平
 	/// </summary>
-	public class UIScrollViewV : ModuleUIPanel, IDisposable {
+	public class UIScrollViewH : ModuleUIPanel, IDisposable {
 		/// <summary> 绑定的画布 </summary>
 		public readonly VisualElement canvas;
 		/// <summary> 元素方向 </summary>
 		public readonly UIDirection direction;
-		/// <summary> 垂直滑块 </summary>
-		public readonly UIScrollerV vertical;
+		/// <summary> 水平滑块 </summary>
+		public readonly UIScrollerH horizontal;
 		/// <summary> 值改变时 </summary>
 		public event Action<float> ValueChanged;
 
@@ -23,8 +23,8 @@ namespace MuHua {
 		/// 方向
 		/// </summary>
 		public enum UIDirection {
-			FromTopToBottom = 0,
-			FromBottomToTop = 1,
+			FromLeftToRight = 0,
+			FromRightToLeft = 1,
 		}
 
 		public float value;
@@ -34,26 +34,26 @@ namespace MuHua {
 
 		public readonly VisualElement Viewport;
 		public readonly VisualElement Container;
-		public readonly VisualElement ScrollerVertical;
+		public readonly VisualElement ScrollerHorizontal;
 
-		public UIScrollViewV(VisualElement element, VisualElement canvas, UIDirection direction = UIDirection.FromTopToBottom) : base(element) {
+		public UIScrollViewH(VisualElement element, VisualElement canvas, UIDirection direction = UIDirection.FromLeftToRight) : base(element) {
 			this.canvas = canvas;
 			this.direction = direction;
 
 			Viewport = element.Children().FirstOrDefault(e => e.name == "Viewport");
 			Container = Viewport.Children().FirstOrDefault(e => e.name == "Container");
-			ScrollerVertical = element.Children().FirstOrDefault(e => e.name == "ScrollerVertical");
+			ScrollerHorizontal = element.Children().FirstOrDefault(e => e.name == "ScrollerHorizontal");
 
-			if (direction == UIDirection.FromTopToBottom) { vertical = new UIScrollerV(ScrollerVertical, canvas, UIScrollerV.UIDirection.FromTopToBottom); }
-			if (direction == UIDirection.FromBottomToTop) { vertical = new UIScrollerV(ScrollerVertical, canvas, UIScrollerV.UIDirection.FromBottomToTop); }
+			if (direction == UIDirection.FromLeftToRight) { horizontal = new UIScrollerH(ScrollerHorizontal, canvas, UIScrollerH.UIDirection.FromLeftToRight); }
+			if (direction == UIDirection.FromRightToLeft) { horizontal = new UIScrollerH(ScrollerHorizontal, canvas, UIScrollerH.UIDirection.FromRightToLeft); }
 
 			// 设置事件
-			vertical.ValueChanged += (y) => { UpdateValue(y); };
+			horizontal.ValueChanged += (y) => { UpdateValue(y); };
 
 			Viewport.RegisterCallback<WheelEvent>(ViewportWheel);
 			Viewport.RegisterCallback<PointerDownEvent>(DraggerDown);
 			Viewport.RegisterCallback<MouseCaptureEvent>(DraggerUpOrLeave);
-			Viewport.style.flexDirection = direction == UIDirection.FromTopToBottom ? FlexDirection.Column : FlexDirection.ColumnReverse;
+			Viewport.style.flexDirection = direction == UIDirection.FromLeftToRight ? FlexDirection.Row : FlexDirection.RowReverse;
 			// 释放
 			canvas.RegisterCallback<PointerUpEvent>(DraggerUpOrLeave);
 			canvas.RegisterCallback<PointerLeaveEvent>(DraggerUpOrLeave);
@@ -71,8 +71,8 @@ namespace MuHua {
 		}
 		/// <summary> 原始更新 </summary>
 		private void ElementGenerateVisualContent(MeshGenerationContext context) {
-			float height = Mathf.Clamp01(Viewport.resolvedStyle.height / Container.resolvedStyle.height);
-			vertical.Dragger.style.height = Length.Percent(height * 100);
+			float width = Mathf.Clamp01(Viewport.resolvedStyle.width / Container.resolvedStyle.width);
+			horizontal.Dragger.style.width = Length.Percent(width * 100);
 		}
 		/// <summary> 滚轮滑动 </summary>
 		private void ViewportWheel(WheelEvent evt) {
@@ -92,15 +92,15 @@ namespace MuHua {
 			Vector3 differ = new Vector3(mousePosition.x, Screen.height - mousePosition.y) - pointerPosition;
 			Vector3 offset = differ + originalPosition;
 
-			float maxHeight = Viewport.resolvedStyle.height - Container.resolvedStyle.height;
-			float y = offset.y / maxHeight;
-			y *= direction == UIDirection.FromTopToBottom ? 1 : -1;
-			UpdateValue(y);
+			float maxWidth = Viewport.resolvedStyle.width - Container.resolvedStyle.width;
+			float x = offset.x / maxWidth;
+			x *= direction == UIDirection.FromLeftToRight ? 1 : -1;
+			UpdateValue(x);
 		}
 		/// <summary> 滑动弹性 </summary>
 		private void SlidingElasticity() {
 			float original = value;
-			float max = Viewport.resolvedStyle.height < Container.resolvedStyle.height ? 1 : 0;
+			float max = Viewport.resolvedStyle.width < Container.resolvedStyle.width ? 1 : 0;
 			if (value < 0) { value = Mathf.Lerp(value, 0, Time.deltaTime * 10); }
 			if (value > max) { value = Mathf.Lerp(value, max, Time.deltaTime * 10); }
 			if (original != value) { UpdateValue(value); }
@@ -111,20 +111,20 @@ namespace MuHua {
 		}
 
 		/// <summary> 更新状态 </summary>
-		public virtual void Update() {
-			vertical.Update();
+		public void Update() {
+			horizontal.Update();
 			SlidingElasticity();
 			if (isDrag) { Dragger(); }
 		}
 		/// <summary> 更新值(0-1) </summary>
-		public virtual void UpdateValue(float value, bool send = true) {
+		public void UpdateValue(float value, bool send = true) {
 			this.value = value;
 			if (send) { ValueChanged?.Invoke(value); }
-			float maxHeight = Viewport.resolvedStyle.height - Container.resolvedStyle.height;
-			float position = maxHeight * value;
-			position *= direction == UIDirection.FromTopToBottom ? 1 : -1;
-			Container.transform.position = new Vector3(0, position);
-			if (vertical.value != value) { vertical.UpdateValue(value, false); }
+			float maxWidth = Viewport.resolvedStyle.width - Container.resolvedStyle.width;
+			float position = maxWidth * value;
+			position *= direction == UIDirection.FromLeftToRight ? 1 : -1;
+			Container.transform.position = new Vector3(position, 0);
+			if (horizontal.value != value) { horizontal.UpdateValue(value, false); }
 		}
 	}
 }

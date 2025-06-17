@@ -8,6 +8,7 @@ namespace MuHua {
 	/// <summary>
 	/// 滚动条
 	/// </summary>
+	[Obsolete("使用 UIScrollerV 或者 UIScrollerH 替换")]
 	public class UIScroller : ModuleUIPanel {
 		/// <summary> 绑定的画布 </summary>
 		public readonly VisualElement canvas;

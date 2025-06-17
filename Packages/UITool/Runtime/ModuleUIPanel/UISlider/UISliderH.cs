@@ -6,9 +6,9 @@ using UnityEngine.UIElements;
 
 namespace MuHua {
 	/// <summary>
-	/// 滚动条 - 垂直
+	/// 滑块 - 水平
 	/// </summary>
-	public class UIScrollerV : ModuleUIPanel, IDisposable {
+	public class UISliderH : ModuleUIPanel, IDisposable {
 		/// <summary> 绑定的画布 </summary>
 		public readonly VisualElement canvas;
 		/// <summary> 元素方向 </summary>
@@ -20,8 +20,8 @@ namespace MuHua {
 		/// 方向
 		/// </summary>
 		public enum UIDirection {
-			FromTopToBottom = 0,
-			FromBottomToTop = 1,
+			FromLeftToRight = 0,
+			FromRightToLeft = 1,
 		}
 
 		public float value;
@@ -29,19 +29,23 @@ namespace MuHua {
 		public float originalPosition;
 		public float pointerPosition;
 
+		public readonly VisualElement Title;
+		public readonly VisualElement Container;
+		public readonly VisualElement Tracker;
 		public readonly VisualElement Dragger;
 
-		public UIScrollerV(VisualElement element, VisualElement canvas, UIDirection direction = UIDirection.FromTopToBottom) : base(element) {
+		public UISliderH(VisualElement element, VisualElement canvas, UIDirection direction = UIDirection.FromLeftToRight) : base(element) {
 			this.canvas = canvas;
 			this.direction = direction;
 
+			Title = Q<VisualElement>("Title");
+			Container = Q<VisualElement>("Container");
+			Tracker = Q<VisualElement>("Tracker");
 			Dragger = Q<VisualElement>("Dragger");
-
-			element.style.flexDirection = direction == UIDirection.FromTopToBottom ? FlexDirection.Column : FlexDirection.ColumnReverse;
 
 			//设置事件
 			Dragger.RegisterCallback<PointerDownEvent>(DraggerDown);
-			element.RegisterCallback<PointerDownEvent>(ElementDown);
+			Container.RegisterCallback<PointerDownEvent>(ElementDown);
 
 			canvas.RegisterCallback<PointerUpEvent>(DraggerUpOrLeave);
 			canvas.RegisterCallback<PointerLeaveEvent>(DraggerUpOrLeave);
@@ -56,16 +60,18 @@ namespace MuHua {
 		/// <summary> 拖拽按下 </summary>
 		private void DraggerDown(PointerDownEvent evt) {
 			isDragger = true;
-			originalPosition = Dragger.transform.position.y;
-			pointerPosition = Screen.height - UITool.GetMousePosition().y;
+			float value1 = Tracker.resolvedStyle.width;
+			float value2 = Container.resolvedStyle.width - Tracker.resolvedStyle.width;
+			originalPosition = direction == UIDirection.FromLeftToRight ? value1 : value2;
+			pointerPosition = UITool.GetMousePosition().x;
 		}
 		/// <summary> 元素按下 </summary>
 		private void ElementDown(PointerDownEvent evt) {
-			float offset = evt.localPosition.y - Dragger.resolvedStyle.height * 0.5f;
-			float max = element.resolvedStyle.height - Dragger.resolvedStyle.height;
+			float offset = evt.localPosition.x;
+			float max = Container.resolvedStyle.width;
 			float value1 = Mathf.InverseLerp(0, max, offset);
 			float value2 = Mathf.InverseLerp(max, 0, offset);
-			float value = direction == UIDirection.FromTopToBottom ? value1 : value2;
+			float value = direction == UIDirection.FromLeftToRight ? value1 : value2;
 			UpdateValue(value);
 		}
 		/// <summary> 鼠标松开或离开 </summary>
@@ -76,21 +82,19 @@ namespace MuHua {
 		/// <summary> 更新状态 </summary>
 		public void Update() {
 			if (!isDragger) { return; }
-			float differ = Screen.height - UITool.GetMousePosition().y - pointerPosition;
+			float differ = UITool.GetMousePosition().x - pointerPosition;
 			float offset = differ + originalPosition;
-			offset *= direction == UIDirection.FromTopToBottom ? 1 : -1;
-			float max = element.resolvedStyle.height - Dragger.resolvedStyle.height;
-			float value = Mathf.InverseLerp(0, max, offset);
+			float max = Container.resolvedStyle.width;
+			float value1 = Mathf.InverseLerp(0, max, offset);
+			float value2 = Mathf.InverseLerp(max, 0, offset);
+			float value = direction == UIDirection.FromLeftToRight ? value1 : value2;
 			UpdateValue(value);
 		}
 		/// <summary> 更新值(0-1) </summary>
-		public void UpdateValue(float value, bool send = true) {
-			this.value = value;
+		public void UpdateValue(float obj, bool send = true) {
+			value = (float)Math.Round(obj, 3);
 			if (send) { ValueChanged?.Invoke(value); }
-			float max = element.resolvedStyle.height - Dragger.resolvedStyle.height;
-			float position = Mathf.Lerp(0, max, value);
-			position *= direction == UIDirection.FromTopToBottom ? 1 : -1;
-			Dragger.transform.position = new Vector2(0, position);
+			Tracker.style.width = Length.Percent(value * 100);
 		}
 	}
 }

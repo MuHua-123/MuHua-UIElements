@@ -8,7 +8,7 @@ namespace MuHua {
 	/// <summary>
 	/// UI项
 	/// </summary>
-	public abstract class ModuleUIItem<Data> : ModuleUIPanel {
+	public abstract class ModuleUIItem<Data> : ModuleUIPanel, IDisposable {
 		/// <summary> 选择事件 </summary>
 		public static event Action<Data> OnSelect;
 		/// <summary> 触发事件 </summary>
@@ -34,6 +34,6 @@ namespace MuHua {
 		/// <summary> 选中状态 </summary>
 		public virtual void SelectState() { }
 		/// <summary> 释放 </summary>
-		public virtual void Release() => OnSelect -= UIItem_OnSelect;
+		public virtual void Dispose() => OnSelect -= UIItem_OnSelect;
 	}
 }
