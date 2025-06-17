@@ -11,7 +11,8 @@ namespace MuHua {
 	public class UIScrollViewListV<T, Data> : UIScrollViewV where T : ModuleUIItem<Data> {
 		private ModuleUIItems<T, Data> Items;// UI项容器
 
-		public UIScrollViewListV(VisualElement element, VisualElement canvas, VisualTreeAsset templateAsset, Func<Data, VisualElement, T> generate) : base(element, canvas) {
+		public UIScrollViewListV(VisualElement element, VisualElement canvas, VisualTreeAsset templateAsset,
+		Func<Data, VisualElement, T> generate, UIDirection direction = UIDirection.FromTopToBottom) : base(element, canvas, direction) {
 			Items = new ModuleUIItems<T, Data>(Container, templateAsset, generate);
 		}
 		/// <summary> 释放资源 </summary>
