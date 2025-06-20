@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/GamePopup/GamePopup.uss?fileID=7433441132597879392&amp;guid=a05ba4ce7190c214a8a5812a5c58040b&amp;type=3#GamePopup" />
+    <ui:VisualElement name="GamePopup" picking-mode="Ignore" class="gamepopup gamepopup-hide" style="justify-content: flex-end; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;">
+        <ui:VisualElement name="Background" class="gamepopup-bg">
+            <ui:VisualElement name="Top" class="gamepopup-top">
+                <ui:Label tabindex="-1" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" class="gamepopup-title" style="min-width: 300px; max-width: 1000px; white-space: normal; -unity-text-align: middle-left; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; height: auto;" />
+                <ui:VisualElement name="Container" class="gamepopup-container" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Bottom" class="gamepopup-bottom" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; flex-grow: 0; height: auto;">
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button" class="gamepopup-button" style="width: 100%; height: 100%; background-color: rgba(19, 190, 190, 0);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

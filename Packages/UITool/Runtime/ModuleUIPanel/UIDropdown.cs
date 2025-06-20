@@ -23,7 +23,7 @@ namespace MuHua {
 		public T value;
 		public List<T> list = new List<T>();
 
-		internal UIScrollView scrollView;
+		internal UIScrollViewV scrollView;
 		internal ModuleUIItems<UIDropdownItem, T> DropdownItems;
 
 		/// <summary> 数据操作 </summary
@@ -50,7 +50,7 @@ namespace MuHua {
 			DropdownScrollView.EnableInClassList("dropdown-hide", false);
 			DropdownContainer.Add(DropdownScrollView);
 
-			scrollView = new UIScrollView(DropdownScrollView, DropdownContainer);
+			scrollView = new UIScrollViewV(DropdownScrollView, DropdownContainer);
 			DropdownItems = new ModuleUIItems<UIDropdownItem, T>(scrollView.Container, TemplateAsset,
 			(data, element) => new UIDropdownItem(data, element, this));
 
