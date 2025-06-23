@@ -188,6 +188,13 @@
       },
       "url": "https://packages.unity.cn"
     },
+    "muhua-network": {
+      "version": "https://github.com/MuHua-123/MuHua-Core.git?path=Packages/Network",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "1e26adfb03416178e47aa5473b74dd58533fab9e"
+    },
     "muhua-tools": {
       "version": "https://github.com/MuHua-123/MuHua-Core.git?path=Packages/Tools",
       "depth": 0,

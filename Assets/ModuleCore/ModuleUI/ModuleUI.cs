@@ -20,11 +20,12 @@ public class ModuleUI : ModuleSingle<ModuleUI> {
 	protected override void Awake() => NoReplace();
 
 	/// <summary> 跳转页面 </summary>
-	public static void Jump(EnumPage pageType) => OnJumpPage?.Invoke(pageType);
+	public static void Settings(EnumPage pageType) => OnJumpPage?.Invoke(pageType);
 }
 /// <summary>
 /// 页面
 /// </summary>
 public enum EnumPage {
-
+	None,
+	Login,
 }

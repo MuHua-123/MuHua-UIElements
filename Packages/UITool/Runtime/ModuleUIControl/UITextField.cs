@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace MuHua {
+	/// <summary>
+	/// 文本输入字段
+	/// </summary>
 	public class UITextField : TextField {
 		public new class UxmlFactory : UxmlFactory<UITextField, UxmlTraits> { }
 		public new class UxmlTraits : TextField.UxmlTraits {
@@ -11,10 +14,10 @@ namespace MuHua {
 				name = "default-prompt"
 			};
 			public override void Init(VisualElement ve, IUxmlAttributes bag, CreationContext cc) {
-				base.Init(ve, bag, cc);
 				UITextField textField = (UITextField)ve;
 				textField.DefaultPrompt = DefaultPrompt.GetValueFromBag(bag, cc);
 				textField.SetDefaultPrompt();
+				base.Init(ve, bag, cc);
 			}
 		}
 		public string DefaultPrompt { get; set; }
