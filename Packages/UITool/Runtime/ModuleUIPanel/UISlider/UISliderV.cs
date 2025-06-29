@@ -29,7 +29,7 @@ namespace MuHua {
 		public float originalPosition;
 		public float pointerPosition;
 
-		public readonly VisualElement Title;
+		public readonly Label Title;
 		public readonly VisualElement Container;
 		public readonly VisualElement Tracker;
 		public readonly VisualElement Dragger;
@@ -38,7 +38,7 @@ namespace MuHua {
 			this.canvas = canvas;
 			this.direction = direction;
 
-			Title = Q<VisualElement>("Title");
+			Title = Q<Label>("Title");
 			Container = Q<VisualElement>("Container");
 			Tracker = Q<VisualElement>("Tracker");
 			Dragger = Q<VisualElement>("Dragger");
