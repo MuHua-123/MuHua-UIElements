@@ -29,7 +29,7 @@ namespace MuHua {
 			canvas.RegisterCallback<PointerUpEvent>((evt) => isDownMove = false);
 			canvas.RegisterCallback<PointerLeaveEvent>((evt) => isDownMove = false);
 
-			Close.RegisterCallback<ClickEvent>((evt) => SetActive(false));
+			Close.RegisterCallback<ClickEvent>((evt) => Settings(false));
 		}
 
 		/// <summary> 按下Top </summary>
@@ -40,7 +40,7 @@ namespace MuHua {
 		}
 
 		/// <summary> 设置活动状态 </summary>
-		public virtual void SetActive(bool active) {
+		public virtual void Settings(bool active) {
 			Window.EnableInClassList("window-hidden", !active);
 		}
 
