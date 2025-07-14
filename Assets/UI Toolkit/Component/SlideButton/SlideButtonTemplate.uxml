@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Component/SlideButton/SlideButton.uss?fileID=7433441132597879392&amp;guid=a188682137c1d204a9a873d3ab8a815f&amp;type=3#SlideButton" />
+    <ui:Button text="按钮" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button" class="slidebutton-button" />
+</ui:UXML>

@@ -9,7 +9,8 @@ namespace MuHua {
 	/// 滚动列表 - 垂直
 	/// </summary>
 	public class UIScrollViewListV<T, Data> : UIScrollViewV where T : ModuleUIItem<Data> {
-		private ModuleUIItems<T, Data> Items;// UI项容器
+
+		public ModuleUIItems<T, Data> Items;// UI项容器
 
 		public UIScrollViewListV(VisualElement element, VisualElement canvas, VisualTreeAsset templateAsset,
 		Func<Data, VisualElement, T> generate, UIDirection direction = UIDirection.FromTopToBottom) : base(element, canvas, direction) {

@@ -10,7 +10,7 @@ namespace MuHua {
 	/// </summary>
 	public class UIScrollViewListH<T, Data> : UIScrollViewH where T : ModuleUIItem<Data> {
 
-		private ModuleUIItems<T, Data> Items;// UI项容器
+		public ModuleUIItems<T, Data> Items;// UI项容器
 
 		public UIScrollViewListH(VisualElement element, VisualElement canvas, VisualTreeAsset templateAsset,
 		Func<Data, VisualElement, T> generate, UIDirection direction = UIDirection.FromLeftToRight) : base(element, canvas, direction) {
