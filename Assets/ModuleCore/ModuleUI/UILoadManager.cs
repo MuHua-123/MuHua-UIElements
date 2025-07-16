@@ -9,14 +9,14 @@ using MuHua;
 /// </summary>
 public class UILoadManager : ModuleUIPage {
 
-	public UIProgres progres;
+	// public UIProgres progres;
 
 	public override VisualElement Element => root.Q<VisualElement>("Popup");
 
 	public VisualElement PopupDialog => Q<VisualElement>("PopupDialog");
 
 	private void Awake() {
-		progres = new UIProgres(PopupDialog);
+		// progres = new UIProgres(PopupDialog);
 	}
 	private void OnDestroy() {
 		// config.Release();

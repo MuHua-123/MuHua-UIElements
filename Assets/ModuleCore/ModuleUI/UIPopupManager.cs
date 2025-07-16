@@ -9,14 +9,14 @@ using MuHua;
 /// </summary>
 public class UIPopupManager : ModuleUIPage {
 
-	public UIPopup dialog;
+	// public UIPopup dialog;
 
 	public override VisualElement Element => root.Q<VisualElement>("Popup");
 
 	public VisualElement PopupDialog => Q<VisualElement>("PopupDialog");
 
 	private void Awake() {
-		dialog = new UIPopup(PopupDialog);
+		// dialog = new UIPopup(PopupDialog);
 	}
 	private void OnDestroy() {
 		// config.Release();
