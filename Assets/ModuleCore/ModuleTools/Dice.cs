@@ -8,9 +8,13 @@ using Random = UnityEngine.Random;
 /// 骰子
 /// </summary>
 public static class Dice {
-	// 生成4d6弃最低的随机属性值
+	/// <summary> 掷一次骰子 </summary>
+	public static int Roll(int value) {
+		return Random.Range(1, value + 1);
+	}
+	/// <summary> Attribute规则：投4次d6，去掉最低值 </summary>
 	public static int RollAttribute() {
-		int[] rolls = { Random.Range(1, 7), Random.Range(1, 7), Random.Range(1, 7), Random.Range(1, 7) };
+		int[] rolls = { Roll(6), Roll(6), Roll(6), Roll(6) };
 		Array.Sort(rolls);
 		return rolls[1] + rolls[2] + rolls[3]; // 弃最低值
 	}
