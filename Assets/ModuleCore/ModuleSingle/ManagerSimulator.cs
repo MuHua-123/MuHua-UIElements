@@ -14,7 +14,13 @@ public class ManagerSimulator : ModuleSingle<ManagerSimulator> {
 
 	private void Start() {
 		character = new DataCharacter();
+		// 种族
+		character.race = DataRace.Orc();
+		// 职业
+		character.profession = DataProfession.Warrior(character);
+		// 更新属性
 		character.Update();
+		// 打印角色卡
 		character.PrintCharacterSheet();
 	}
 }
