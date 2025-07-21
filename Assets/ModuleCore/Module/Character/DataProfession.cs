@@ -6,33 +6,34 @@ using UnityEngine;
 /// <summary>
 /// 职业 - 数据
 /// </summary>
-public class DataProfession : DataAttribute {
-	/// <summary> 绑定角色 </summary>
-	public readonly DataCharacter character;
+public class DataProfession {
 	/// <summary> 职业名称 </summary>
 	public readonly string name;
 	/// <summary> 生命骰子 </summary>
 	public readonly int hitDice = 0;
+	/// <summary> 角色 </summary>
+	public DataCharacter character;
 	/// <summary> 职业等级 </summary>
 	public int level = 0;
 	/// <summary> 累计生命点 </summary>
 	public List<int> hitPoints = new List<int>();
 
-	public DataProfession(DataCharacter character, string name, int hitDice) {
-		this.character = character;
+	public DataProfession(string name, int hitDice) {
 		this.name = name;
 		this.hitDice = hitDice;
-
-		character.UpdateAttribute();
+	}
+	/// <summary> 初始：满生命骰子 + 体质调整值 </summary>
+	public void Initial(DataCharacter character) {
+		this.character = character;
 		level = 1;
+		// 初始生命 = 
 		hitPoints = new List<int>();
-		// 初始生命 = 满生命骰子 + 体质调整值
 		hitPoints.Add(hitDice + character.ConModifier);
 	}
-	/// <summary> 升级：骰生命骰子+体质调整值 </summary>
-	public void Upgrade(int modifier) {
+	/// <summary> 升级：骰生命骰子 + 体质调整值 </summary>
+	public void Upgrade() {
 		level++;
-		int hitPoint = Dice.Roll(hitDice) + modifier;
+		int hitPoint = Dice.Roll(hitDice) + character.ConModifier;
 		hitPoints.Add(hitPoint);
 	}
 	/// <summary> 生命点：每级生命点总和 </summary>
@@ -41,37 +42,37 @@ public class DataProfession : DataAttribute {
 	}
 
 	/// <summary> 无职业 1d4 </summary>
-	public static DataProfession None(DataCharacter character) {
-		return new DataProfession(character, "无", 4);
+	public static DataProfession None() {
+		return new DataProfession("无", 4);
 	}
 	/// <summary> 随机职业 </summary>
-	public static DataProfession Random(DataCharacter character) {
+	public static DataProfession Random() {
 		int index = Dice.Roll(5);
-		if (index == 1) { return Warrior(character); }
-		if (index == 2) { return Wizard(character); }
-		if (index == 3) { return Cleric(character); }
-		if (index == 4) { return Ranger(character); }
-		if (index == 5) { return Chanter(character); }
-		return None(character);
+		if (index == 1) { return Warrior(); }
+		if (index == 2) { return Wizard(); }
+		if (index == 3) { return Cleric(); }
+		if (index == 4) { return Ranger(); }
+		if (index == 5) { return Chanter(); }
+		return None();
 	}
 	/// <summary> 战士 1d10 </summary>
-	public static DataProfession Warrior(DataCharacter character) {
-		return new DataProfession(character, "战士", 10);
+	public static DataProfession Warrior() {
+		return new DataProfession("战士", 10);
 	}
 	/// <summary> 法师 1d6 </summary>
-	public static DataProfession Wizard(DataCharacter character) {
-		return new DataProfession(character, "法师", 6);
+	public static DataProfession Wizard() {
+		return new DataProfession("法师", 6);
 	}
 	/// <summary> 牧师 1d8 </summary>
-	public static DataProfession Cleric(DataCharacter character) {
-		return new DataProfession(character, "牧师", 8);
+	public static DataProfession Cleric() {
+		return new DataProfession("牧师", 8);
 	}
 	/// <summary> 游侠 1d8 </summary>
-	public static DataProfession Ranger(DataCharacter character) {
-		return new DataProfession(character, "游侠", 8);
+	public static DataProfession Ranger() {
+		return new DataProfession("游侠", 8);
 	}
 	/// <summary> 歌者 1d6 </summary>
-	public static DataProfession Chanter(DataCharacter character) {
-		return new DataProfession(character, "歌者", 6);
+	public static DataProfession Chanter() {
+		return new DataProfession("歌者", 6);
 	}
 }

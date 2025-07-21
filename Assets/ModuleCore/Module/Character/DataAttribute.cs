@@ -7,17 +7,30 @@ using UnityEngine;
 /// </summary>
 public class DataAttribute {
 	/// <summary> 力量(strength) </summary>
-	public int Str;
+	public virtual int Str { get; set; }
 	/// <summary> 敏捷(dexterity) </summary>
-	public int Dex;
+	public virtual int Dex { get; set; }
 	/// <summary> 体质(constitution) </summary>
-	public int Con;
+	public virtual int Con { get; set; }
 	/// <summary> 智力(intelligence) </summary>
-	public int Int;
+	public virtual int Int { get; set; }
 	/// <summary> 感知(wisdom) </summary>
-	public int Wis;
+	public virtual int Wis { get; set; }
 	/// <summary> 魅力(charisma) </summary>
-	public int Cha;
+	public virtual int Cha { get; set; }
+
+	/// <summary> 力量调整值(strength) </summary>
+	public int StrModifier => Modifier(Str);
+	/// <summary> 敏捷调整值(dexterity) </summary>
+	public int DexModifier => Modifier(Dex);
+	/// <summary> 体质调整值(constitution) </summary>
+	public int ConModifier => Modifier(Con);
+	/// <summary> 智力调整值(intelligence) </summary>
+	public int IntModifier => Modifier(Int);
+	/// <summary> 感知调整值(wisdom) </summary>
+	public int WisModifier => Modifier(Wis);
+	/// <summary> 魅力调整值(charisma) </summary>
+	public int ChaModifier => Modifier(Cha);
 
 	/// <summary> 创建初始属性 </summary>
 	public static DataAttribute Initial() {
