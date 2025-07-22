@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,20 +21,20 @@ public class BattleQueue {
 	public void Add(BattleCharacter character) {
 		characters.Add(character);
 	}
-	/// <summary> 先攻：d20 + 敏捷调整值 </summary>
-	public void Sequence() {
-		characters.ForEach(obj => obj.sequence = Dice.Roll20(obj.DexModifier));
+	/// <summary> 遍历角色 </summary>
+	public void ForEach(Action<BattleCharacter> action) {
+		characters.ForEach(action);
 	}
-	/// <summary> 排序：大到小 </summary>
-	public void OrderByDescending() {
-		characters = characters.OrderByDescending(c => c.sequence).ToList();
+	// /// <summary> 排序：大到小 </summary>
+	public void OrderByDescending(Func<BattleCharacter, int> func) {
+		characters = characters.OrderByDescending(func).ToList();
 	}
-	/// <summary> 回合 </summary>
-	public void Reset() {
+	/// <summary> 更新队列 </summary>
+	public void UpdateQueue() {
 		queue = new Queue<BattleCharacter>(characters);
 	}
-	/// <summary> 当前行动者 </summary>
-	public bool Current(out BattleCharacter battle) {
+	/// <summary> 取出一个 </summary>
+	public bool Dequeue(out BattleCharacter battle) {
 		battle = queue.Count > 0 ? queue.Dequeue() : null;
 		return battle != null;
 	}
