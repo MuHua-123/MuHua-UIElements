@@ -29,6 +29,14 @@ public class BattleQueue {
 	public void OrderByDescending(Func<BattleCharacter, int> func) {
 		characters = characters.OrderByDescending(func).ToList();
 	}
+	/// <summary> 根据条件查询元素 </summary>
+	public List<BattleCharacter> Where(Func<BattleCharacter, bool> predicate) {
+		return characters.Where(predicate).ToList();
+	}
+	/// <summary> 根据条件查询第一个匹配的元素 </summary>
+	public BattleCharacter FirstOrDefault(Func<BattleCharacter, bool> predicate) {
+		return characters.FirstOrDefault(predicate);
+	}
 	/// <summary> 更新队列 </summary>
 	public void UpdateQueue() {
 		queue = new Queue<BattleCharacter>(characters);

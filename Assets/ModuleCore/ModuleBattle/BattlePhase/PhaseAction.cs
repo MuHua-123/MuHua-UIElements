@@ -16,9 +16,9 @@ public class PhaseAction : BattlePhase {
 		// 选择行动目标，没有行动目标则进入结算阶段
 		if (!BattleQueue.Dequeue(out BattleCharacter character)) { simulator.Transition(PhaseType.结算阶段); return; }
 		// 判断是否可以行动
-
-		// 选择一个目标
-
+		if (ActionPredicate(character)) { return; }
+		// 选择一个可以攻击的目标
+		BattleCharacter target = BattleQueue.FirstOrDefault(obj => character.AttackTarget(obj));
 		// 对目标进行攻击
 
 		// TODO：记录器
@@ -27,4 +27,10 @@ public class PhaseAction : BattlePhase {
 	public override void QuitPhase() {
 		// throw new System.NotImplementedException();
 	}
+
+	/// <summary> 行动判断 </summary>
+	private bool ActionPredicate(BattleCharacter character) {
+		return character.hitPoint.x > 0;
+	}
+
 }

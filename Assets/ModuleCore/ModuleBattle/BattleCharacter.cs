@@ -34,4 +34,9 @@ public class BattleCharacter : DataAttribute {
 		hitPoint = new Vector2Int(character.HitPoint, character.HitPoint);
 		armorClass = character.ArmorClass;
 	}
+
+	/// <summary> 攻击目标 </summary>
+	public bool AttackTarget(BattleCharacter target) {
+		return team != target.team && target.hitPoint.x > 0;
+	}
 }
