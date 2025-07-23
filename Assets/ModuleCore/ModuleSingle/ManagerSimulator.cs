@@ -33,6 +33,6 @@ public class ManagerSimulator : ModuleSingle<ManagerSimulator> {
 	}
 
 	private DataCharacter RandomCharacter(string name) {
-		return DataCharacter.Create(name, DataRace.Random(), DataProfession.Random());
+		return CharacterTool.Create(name, RaceTool.Random(), ProfessionTool.Random());
 	}
 }

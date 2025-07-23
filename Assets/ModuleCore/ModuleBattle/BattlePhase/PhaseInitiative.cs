@@ -18,7 +18,9 @@ public class PhaseInitiative : BattlePhase {
 		// TODO：需要添加突袭阶段
 		simulator.Transition(PhaseType.回合阶段);
 		// TODO：记录器
-		Debug.Log("先攻");
+		string message = "先攻";
+		BattleQueue.ForEach(obj => message += $" {obj.name}({obj.sequence})");
+		Debug.Log(message);
 	}
 	public override void QuitPhase() {
 		// throw new System.NotImplementedException();

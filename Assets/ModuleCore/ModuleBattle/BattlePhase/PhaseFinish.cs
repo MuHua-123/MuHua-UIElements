@@ -10,12 +10,16 @@ public class PhaseFinish : BattlePhase {
 	public PhaseFinish(BattleSimulator simulator) : base(simulator) { }
 
 	public override void StartPhase() {
-		throw new System.NotImplementedException();
+		// TODO：记录器
+		Debug.Log("结束战斗!");
 	}
 	public override void UpdatePhase() {
-		throw new System.NotImplementedException();
+		// TODO：需要添加结算判断
+		// simulator.Transition(PhaseType.回合阶段);
+		// TODO：记录器
+
 	}
 	public override void QuitPhase() {
-		throw new System.NotImplementedException();
+		// throw new System.NotImplementedException();
 	}
 }

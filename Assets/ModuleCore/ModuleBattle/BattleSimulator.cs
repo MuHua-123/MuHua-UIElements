@@ -9,7 +9,6 @@ using UnityEngine;
 /// 战斗 - 模拟器
 /// </summary>
 public class BattleSimulator {
-
 	/// <summary> 战斗队列 </summary>
 	public BattleQueue battleQueue = new BattleQueue();
 
@@ -19,6 +18,9 @@ public class BattleSimulator {
 	public Dictionary<PhaseType, IPhase> dictionary = new Dictionary<PhaseType, IPhase>();
 
 	public BattleSimulator(BattleTeam team1, BattleTeam team2) {
+		team1.Initial(1);
+		team2.Initial(2);
+
 		battleQueue.Add(team1.battles);
 		battleQueue.Add(team2.battles);
 
@@ -27,6 +29,8 @@ public class BattleSimulator {
 		dictionary.Add(PhaseType.回合阶段, new PhaseFormal(this));
 		dictionary.Add(PhaseType.行动阶段, new PhaseAction(this));
 		dictionary.Add(PhaseType.结算阶段, new PhaseFinish(this));
+
+		Transition(PhaseType.先攻阶段);
 	}
 	public void Update() {
 		currentPhase?.UpdatePhase();
@@ -40,7 +44,7 @@ public class BattleSimulator {
 			currentPhase?.QuitPhase();
 			currentPhase = newPhase;
 			currentPhase?.StartPhase();
-			Debug.Log($"战斗阶段已转换为: {phaseType}");
+			// Debug.Log($"战斗阶段已转换为: {phaseType}");
 		}
 		else {
 			// 不存在时输出警告信息

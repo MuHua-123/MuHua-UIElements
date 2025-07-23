@@ -26,7 +26,7 @@ public class BattleCharacter : DataAttribute {
 
 	public BattleCharacter(DataCharacter character, int team) {
 		this.character = character;
-		Cover(character);
+		AttributeTool.Cover(this, character);
 		this.team = team;
 		name = character.name;
 		level = character.Level;
@@ -35,8 +35,12 @@ public class BattleCharacter : DataAttribute {
 		armorClass = character.ArmorClass;
 	}
 
-	/// <summary> 攻击目标 </summary>
-	public bool AttackTarget(BattleCharacter target) {
+	/// <summary> 是否允许行动 </summary>
+	public bool IsAction() {
+		return hitPoint.x > 0;
+	}
+	/// <summary> 是否敌对目标 </summary>
+	public bool IsHostility(BattleCharacter target) {
 		return team != target.team && target.hitPoint.x > 0;
 	}
 }

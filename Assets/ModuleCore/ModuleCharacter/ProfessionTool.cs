@@ -4,46 +4,42 @@ using System.Linq;
 using UnityEngine;
 
 /// <summary>
-/// 职业 - 数据
+/// 种族 - 工具
 /// </summary>
-public class DataProfession {
-	/// <summary> 职业名称 </summary>
-	public readonly string name;
-	/// <summary> 生命骰子 </summary>
-	public readonly int hitDice = 0;
-	/// <summary> 角色 </summary>
-	public DataCharacter character;
-	/// <summary> 职业等级 </summary>
-	public int level = 0;
-	/// <summary> 累计生命点 </summary>
-	public List<int> hitPoints = new List<int>();
+public static class ProfessionTool {
 
-	public DataProfession(string name, int hitDice) {
-		this.name = name;
-		this.hitDice = hitDice;
-	}
+	#region 扩展
 	/// <summary> 初始：满生命骰子 + 体质调整值 </summary>
-	public void Initial(DataCharacter character) {
-		this.character = character;
-		level = 1;
-		// 初始生命 = 
-		hitPoints = new List<int>();
-		hitPoints.Add(hitDice + character.ConModifier);
+	public static void Initial(this DataProfession profession, DataCharacter character) {
+		profession.character = character;
+		int hitPoint = profession.hitDice + character.ConModifier;
+		profession.level = 1;
+		profession.hitPoints = new List<int> { hitPoint };
 	}
 	/// <summary> 升级：骰生命骰子 + 体质调整值 </summary>
-	public void Upgrade() {
-		level++;
-		int hitPoint = Dice.Roll(hitDice) + character.ConModifier;
-		hitPoints.Add(hitPoint);
+	public static void Upgrade(this DataProfession profession) {
+		profession.level++;
+		int hitPoint = Dice.Roll(profession.hitDice);
+		int modifier = profession.character.ConModifier;
+		profession.hitPoints.Add(hitPoint + modifier);
 	}
 	/// <summary> 生命点：每级生命点总和 </summary>
-	public int HitPoint() {
-		return hitPoints.Sum();
+	public static int HitPoint(this DataProfession profession) {
+		return profession.hitPoints.Sum();
 	}
+	#endregion
 
+	#region 创建
+	/// <summary> 创建 </summary>
+	public static DataProfession Create(string name, int hitDice) {
+		DataProfession profession = new DataProfession { name = name, hitDice = hitDice };
+		profession.name = name;
+		profession.hitDice = hitDice;
+		return profession;
+	}
 	/// <summary> 无职业 1d4 </summary>
 	public static DataProfession None() {
-		return new DataProfession("无", 4);
+		return Create("无", 4);
 	}
 	/// <summary> 随机职业 </summary>
 	public static DataProfession Random() {
@@ -57,22 +53,23 @@ public class DataProfession {
 	}
 	/// <summary> 战士 1d10 </summary>
 	public static DataProfession Warrior() {
-		return new DataProfession("战士", 10);
+		return Create("战士", 10);
 	}
 	/// <summary> 法师 1d6 </summary>
 	public static DataProfession Wizard() {
-		return new DataProfession("法师", 6);
+		return Create("法师", 6);
 	}
 	/// <summary> 牧师 1d8 </summary>
 	public static DataProfession Cleric() {
-		return new DataProfession("牧师", 8);
+		return Create("牧师", 8);
 	}
 	/// <summary> 游侠 1d8 </summary>
 	public static DataProfession Ranger() {
-		return new DataProfession("游侠", 8);
+		return Create("游侠", 8);
 	}
 	/// <summary> 歌者 1d6 </summary>
 	public static DataProfession Chanter() {
-		return new DataProfession("歌者", 6);
+		return Create("歌者", 6);
 	}
+	#endregion
 }

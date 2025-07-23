@@ -12,6 +12,20 @@ public static class Dice {
 	public static int Roll(int value) {
 		return Random.Range(1, value + 1);
 	}
+	/// <summary> d6 + 调整值 + 加值 </summary>
+	public static int Roll6(int modifier = 0, int addValue = 0, DiceGrade grade = DiceGrade.平势) {
+		int d1 = Roll(6); int d2 = Roll(6);
+		if (grade == DiceGrade.优势) { d1 = d1 >= d2 ? d1 : d2; }
+		if (grade == DiceGrade.平势) { d1 = d1 <= d2 ? d1 : d2; }
+		return d1 + modifier + addValue;
+	}
+	/// <summary> d8 + 调整值 + 加值 </summary>
+	public static int Roll8(int modifier = 0, int addValue = 0, DiceGrade grade = DiceGrade.平势) {
+		int d1 = Roll(8); int d2 = Roll(8);
+		if (grade == DiceGrade.优势) { d1 = d1 >= d2 ? d1 : d2; }
+		if (grade == DiceGrade.平势) { d1 = d1 <= d2 ? d1 : d2; }
+		return d1 + modifier + addValue;
+	}
 	/// <summary> d20 + 调整值 + 加值 </summary>
 	public static int Roll20(int modifier = 0, int addValue = 0, DiceGrade grade = DiceGrade.平势) {
 		int d1 = Roll(20); int d2 = Roll(20);

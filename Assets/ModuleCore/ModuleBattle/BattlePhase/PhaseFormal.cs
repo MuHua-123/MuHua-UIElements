@@ -20,6 +20,9 @@ public class PhaseFormal : BattlePhase {
 		simulator.Transition(PhaseType.行动阶段);
 		// TODO：记录器
 		Debug.Log($"正式回合：{roundCount}");
+		string message = "存活";
+		BattleQueue.ForEach(obj => message += $" {obj.name}({obj.hitPoint.x})");
+		Debug.Log(message);
 	}
 	public override void QuitPhase() {
 		// throw new System.NotImplementedException();
