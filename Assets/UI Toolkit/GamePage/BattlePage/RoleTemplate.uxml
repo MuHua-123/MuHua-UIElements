@@ -1,0 +1,21 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/GamePage/BattlePage/BattlePage.uss?fileID=7433441132597879392&amp;guid=d1db9e945edc9ee46af2f90e172b82fc&amp;type=3#BattlePage" />
+    <ui:VisualElement style="background-color: rgb(255, 255, 255); margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; width: 200px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;">
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row; align-items: stretch; justify-content: space-between;">
+            <ui:Label tabindex="-1" text="MuHua" parse-escape-sequences="true" display-tooltip-when-elided="true" class="battle-label" />
+            <ui:Label tabindex="-1" text="战士Lv1" parse-escape-sequences="true" display-tooltip-when-elided="true" class="battle-label" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row; align-items: stretch; justify-content: space-between;">
+            <ui:Label tabindex="-1" text="骑士长剑" parse-escape-sequences="true" display-tooltip-when-elided="true" class="battle-label" />
+            <ui:Label tabindex="-1" text="骑士盾牌" parse-escape-sequences="true" display-tooltip-when-elided="true" class="battle-label" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Slider" class="slider-horizontal" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; height: 15px;">
+            <ui:Label tabindex="-1" text="滑块" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" class="slider-horizontal-title" style="display: none;" />
+            <ui:VisualElement name="Container" class="slider-horizontal-container" style="height: 100%;">
+                <ui:VisualElement name="Tracker" class="slider-horizontal-tracker" style="background-color: rgb(255, 102, 102);">
+                    <ui:VisualElement name="Dragger" class="slider-horizontal-dragger" style="display: none;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
