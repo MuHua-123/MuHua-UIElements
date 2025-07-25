@@ -9,6 +9,8 @@ using UnityEngine;
 /// 战斗 - 模拟器
 /// </summary>
 public class BattleSimulator {
+	/// <summary> 当前行动 </summary>
+	public DataCombatRole actionRole;
 	/// <summary> 战斗队列 </summary>
 	public BattleQueue battleQueue = new BattleQueue();
 
@@ -18,8 +20,11 @@ public class BattleSimulator {
 	public Dictionary<PhaseType, IPhase> dictionary = new Dictionary<PhaseType, IPhase>();
 
 	public BattleSimulator(BattleTeam team1, BattleTeam team2) {
-		team1.Initial(1);
-		team2.Initial(2);
+		team1.Initial();
+		team2.Initial();
+
+		team1.Settings(1, 1);
+		team2.Settings(2, 1);
 
 		battleQueue.Add(team1.battles);
 		battleQueue.Add(team2.battles);
@@ -28,27 +33,16 @@ public class BattleSimulator {
 		dictionary.Add(PhaseType.突袭阶段, new PhaseAssault(this));
 		dictionary.Add(PhaseType.回合阶段, new PhaseFormal(this));
 		dictionary.Add(PhaseType.行动阶段, new PhaseAction(this));
+		dictionary.Add(PhaseType.选择角色, new PhaseActionRoleSelect(this));
+		dictionary.Add(PhaseType.角色攻击, new PhaseActionRoleAttack(this));
 		dictionary.Add(PhaseType.结算阶段, new PhaseFinish(this));
-
-		Transition(PhaseType.先攻阶段);
-	}
-	public void Update() {
-		currentPhase?.UpdatePhase();
 	}
 
 	/// <summary> 阶段过渡 </summary>
 	public void Transition(PhaseType phaseType) {
 		// 检查阶段字典中是否存在指定的阶段类型
-		if (dictionary.TryGetValue(phaseType, out IPhase newPhase)) {
-			// 如果存在则更新当前阶段
-			currentPhase?.QuitPhase();
-			currentPhase = newPhase;
-			currentPhase?.StartPhase();
-			// Debug.Log($"战斗阶段已转换为: {phaseType}");
-		}
-		else {
-			// 不存在时输出警告信息
-			Debug.LogWarning($"阶段字典中不存在 {phaseType} 对应的阶段实现");
-		}
+		if (!dictionary.TryGetValue(phaseType, out IPhase newPhase)) { return; }
+		currentPhase = newPhase;
+		currentPhase?.Execute();
 	}
 }

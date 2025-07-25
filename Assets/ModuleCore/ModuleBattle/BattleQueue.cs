@@ -9,40 +9,40 @@ using UnityEngine;
 /// </summary>
 public class BattleQueue {
 	/// <summary> 执行队列 </summary>
-	public Queue<BattleCharacter> queue = new Queue<BattleCharacter>();
+	public Queue<DataCombatRole> queue = new Queue<DataCombatRole>();
 	/// <summary> 战斗合集 </summary>
-	public List<BattleCharacter> characters = new List<BattleCharacter>();
+	public List<DataCombatRole> characters = new List<DataCombatRole>();
 
 	/// <summary> 添加角色 </summary>
-	public void Add(List<BattleCharacter> list) {
+	public void Add(List<DataCombatRole> list) {
 		characters.AddRange(list);
 	}
 	/// <summary> 添加角色 </summary>
-	public void Add(BattleCharacter character) {
+	public void Add(DataCombatRole character) {
 		characters.Add(character);
 	}
 	/// <summary> 遍历角色 </summary>
-	public void ForEach(Action<BattleCharacter> action) {
+	public void ForEach(Action<DataCombatRole> action) {
 		characters.ForEach(action);
 	}
 	// /// <summary> 排序：大到小 </summary>
-	public void OrderByDescending(Func<BattleCharacter, int> func) {
+	public void OrderByDescending(Func<DataCombatRole, int> func) {
 		characters = characters.OrderByDescending(func).ToList();
 	}
 	/// <summary> 根据条件查询元素 </summary>
-	public List<BattleCharacter> Where(Func<BattleCharacter, bool> predicate) {
+	public List<DataCombatRole> Where(Func<DataCombatRole, bool> predicate) {
 		return characters.Where(predicate).ToList();
 	}
 	/// <summary> 根据条件查询第一个匹配的元素 </summary>
-	public BattleCharacter FirstOrDefault(Func<BattleCharacter, bool> predicate) {
+	public DataCombatRole FirstOrDefault(Func<DataCombatRole, bool> predicate) {
 		return characters.FirstOrDefault(predicate);
 	}
 	/// <summary> 更新队列 </summary>
 	public void UpdateQueue() {
-		queue = new Queue<BattleCharacter>(characters);
+		queue = new Queue<DataCombatRole>(characters);
 	}
 	/// <summary> 取出一个 </summary>
-	public bool Dequeue(out BattleCharacter battle) {
+	public bool Dequeue(out DataCombatRole battle) {
 		battle = queue.Count > 0 ? queue.Dequeue() : null;
 		return battle != null;
 	}

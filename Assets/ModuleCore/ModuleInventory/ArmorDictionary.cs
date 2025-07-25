@@ -6,7 +6,7 @@ using UnityEngine;
 /// 装备 - 字典
 /// </summary>
 public static class ArmorDictionary {
-	/// <summary> 武器 </summary>
+	/// <summary> 护甲 </summary>
 	public static DataArmor Armor(string name, ArmorType armorType) {
 		DataArmor armor = new DataArmor();
 		armor.name = name;

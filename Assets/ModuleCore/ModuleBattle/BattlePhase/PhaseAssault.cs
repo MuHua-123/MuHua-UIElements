@@ -9,13 +9,7 @@ public class PhaseAssault : BattlePhase {
 
 	public PhaseAssault(BattleSimulator simulator) : base(simulator) { }
 
-	public override void StartPhase() {
-		// throw new System.NotImplementedException();
-	}
-	public override void UpdatePhase() {
-		// throw new System.NotImplementedException();
-	}
-	public override void QuitPhase() {
-		// throw new System.NotImplementedException();
+	public override void Execute() {
+
 	}
 }

@@ -19,20 +19,16 @@ public class ManagerSimulator : ModuleSingle<ManagerSimulator> {
 
 	private void Start() {
 		team1 = new BattleTeam();
-		team1.Add(RandomCharacter("艾薇拉"));
-		team1.Add(RandomCharacter("托尔吉"));
+		team1.Add(CharacterDictionary.Character001());
+		team1.Add(CharacterDictionary.Character002());
+		team1.Add(CharacterDictionary.Character003());
 
 		team2 = new BattleTeam();
-		team2.Add(RandomCharacter("哥布林射手"));
-		team2.Add(RandomCharacter("哥布林战士"));
+		team2.Add(MonsterDictionary.Monster001());
+		team2.Add(MonsterDictionary.Monster002());
+		team2.Add(MonsterDictionary.Monster002());
 
 		battleSimulator = new BattleSimulator(team1, team2);
-	}
-	private void Update() {
-		battleSimulator.Update();
-	}
-
-	private DataCharacter RandomCharacter(string name) {
-		return CharacterTool.Create(name, RaceTool.Random(), ProfessionTool.Random());
+		battleSimulator.Transition(PhaseType.先攻阶段);
 	}
 }

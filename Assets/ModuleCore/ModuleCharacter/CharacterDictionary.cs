@@ -15,6 +15,10 @@ public static class CharacterDictionary {
 		character.profession = ProfessionTool.Wizard();
 		character.profession.Initial(character);
 		character.equipment = new DataEquipment();
+		// 装备法杖
+		character.equipment.Wear(WeaponDictionary.Weapon302(), out DataWear old1);
+		// 装备法袍
+		character.equipment.Wear(ArmorDictionary.Armor101(), out DataWear old2);
 		return character;
 	}
 	/// <summary> 托尔吉 兽人 战士 </summary>
@@ -26,6 +30,11 @@ public static class CharacterDictionary {
 		character.profession = ProfessionTool.Warrior();
 		character.profession.Initial(character);
 		character.equipment = new DataEquipment();
+		// 装备木棒和木盾
+		character.equipment.Wear(WeaponDictionary.Weapon201(), out DataWear old1);
+		character.equipment.Wear(WeaponDictionary.Weapon401(), out DataWear old2);
+		// 装备板甲
+		character.equipment.Wear(ArmorDictionary.Armor401(), out DataWear old3);
 		return character;
 	}
 	/// <summary> 格伦布林 矮人 牧师 </summary>
@@ -37,6 +46,11 @@ public static class CharacterDictionary {
 		character.profession = ProfessionTool.Cleric();
 		character.profession.Initial(character);
 		character.equipment = new DataEquipment();
+		// 装备木棒和木盾
+		character.equipment.Wear(WeaponDictionary.Weapon201(), out DataWear old1);
+		character.equipment.Wear(WeaponDictionary.Weapon401(), out DataWear old2);
+		// 装备链甲
+		character.equipment.Wear(ArmorDictionary.Armor301(), out DataWear old3);
 		return character;
 	}
 }

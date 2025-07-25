@@ -91,3 +91,31 @@ public class DataProfession {
 	/// <summary> 累计生命点 </summary>
 	public List<int> hitPoints = new List<int>();
 }
+/// <summary>
+/// 战斗角色 - 数据
+/// </summary>
+public class DataCombatRole : DataAttribute {
+	/// <summary> 角色数据 </summary>
+	public readonly DataCharacter character;
+	/// <summary> 战斗角色 </summary>
+	public DataCombatRole(DataCharacter character) => this.character = character;
+
+	/// <summary> 归属队伍 </summary>
+	public int team;
+	/// <summary> 角色名字 </summary>
+	public string name;
+	/// <summary> 战斗等级 </summary>
+	public int level;
+	/// <summary> 战场位置 </summary>
+	public int position;
+	/// <summary> 先攻顺序 </summary>
+	public int sequence;
+	/// <summary> 护甲等级 </summary>
+	public int armorClass;
+	/// <summary> 生命点 </summary>
+	public Vector2Int hitPoint;
+	/// <summary> 武器1 </summary>
+	public DataWeapon weapon1;
+	/// <summary> 武器2 </summary>
+	public DataWeapon weapon2;
+}

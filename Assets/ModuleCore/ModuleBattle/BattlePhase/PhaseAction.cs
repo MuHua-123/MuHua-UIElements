@@ -6,55 +6,70 @@ using UnityEngine;
 /// 行动阶段
 /// </summary>
 public class PhaseAction : BattlePhase {
-	/// <summary> 当前行动 </summary>
-	private BattleCharacter currentAction;
-	/// <summary> 当前目标 </summary>
-	private BattleCharacter currentTarget;
 
 	public PhaseAction(BattleSimulator simulator) : base(simulator) { }
 
-	public override void StartPhase() {
-		// throw new System.NotImplementedException();
-	}
-	public override void UpdatePhase() {
-		// 选择行动的角色，如果没有则进入下一轮
-		if (!SelectAction()) { return; }
-		// 选择攻击的目标，如果没有目标则结算战斗
-		if (!SelectTarget()) { return; }
-		// 命中检定
-		int hit = Dice.Roll20(currentAction.DexModifier);
-		int ac = currentTarget.armorClass;
-		bool isHit = hit > ac;
-		// 伤害计算
-		if (isHit) {
-			int damage = Dice.Roll8(currentAction.StrModifier);
-			currentTarget.hitPoint.x -= damage;
-			Debug.Log($"{currentAction.name}使用 普通攻击({hit}) 对 {currentTarget.name}({ac}) 造成 {damage} 点伤害！");
-		}
-		else {
-			Debug.Log($"{currentAction.name}使用 普通攻击({hit}) 对 {currentTarget.name}({ac}) 未命中！");
-		}
-		// TODO：记录器
-		// Debug.Log($"正式回合：{roundCount}");
-	}
-	public override void QuitPhase() {
-		// throw new System.NotImplementedException();
-	}
+	public override void Execute() {
 
-	/// <summary> 选择当前行动角色 </summary>
-	private bool SelectAction() {
+	}
+}
+/// <summary>
+/// 行动角色选择
+/// </summary>
+public class PhaseActionRoleSelect : BattlePhase {
+
+	public PhaseActionRoleSelect(BattleSimulator simulator) : base(simulator) { }
+
+	public override void Execute() {
 		// 选择行动的角色，如果没有则进入下一回合
-		if (!BattleQueue.Dequeue(out currentAction)) { simulator.Transition(PhaseType.回合阶段); return false; }
+		PhaseType phase = BattleQueue.Dequeue(out simulator.actionRole) ? PhaseType.角色攻击 : PhaseType.回合阶段;
+		simulator.Transition(phase);
+	}
+}
+/// <summary>
+/// 行动角色攻击
+/// </summary>
+public class PhaseActionRoleAttack : BattlePhase {
+
+	public PhaseActionRoleAttack(BattleSimulator simulator) : base(simulator) { }
+
+	public override void Execute() {
 		// 判断是否可以行动
-		if (!currentAction.IsAction()) { return false; }
-		return true;
-	}
-	/// <summary> 选择当前目标角色 </summary>
-	private bool SelectTarget() {
-		// 选择一个可以攻击的目标
-		currentTarget = BattleQueue.FirstOrDefault(obj => currentAction.IsHostility(obj));
+		if (ActionRole.hitPoint.x <= 0) { simulator.Transition(PhaseType.选择角色); return; }
+		// 选择可以攻击的目标
+		List<DataCombatRole> roles = AttackTarget();
 		// 如果没有可以攻击的目标则结算战斗
-		if (currentTarget == null) { simulator.Transition(PhaseType.结算阶段); }
-		return currentTarget != null;
+		if (roles.Count == 0) { simulator.Transition(PhaseType.结算阶段); return; }
+		// 攻击单体目标
+		int randomIndex = Random.Range(0, roles.Count);
+		DataCombatRole target = roles[randomIndex];
+		// 武器判断
+		// ActionRole.weapon1
+		// 命中检定
+		int hit = Dice.Roll20(ActionRole.StrModifier);
+		int armorClass = target.armorClass;
+		// 伤害计算
+		int damage = Dice.Roll8(ActionRole.StrModifier);
+		if (hit > armorClass) { target.hitPoint.x -= damage; }
+		// 生成战斗消息
+		MessageNormalAttack message = new MessageNormalAttack();
+		message.Settings(ActionRole, hit, damage);
+		message.Settings(target, armorClass);
+		Debug.Log(message);
+		simulator.Transition(PhaseType.选择角色);
 	}
+	/// <summary> 攻击目标 </summary>
+	private List<DataCombatRole> AttackTarget() {
+		return BattleQueue.Where(Hostility);
+	}
+	/// <summary> 敌对目标 </summary>
+	public bool Hostility(DataCombatRole role) {
+		return role.team != ActionRole.team && role.hitPoint.x > 0;
+	}
+}
+/// <summary>
+/// 战斗行动
+/// </summary>
+public class BattleAction {
+
 }
