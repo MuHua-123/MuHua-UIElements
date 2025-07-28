@@ -11,7 +11,6 @@ public static class EquipmentTool {
 	/// <summary> 添加属性 </summary>
 	public static void Add(this DataAddition a, DataAddition b) {
 		a.armorClass += b.armorClass;
-		a.damageDices.AddRange(b.damageDices);
 	}
 	/// <summary> 合并属性 </summary>
 	public static DataAddition Merge(List<DataAddition> additions) {

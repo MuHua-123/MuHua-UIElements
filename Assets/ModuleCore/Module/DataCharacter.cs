@@ -34,6 +34,7 @@ public class DataAttribute {
 }
 /// <summary>
 /// 角色 - 数据
+/// TODO: 补充角色的专长(Feats)、技能(Skills)、法术(Spells)等
 /// </summary>
 public class DataCharacter : DataAttribute {
 	/// <summary> 名字 </summary>
@@ -71,6 +72,7 @@ public class DataCharacter : DataAttribute {
 }
 /// <summary>
 /// 种族 - 数据
+/// TODO: 补充种族特殊能力
 /// </summary>
 public class DataRace : DataAttribute {
 	/// <summary> 种族名称 </summary>

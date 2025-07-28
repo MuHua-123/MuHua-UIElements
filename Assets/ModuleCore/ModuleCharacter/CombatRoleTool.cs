@@ -17,6 +17,8 @@ public static class CombatRoleTool {
 		role.armorClass = role.character.ArmorClass;
 		role.weapon1 = role.character.equipment.weapon1;
 		role.weapon2 = role.character.equipment.weapon2;
+		if (role.weapon1 == null) { role.weapon1 = WeaponDictionary.Weapon000(); }
+		if (role.weapon2 == null) { role.weapon2 = WeaponDictionary.Weapon000(); }
 	}
 	/// <summary> 设置队伍 </summary>
 	public static void Settings(this DataCombatRole role, int team, int position) {

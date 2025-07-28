@@ -13,7 +13,36 @@ public class BattleReport {
 /// 战斗消息
 /// </summary>
 public class BattleMessage {
-
+	/// <summary> 战斗消息内容 </summary>
+	public string content;
+	/// <summary> 战斗消息内容 </summary>
+	public override string ToString() {
+		return content;
+	}
+	// 辅助方法：随机选择一个字符串，增加多样性
+	public string RandomChoice(params string[] options) {
+		if (options.Length == 0) return "";
+		return options[Random.Range(0, options.Length)];
+	}
+}
+/// <summary>
+/// 未命中攻击 - 战斗消息
+/// </summary>
+public class MissAttack : BattleMessage {
+	public MissAttack(string attacker, int hit, string weapon, string attacked, int armorClass) {
+		// 托尔吉使用巨斧猛击（19）没有命中哥布林战士（AC12）
+		content = $"{attacker}使用{weapon}({hit})没有命中{attacked}({armorClass})";
+	}
+}
+/// <summary>
+/// 命中攻击 - 战斗消息
+/// </summary>
+public class HitAttack : BattleMessage {
+	public HitAttack(string attacker, int hit, string weapon, string attacked, int armorClass, int damage, DamageType damageType) {
+		string damageTypeString = damageType == DamageType.无 ? "" : damageType.ToString();
+		// 托尔吉使用巨斧猛击（19）对哥布林战士（AC12）造成了 14钝击伤害
+		content = $"{attacker}使用{weapon}({hit})对{attacked}({armorClass})造成了{damage}{damageTypeString}伤害";
+	}
 }
 /// <summary>
 /// 普通攻击 - 战斗消息
@@ -72,10 +101,5 @@ public class MessageNormalAttack : BattleMessage {
 			$"格挡失败受到了{damage}点伤害！",
 		};
 		return RandomChoice(hitText);
-	}
-	// 辅助方法：随机选择一个字符串，增加多样性
-	private string RandomChoice(params string[] options) {
-		if (options.Length == 0) return "";
-		return options[Random.Range(0, options.Length)];
 	}
 }

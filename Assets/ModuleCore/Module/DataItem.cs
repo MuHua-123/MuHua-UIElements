@@ -43,13 +43,33 @@ public class DataWear : DataItem {
 /// <summary>
 /// 武器类型。
 /// </summary>
-public enum WeaponType { 轻型武器, 中型武器, 重型武器, 盾牌, }
+public enum WeaponType { 无, 轻型武器, 中型武器, 重型武器, 盾牌, }
 /// <summary>
 /// 武器 - 数据
 /// </summary>
 public class DataWeapon : DataWear {
 	/// <summary> 武器类型 </summary>
 	public WeaponType weaponType;
+	/// <summary> 伤害骰子 </summary>
+	public DataDamageDice damageDice;
+}
+/// <summary>
+/// 伤害类型
+/// </summary>
+public enum DamageType { 无, 穿刺, 挥砍, 钝击 }
+/// <summary>
+/// 伤害骰子 - 数据
+/// </summary>
+public class DataDamageDice {
+	/// <summary> 伤害骰子 </summary>
+	public readonly int value;
+	/// <summary> 伤害类型 </summary>
+	public readonly DamageType type;
+
+	public DataDamageDice(int value, DamageType type) {
+		this.value = value;
+		this.type = type;
+	}
 }
 /// <summary>
 /// 护甲类型。

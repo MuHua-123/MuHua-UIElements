@@ -28,24 +28,4 @@ public class DataEquipment {
 public class DataAddition {
 	/// <summary> 护甲等级 </summary>
 	public int armorClass = 0;
-	/// <summary> 伤害骰子 </summary>
-	public List<DataDamageDice> damageDices = new List<DataDamageDice>();
-}
-/// <summary>
-/// 伤害类型
-/// </summary>
-public enum DamageType { 穿刺, 挥砍, 钝击 }
-/// <summary>
-/// 伤害 - 数据
-/// </summary>
-public class DataDamageDice {
-	/// <summary> 伤害骰子 </summary>
-	public readonly int dice;
-	/// <summary> 伤害类型 </summary>
-	public readonly DamageType damageType;
-
-	public DataDamageDice(int dice, DamageType damageType) {
-		this.dice = dice;
-		this.damageType = damageType;
-	}
 }
