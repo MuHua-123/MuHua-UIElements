@@ -31,4 +31,6 @@ public abstract class BattlePhase : IPhase {
 	public BattlePhase(BattleSimulator simulator) => this.simulator = simulator;
 
 	public abstract void Execute();
+	/// <summary> 阶段过渡 </summary>
+	public void Transition(PhaseType phaseType) => simulator.Transition(phaseType);
 }

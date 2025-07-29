@@ -22,12 +22,12 @@ public class PhaseActionRoleSelect : BattlePhase {
 
 	public override void Execute() {
 		// 选择行动的角色，如果没有则进入下一回合
-		if (!BattleQueue.Dequeue(out simulator.actionRole)) { simulator.Transition(PhaseType.回合阶段); return; }
+		if (!BattleQueue.Dequeue(out simulator.actionRole)) { Transition(PhaseType.回合阶段); return; }
 		// 判断是否可以行动
-		if (ActionRole.hitPoint.x <= 0) { simulator.Transition(PhaseType.选择角色); return; }
+		if (ActionRole.hitPoint.x <= 0) { Transition(PhaseType.选择角色); return; }
 		// 进行ai判断
 		// TODO: 进行武器攻击，使用技能，使用法术，使用物品的判断
-		simulator.Transition(PhaseType.角色攻击);
+		Transition(PhaseType.角色攻击);
 	}
 }
 /// <summary>
@@ -39,7 +39,7 @@ public class PhaseActionRoleAttack : BattlePhase {
 
 	public override void Execute() {
 		// 如果没有可以攻击的目标则结算战斗
-		if (!AttackTarget(out DataCombatRole target)) { simulator.Transition(PhaseType.结算阶段); return; }
+		if (!AttackTarget(out DataCombatRole target)) { Transition(PhaseType.结算阶段); return; }
 		// 武器判断：轻型武器使用敏捷，其他都使用力量
 		string weaponName = ActionRole.weapon1.name;
 		WeaponType weaponType = ActionRole.weapon1.weaponType;
@@ -48,22 +48,21 @@ public class PhaseActionRoleAttack : BattlePhase {
 		int hit = Dice.Roll20(modifier);
 		int armorClass = target.armorClass;
 		// 如果命中小于等于目标护甲等级，则不造成伤害
-		if (hit <= armorClass) {
+		if (hit > armorClass) {
+			// 获取所有武器伤害骰
+			DataDamageDice damageDice = ActionRole.weapon1.damageDice;
+			// 伤害计算: 武器伤害骰 + 属性修正
+			int damage = Dice.Roll(damageDice.value) + modifier;
+			target.hitPoint.x -= damage;
 			// 生成战斗消息
-			Miss(hit, weaponName, target.name, armorClass);
-			// 结束行动
-			simulator.Transition(PhaseType.选择角色);
-			return;
+			MessageHit(hit, weaponName, target.name, armorClass, damage, damageDice.type);
 		}
-		// 获取所有武器伤害骰
-		DataDamageDice damageDice = ActionRole.weapon1.damageDice;
-		// 伤害计算: 武器伤害骰 + 属性修正
-		int damage = Dice.Roll(damageDice.value) + modifier;
-		target.hitPoint.x -= damage;
-		// 生成战斗消息
-		Hit(hit, weaponName, target.name, armorClass, damage, damageDice.type);
+		else {
+			// 生成战斗消息
+			MessageMiss(hit, weaponName, target.name, armorClass);
+		}
 		// 结束行动
-		simulator.Transition(PhaseType.选择角色);
+		Transition(PhaseType.选择角色);
 	}
 	/// <summary> 攻击目标 </summary>
 	private bool AttackTarget(out DataCombatRole target) {
@@ -77,12 +76,13 @@ public class PhaseActionRoleAttack : BattlePhase {
 	private bool Hostility(DataCombatRole role) {
 		return role.team != ActionRole.team && role.hitPoint.x > 0;
 	}
-	private void Miss(int hit, string weapon, string attacked, int armorClass) {
+	/// <summary> 战斗消息：没有命中 </summary>
+	private void MessageMiss(int hit, string weapon, string attacked, int armorClass) {
 		MissAttack message = new MissAttack(ActionRole.name, hit, weapon, attacked, armorClass);
 		Debug.Log(message);
 	}
-	/// <summary> 战斗消息 </summary>
-	private void Hit(int hit, string weapon, string attacked, int armorClass, int damage, DamageType damageType) {
+	/// <summary> 战斗消息：命中 </summary>
+	private void MessageHit(int hit, string weapon, string attacked, int armorClass, int damage, DamageType damageType) {
 		HitAttack message = new HitAttack(ActionRole.name, hit, weapon, attacked, armorClass, damage, damageType);
 		Debug.Log(message);
 	}
