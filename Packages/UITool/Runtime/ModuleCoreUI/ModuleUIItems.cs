@@ -9,12 +9,17 @@ namespace MuHua {
 	/// UI项容器
 	/// </summary>
 	public class ModuleUIItems<TItem, TData> : ModuleUIPanel, IDisposable where TItem : ModuleUIItem<TData> {
-		public readonly VisualTreeAsset templateAsset;// 模板资源
-		public readonly Func<TData, VisualElement, TItem> generate;// 生成UI项的函数
+		/// <summary> 模板资源 </summary>
+		public readonly VisualTreeAsset templateAsset;
+		/// <summary> 生成UI项的函数 </summary>
+		public readonly Func<TData, VisualElement, TItem> generate;
+		/// <summary> UI项列表 </summary>
+		public List<TItem> Items = new List<TItem>();
 
-		public List<TItem> uiItems = new List<TItem>();// UI项列表
-
-		public TItem this[int index] { get => uiItems[index]; }// 索引器
+		/// <summary> 索引器 </summary>
+		public TItem this[int index] { get => Items[index]; }
+		/// <summary> 计数 </summary>
+		public int Count { get => Items != null ? Items.Count : 0; }
 
 		/// <summary>  UI容器  </summary>
 		public ModuleUIItems(VisualElement element, VisualTreeAsset templateAsset, Func<TData, VisualElement, TItem> generate) : base(element) {
@@ -24,24 +29,37 @@ namespace MuHua {
 		/// <summary> 释放资源 </summary>
 		public void Dispose() {
 			element.Clear();
-			uiItems.ForEach(obj => obj.Dispose());
-			uiItems = new List<TItem>();
+			Items.ForEach(obj => obj.Dispose());
+			Items = new List<TItem>();
 		}
 		/// <summary> 创建UI项 </summary>
-		public void Create(List<TData> datas) {
-			Dispose();
+		public void Create(List<TData> datas, bool isClear = true) {
+			if (isClear) { Dispose(); }
 			datas.ForEach(Create);
+		}
+		/// <summary> 创建UI项 </summary>
+		public void Create(TData data, bool isClear = false) {
+			if (isClear) { Dispose(); }
+			Create(data);
 		}
 		/// <summary> 创建UI项 </summary>
 		public void Create(TData data) {
 			VisualElement element = templateAsset.Instantiate();
 			TItem item = generate(data, element);
 			this.element.Add(item.element);
-			uiItems.Add(item);
+			Items.Add(item);
 		}
 		/// <summary> 遍历 </summary>
 		public void ForEach(Action<TItem> action) {
-			uiItems.ForEach(action);
+			Items.ForEach(action);
+		}
+		/// <summary> 选择第一个 </summary>
+		public void SelectFirst() {
+			if (Items.Count > 0) { Items[0].Select(); }
+		}
+		/// <summary> 选择最后一个 </summary>
+		public void SelectFinally() {
+			if (Items.Count > 0) { Items[Count - 1].Select(); }
 		}
 	}
 }
