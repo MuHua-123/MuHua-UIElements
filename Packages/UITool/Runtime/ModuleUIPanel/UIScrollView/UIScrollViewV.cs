@@ -9,7 +9,7 @@ namespace MuHua {
 	/// <summary>
 	/// 滚动视图 - 垂直
 	/// </summary>
-	public class UIScrollViewV : ModuleUIPanel, IDisposable {
+	public class UIScrollViewV : ModuleUIPanel, IDisposable, UIControl {
 		/// <summary> 绑定的画布 </summary>
 		public readonly VisualElement canvas;
 		/// <summary> 元素方向 </summary>

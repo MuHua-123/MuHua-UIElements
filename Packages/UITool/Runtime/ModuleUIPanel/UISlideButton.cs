@@ -17,7 +17,7 @@ namespace MuHua {
 	/// <summary>
 	/// 滑动按钮
 	/// </summary>
-	public class UISlideButton<TItem, Data> : ModuleUIPanel where TItem : ModuleUIItem<Data> where Data : DataSlideButton {
+	public class UISlideButton<TItem, Data> : ModuleUIPanel, UIControl where TItem : ModuleUIItem<Data> where Data : DataSlideButton {
 		/// <summary> 绑定的画布 </summary>
 		public readonly VisualElement canvas;
 
@@ -44,7 +44,7 @@ namespace MuHua {
 			ModuleUIItem<Data>.OnSelect += Settings;
 		}
 		public virtual void Dispose() {
-			Items.Dispose();
+			Items.Release();
 		}
 		public virtual void Update() {
 			if (data == null || data.element == null) { return; }
@@ -55,7 +55,7 @@ namespace MuHua {
 		/// <summary> 设置UI项 </summary>
 		public virtual void Settings(Data data) => this.data = data;
 		/// <summary> 释放资源 </summary>
-		public virtual void Release() => Items.Dispose();
+		public virtual void Release() => Items.Release();
 		/// <summary> 创建UI项 </summary>
 		public virtual void Create(List<Data> datas, bool isClear = true) => Items.Create(datas, isClear);
 		/// <summary> 创建UI项 </summary>

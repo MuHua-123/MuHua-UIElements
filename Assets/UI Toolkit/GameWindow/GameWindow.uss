@@ -75,7 +75,7 @@
     padding-right: 0;
     padding-bottom: 0;
     padding-left: 0;
-    background-image: url("project://database/Assets/UI%20Toolkit/Assets/Icon/Close.png?fileID=2800000&guid=69ff0e4b4da18f744844c41e5ca6fe3e&type=3#Close");
+    background-image: url("project://database/Assets/UI%20Toolkit/Assets/Window/Close.png?fileID=2800000&guid=69ff0e4b4da18f744844c41e5ca6fe3e&type=3#Close");
     width: 25px;
     background-color: rgb(255, 64, 64);
 }

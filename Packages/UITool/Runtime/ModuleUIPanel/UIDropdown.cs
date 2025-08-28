@@ -8,7 +8,7 @@ namespace MuHua {
 	/// <summary>
 	/// 下拉框
 	/// </summary>
-	public class UIDropdown<T> : ModuleUIPanel, IDisposable {
+	public class UIDropdown<T> : ModuleUIPanel, IDisposable, UIControl {
 		/// <summary> 绑定的画布 </summary>
 		internal readonly VisualElement canvas;
 		/// <summary> 下拉框容器 </summary>
@@ -59,7 +59,7 @@ namespace MuHua {
 		}
 		public virtual void Dispose() {
 			canvas.Remove(DropdownContainer);
-			DropdownItems.Dispose();
+			DropdownItems.Release();
 			Input.UnregisterCallback<ClickEvent>(evt => OpenDropdown());
 			DropdownContainer.UnregisterCallback<PointerDownEvent>(evt => CloseDropdown());
 		}

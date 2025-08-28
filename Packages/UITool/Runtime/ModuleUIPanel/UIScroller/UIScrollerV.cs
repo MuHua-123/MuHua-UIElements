@@ -8,7 +8,7 @@ namespace MuHua {
 	/// <summary>
 	/// 滚动条 - 垂直
 	/// </summary>
-	public class UIScrollerV : ModuleUIPanel, IDisposable {
+	public class UIScrollerV : ModuleUIPanel, IDisposable, UIControl {
 		/// <summary> 绑定的画布 </summary>
 		public readonly VisualElement canvas;
 		/// <summary> 元素方向 </summary>

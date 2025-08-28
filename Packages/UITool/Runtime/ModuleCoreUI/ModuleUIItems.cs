@@ -8,7 +8,7 @@ namespace MuHua {
 	/// <summary>
 	/// UI项容器
 	/// </summary>
-	public class ModuleUIItems<TItem, TData> : ModuleUIPanel, IDisposable where TItem : ModuleUIItem<TData> {
+	public class ModuleUIItems<TItem, TData> : ModuleUIPanel where TItem : ModuleUIItem<TData> {
 		/// <summary> 模板资源 </summary>
 		public readonly VisualTreeAsset templateAsset;
 		/// <summary> 生成UI项的函数 </summary>
@@ -27,19 +27,19 @@ namespace MuHua {
 			this.generate = generate;
 		}
 		/// <summary> 释放资源 </summary>
-		public void Dispose() {
+		public void Release() {
 			element.Clear();
 			Items.ForEach(obj => obj.Dispose());
 			Items = new List<TItem>();
 		}
 		/// <summary> 创建UI项 </summary>
 		public void Create(List<TData> datas, bool isClear = true) {
-			if (isClear) { Dispose(); }
+			if (isClear) { Release(); }
 			datas.ForEach(Create);
 		}
 		/// <summary> 创建UI项 </summary>
 		public void Create(TData data, bool isClear = false) {
-			if (isClear) { Dispose(); }
+			if (isClear) { Release(); }
 			Create(data);
 		}
 		/// <summary> 创建UI项 </summary>

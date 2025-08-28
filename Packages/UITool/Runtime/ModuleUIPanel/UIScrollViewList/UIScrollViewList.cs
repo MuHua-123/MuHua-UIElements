@@ -22,10 +22,10 @@ namespace MuHua {
 		}
 		public override void Dispose() {
 			base.Dispose();
-			Items.Dispose();
+			Items.Release();
 		}
 		/// <summary> 释放资源 </summary>
-		public virtual void Release() => Items.Dispose();
+		public virtual void Release() => Items.Release();
 		/// <summary> 创建UI项 </summary>
 		public virtual void Create(List<Data> datas, bool isClear = true) => Items.Create(datas, isClear);
 		/// <summary> 创建UI项 </summary>
