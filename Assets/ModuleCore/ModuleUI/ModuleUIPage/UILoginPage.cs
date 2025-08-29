@@ -25,9 +25,9 @@ public class UILoginPage : ModuleUIPage {
 		ModuleUI.OnJumpPage += ModuleUI_OnJumpPage;
 	}
 
-	private void ModuleUI_OnJumpPage(EnumPage page) {
-		Element.EnableInClassList("document-page-hide", page != EnumPage.Login);
-		if (page != EnumPage.Login) { return; }
+	private void ModuleUI_OnJumpPage(Page page) {
+		Element.EnableInClassList("document-page-hide", page != Page.Login);
+		if (page != Page.Login) { return; }
 		OpenLoginPanel();
 	}
 	public void OpenLoginPanel() {
@@ -58,7 +58,7 @@ public class UILoginPanel : ModuleUIPanel {
 		InputField2.RegisterCallback<ChangeEvent<string>>(evt => { password = evt.newValue; });
 		Button1.clicked += () => parent.OpenRegisterPanel();
 		Button2.clicked += () => ManagerRequest.I.Login(username, password, (s) => {
-			ModuleUI.Settings(EnumPage.None);
+			ModuleUI.Settings(Page.None);
 			Debug.Log(s);
 		});
 	}

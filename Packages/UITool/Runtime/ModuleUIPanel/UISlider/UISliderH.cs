@@ -8,7 +8,7 @@ namespace MuHua {
 	/// <summary>
 	/// 滑块 - 水平
 	/// </summary>
-	public class UISliderH : ModuleUIPanel, IDisposable, UIControl {
+	public class UISliderH : ModuleUIPanel, UIControl {
 		/// <summary> 绑定的画布 </summary>
 		public readonly VisualElement canvas;
 		/// <summary> 元素方向 </summary>

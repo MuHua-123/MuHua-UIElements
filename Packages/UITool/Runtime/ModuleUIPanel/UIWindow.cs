@@ -8,7 +8,7 @@ namespace MuHua {
 	/// <summary>
 	/// 悬浮窗口
 	/// </summary>
-	public abstract class UIWindow : ModuleUIPanel, IDisposable, UIControl {
+	public abstract class UIWindow : ModuleUIPanel, UIControl {
 		/// <summary> 绑定的画布 </summary>
 		public readonly VisualElement canvas;
 		/// <summary> 隐藏的USS类名 </summary>

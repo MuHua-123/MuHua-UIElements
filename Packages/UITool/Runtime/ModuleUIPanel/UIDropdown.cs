@@ -8,7 +8,7 @@ namespace MuHua {
 	/// <summary>
 	/// 下拉框
 	/// </summary>
-	public class UIDropdown<T> : ModuleUIPanel, IDisposable, UIControl {
+	public class UIDropdown<T> : ModuleUIPanel, UIControl {
 		/// <summary> 绑定的画布 </summary>
 		internal readonly VisualElement canvas;
 		/// <summary> 下拉框容器 </summary>

@@ -7,25 +7,11 @@ using MuHua;
 /// <summary>
 /// UI弹出管理器
 /// </summary>
-public class UIPopupManager : ModuleUIPage {
-
-	// public UIPopup dialog;
+public class UIPopupManager : ModuleUISingle<UIPopupManager> {
 
 	public override VisualElement Element => root.Q<VisualElement>("Popup");
 
 	public VisualElement PopupDialog => Q<VisualElement>("PopupDialog");
 
-	private void Awake() {
-		// dialog = new UIPopup(PopupDialog);
-	}
-	private void OnDestroy() {
-		// config.Release();
-		// configMaterial.Release();
-		// equipmentSelection.Release();
-		// paramrInput.Release();
-	}
-	private void Update() {
-		// config.Update();
-		// configMaterial.Update();
-	}
+	protected override void Awake() => NoReplace(false);
 }

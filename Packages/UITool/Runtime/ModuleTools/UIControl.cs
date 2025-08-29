@@ -9,5 +9,7 @@ namespace MuHua {
 	public interface UIControl {
 		/// <summary> 更新UI状态 </summary>
 		public void Update();
+		/// <summary> 解除UI绑定 </summary>
+		public void Dispose();
 	}
 }
