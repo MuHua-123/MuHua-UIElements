@@ -1,0 +1,21 @@
+.info-label {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    width: 50%;
+}
+
+.info-column {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}

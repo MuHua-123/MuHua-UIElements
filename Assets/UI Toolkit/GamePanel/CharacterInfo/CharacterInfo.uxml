@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="BasicInfo" src="project://database/Assets/UI%20Toolkit/GamePanel/CharacterInfo/BasicInfo.uxml?fileID=9197481963319205126&amp;guid=05a2642fde35ebd4f8aea0350aafd8c1&amp;type=3#BasicInfo" />
+    <ui:Template name="Attribute" src="project://database/Assets/UI%20Toolkit/GamePanel/CharacterInfo/Attribute.uxml?fileID=9197481963319205126&amp;guid=8083c6adca0082f4cb6b05c93ef56f58&amp;type=3#Attribute" />
+    <Style src="project://database/Assets/UI%20Toolkit/GamePanel/CharacterInfo/CharacterInfo.uss?fileID=7433441132597879392&amp;guid=91e2639fee071cd409bfcba920a7b6f0&amp;type=3#CharacterInfo" />
+    <ui:VisualElement style="flex-grow: 1; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;">
+        <ui:Instance template="BasicInfo" name="BasicInfo" />
+        <ui:Instance template="Attribute" name="Attribute" />
+    </ui:VisualElement>
+</ui:UXML>

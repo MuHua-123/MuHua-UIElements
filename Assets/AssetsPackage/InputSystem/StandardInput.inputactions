@@ -1,0 +1,310 @@
+{
+    "name": "StandardInput",
+    "maps": [
+        {
+            "name": "InputBasic",
+            "id": "8331eafc-e9e4-40c9-9618-b435832be95f",
+            "actions": [
+                {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "afdc9ee8-c8c7-47aa-874b-4478de696b5b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cc9ab228-7f1b-4f68-a3a6-48c2b366f840",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "InputCamera",
+            "id": "b182de52-af0a-427b-b7a8-f1f898148c45",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "41750166-2bf6-4565-8ca4-b5d45827e8ed",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "EnableRotate",
+                    "type": "PassThrough",
+                    "id": "678adff0-9167-46bb-9660-8ee5afb3acb4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RotateCamera",
+                    "type": "Value",
+                    "id": "bff66755-e0e0-4fc8-905b-0da243b317b4",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ZoomView",
+                    "type": "Value",
+                    "id": "0f16288a-00b5-49bd-94ca-1f11bf1bbd1d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "Keyboard",
+                    "id": "f445b062-5795-404a-a669-671dde489218",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "fbb03856-2b34-406e-9bef-2a2f8a60dedb",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "e13b30ec-dea5-4d89-8726-f0d7042b2092",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "ca0c80ec-7c9c-492e-8a11-f59d1101d458",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "4fed20ab-4982-413f-8b7d-d47d3ffc2a52",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "14325259-599e-40de-9f1a-0c7080582279",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ZoomView",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b2e840dc-6c86-4006-be63-50fa5a52789b",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EnableRotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7127f4bf-7e2c-479d-a093-ceaf3eb75c92",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "InputFashion",
+            "id": "9418ef4f-2ad8-4f44-9dcc-ddd84585711e",
+            "actions": [
+                {
+                    "name": "DetectObject",
+                    "type": "Button",
+                    "id": "192cb927-416a-4eb1-80c2-9075eadd6253",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "DetectCancel",
+                    "type": "Button",
+                    "id": "88c1d962-b7c8-4785-9ebb-923ade27419f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0c938009-101f-4ad1-85c1-01021fd1e74e",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DetectObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7a73520c-4b64-4f34-bce3-645fc20cd082",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DetectCancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "InputOrnament",
+            "id": "34602240-9384-46fd-90e4-0610c0bcf2f9",
+            "actions": [
+                {
+                    "name": "DetectCancel",
+                    "type": "Button",
+                    "id": "a06f46cb-877d-46b7-943f-67f3579da9e2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DetectObject",
+                    "type": "Button",
+                    "id": "40298219-c9f3-474e-b604-4f96841b1067",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "DragCancel",
+                    "type": "PassThrough",
+                    "id": "ab0674f5-9475-46d1-b047-e05d77864ab4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c9ec465d-848e-4b30-8145-367dca71e592",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DetectObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7c4997bd-75d6-4c0a-9898-4bcea839c42b",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DetectCancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "321f171e-2bc0-4cb9-abfa-3a00e55b8238",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DragCancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "InputPatternSave",
+            "id": "ae7e3f1a-c448-41b7-86f4-e37e3cc0375f",
+            "actions": [
+                {
+                    "name": "Save",
+                    "type": "Button",
+                    "id": "fd7696a8-72ba-49ce-9609-93e79b00f818",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "69cef48f-a8c5-44ea-85b8-9671f1ea6e9d",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Save",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

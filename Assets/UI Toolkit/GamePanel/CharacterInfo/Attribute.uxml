@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/GamePanel/CharacterInfo/CharacterInfo.uss?fileID=7433441132597879392&amp;guid=91e2639fee071cd409bfcba920a7b6f0&amp;type=3#CharacterInfo" />
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement class="info-column" style="flex-direction: row; align-items: center; justify-content: flex-start;">
+            <ui:Label tabindex="-1" text="力量：99" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Str" class="info-label" />
+            <ui:Label tabindex="-1" text="敏捷：99" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Dex" class="info-label" />
+        </ui:VisualElement>
+        <ui:VisualElement class="info-column" style="flex-direction: row; align-items: center; justify-content: flex-start;">
+            <ui:Label tabindex="-1" text="体质：99" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Con" class="info-label" />
+            <ui:Label tabindex="-1" text="智力：99" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Int" class="info-label" />
+        </ui:VisualElement>
+        <ui:VisualElement class="info-column" style="flex-direction: row; align-items: center; justify-content: flex-start;">
+            <ui:Label tabindex="-1" text="感知：99" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Wis" class="info-label" />
+            <ui:Label tabindex="-1" text="魅力：99" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Cha" class="info-label" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
