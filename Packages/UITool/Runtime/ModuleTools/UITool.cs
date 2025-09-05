@@ -22,6 +22,18 @@ namespace MuHua {
 #endif
 		}
 
+		/// <summary> 获取鼠标位置(元素中的鼠标位置) </summary>
+		public static Vector3 GetMousePosition(VisualElement element) {
+			Vector3 mousePosition = GetMousePosition();
+			float offsetX = mousePosition.x / Screen.width;
+			float offsetY = mousePosition.y / Screen.height;
+
+			float x = element.resolvedStyle.width * offsetX;
+			float y = element.resolvedStyle.height * (1 - offsetY);
+
+			return new Vector3(x, y);
+		}
+
 		/// <summary> 富文本: 颜色 </summary>
 		public static string RichTextColor(string value, Color color) {
 			string hexRGBA = ColorUtility.ToHtmlStringRGBA(color);
