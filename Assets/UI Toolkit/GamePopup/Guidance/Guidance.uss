@@ -1,0 +1,30 @@
+.guidance {
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    transform-origin: center;
+    transition-duration: 0.2s;
+    position: absolute;
+    flex-shrink: 0;
+    flex-grow: 1;
+    align-items: stretch;
+    width: 500px;
+    background-color: rgb(255, 255, 255);
+    border-left-color: rgb(243, 88, 239);
+    border-right-color: rgb(243, 88, 239);
+    border-top-color: rgb(243, 88, 239);
+    border-bottom-color: rgb(243, 88, 239);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
