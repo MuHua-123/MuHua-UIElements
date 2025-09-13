@@ -13,6 +13,9 @@ public class UIShortcutMenu : ModuleUISingle<UIShortcutMenu> {
 	public VisualTreeAsset menuTreeAsset;
 	/// <summary> 项目模板 </summary>
 	public VisualTreeAsset itemTreeAsset;
+
+	/// <summary> 数据列表 </summary>
+	public List<DataMenuItem> datas = new List<DataMenuItem>();
 	/// <summary> 控件列表 </summary>
 	public static List<UIControl> controls = new List<UIControl>();
 
@@ -25,7 +28,7 @@ public class UIShortcutMenu : ModuleUISingle<UIShortcutMenu> {
 	private void OnDestroy() => controls.ForEach(control => control.Dispose());
 
 	/// <summary> 打开菜单 </summary>
-	public void Open(List<DataMenuItem> datas) {
+	public void Open() {
 		Close();
 		Vector3 position = UITool.GetMousePosition(Element);
 		UIMenuPanel menuPanel = Create();
@@ -46,6 +49,43 @@ public class UIShortcutMenu : ModuleUISingle<UIShortcutMenu> {
 		UIMenuPanel menuPanel = new UIMenuPanel(element, itemTreeAsset);
 		AddControl(menuPanel);
 		return menuPanel;
+	}
+
+	/// <summary> 添加菜单项(方法) </summary> 
+	public void Add(string name, Action callback) {
+		string[] names = name.Split('/');
+
+		List<DataMenuItem> datas = this.datas;
+		for (int i = 0; i < names.Length; i++) {
+			string menu = names[i];
+			DataMenuItem item = datas.Find(obj => obj.name == menu);
+			if (item == null) {
+				item = new DataMenuItem { name = menu };
+				if (i == names.Length - 1) { item.callback = callback; }
+				datas.Add(item);
+			}
+			datas = item.items;
+		}
+	}
+	/// <summary> 移除菜单项 </summary>
+	public void Remove(string name) {
+		string[] names = name.Split('/');
+		List<DataMenuItem> datas = this.datas;
+		DataMenuItem parent = null;
+		DataMenuItem target = null;
+
+		for (int i = 0; i < names.Length; i++) {
+			string menu = names[i];
+			target = datas.Find(obj => obj.name == menu);
+			if (target == null) return; // 未找到，直接返回
+			if (i == names.Length - 1) {
+				// 找到要移除的项
+				datas.Remove(target);
+				return;
+			}
+			parent = target;
+			datas = target.items;
+		}
 	}
 
 	/// <summary> 添加控件 </summary>
@@ -120,4 +160,15 @@ public class UIMenuPanel : ModuleUIPanel, UIControl {
 			parent.Open(element, value.items);
 		}
 	}
+}
+/// <summary>
+/// 菜单项目
+/// </summary>
+public class DataMenuItem {
+	/// <summary> 名称 </summary>
+	public string name;
+	/// <summary> 回调 </summary>
+	public Action callback;
+	/// <summary> 子菜单项 </summary>
+	public List<DataMenuItem> items = new List<DataMenuItem>();
 }
