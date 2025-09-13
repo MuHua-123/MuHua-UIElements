@@ -47,7 +47,7 @@ public class UIShortcutMenu : ModuleUISingle<UIShortcutMenu> {
 		element.EnableInClassList("menu", true);
 		Element.Add(element);
 		UIMenuPanel menuPanel = new UIMenuPanel(element, itemTreeAsset);
-		AddControl(menuPanel);
+		controls.Add(menuPanel);
 		return menuPanel;
 	}
 
@@ -87,11 +87,6 @@ public class UIShortcutMenu : ModuleUISingle<UIShortcutMenu> {
 			datas = target.items;
 		}
 	}
-
-	/// <summary> 添加控件 </summary>
-	public static void AddControl(UIControl control) => controls.Add(control);
-	/// <summary> 移除控件 </summary>
-	public static void RemoveControl(UIControl control) => controls.Remove(control);
 }
 /// <summary> 
 /// UI快捷菜单面板
