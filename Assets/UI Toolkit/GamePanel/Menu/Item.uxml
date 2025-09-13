@@ -1,7 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI%20Toolkit/GamePanel/Menu/Menu.uss?fileID=7433441132597879392&amp;guid=a53da9fc389948e40ac96af14dd02c10&amp;type=3#Menu" />
-    <ui:VisualElement class="menu-unit" style="flex-grow: 0; flex-direction: row; align-self: flex-start;">
-        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" class="menu-label" style="-unity-text-align: middle-center; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; height: 30px;" />
-        <ui:VisualElement name="Arrow" style="flex-grow: 0; height: 30px; width: 30px; background-image: url(&quot;project://database/Assets/UI%20Toolkit/DefaultTheme/UnityDefaultRuntimeTheme.tss?fileID=-1087164816274819069&amp;guid=05f864e67ee1ecb4bbe67427564d394c&amp;type=3#arrow-right@2x&quot;); -unity-background-image-tint-color: rgb(51, 51, 51);" />
-    </ui:VisualElement>
-</ui:UXML>

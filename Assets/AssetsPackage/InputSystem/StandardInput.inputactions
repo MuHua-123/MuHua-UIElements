@@ -35,7 +35,7 @@
             "actions": [
                 {
                     "name": "MouseLeft",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "1eaab500-f97a-4e25-8e55-bd9ba394a9fa",
                     "expectedControlType": "Button",
                     "processors": "",
