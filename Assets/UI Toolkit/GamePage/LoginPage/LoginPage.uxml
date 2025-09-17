@@ -1,9 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="LoginPanel" src="project://database/Assets/UI%20Toolkit/GamePage/LoginPage/LoginPanel/LoginPanel.uxml?fileID=9197481963319205126&amp;guid=6d0b079a8a999dd49a8eaec5b215a710&amp;type=3#LoginPanel" />
-    <ui:Template name="RegisterPanel" src="project://database/Assets/UI%20Toolkit/GamePage/LoginPage/LoginPanel/RegisterPanel.uxml?fileID=9197481963319205126&amp;guid=c475ae0796d380246a264c33a2eb3165&amp;type=3#RegisterPanel" />
-    <Style src="project://database/Assets/UI%20Toolkit/GamePage/LoginPage/LoginPage.uss?fileID=7433441132597879392&amp;guid=acd18d1cf96e4194abf3c77f996078a1&amp;type=3#LoginPage" />
-    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: space-around;">
-        <ui:Instance template="LoginPanel" name="LoginPanel" />
-        <ui:Instance template="RegisterPanel" name="RegisterPanel" class="login-hide" />
-    </ui:VisualElement>
-</ui:UXML>
