@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/GamePanel/Inventory/Inventory.uss?fileID=7433441132597879392&amp;guid=509f99a0b8e7fd24c8992a4803182235&amp;type=3#Inventory" />
+    <ui:VisualElement style="width: 90px; height: 90px; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; background-color: rgb(102, 102, 102); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px;">
+        <ui:VisualElement name="Image" style="flex-grow: 1;" />
+        <ui:Label tabindex="-1" text="999" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="true" name="Count" class="inventory-count" />
+    </ui:VisualElement>
+</ui:UXML>

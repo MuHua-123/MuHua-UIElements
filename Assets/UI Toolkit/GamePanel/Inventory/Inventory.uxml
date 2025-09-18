@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="InventorySlot" src="project://database/Assets/UI%20Toolkit/GamePanel/Inventory/InventorySlot.uxml?fileID=9197481963319205126&amp;guid=f578171f4be9adb428df45f65a5b62fe&amp;type=3#InventorySlot" />
+    <Style src="project://database/Assets/UI%20Toolkit/GamePanel/Inventory/Inventory.uss?fileID=7433441132597879392&amp;guid=509f99a0b8e7fd24c8992a4803182235&amp;type=3#Inventory" />
+    <ui:VisualElement name="Container" style="align-items: stretch; justify-content: center; flex-direction: row; flex-wrap: wrap; align-self: auto;">
+        <ui:Instance template="InventorySlot" name="InventorySlot" />
+        <ui:Instance template="InventorySlot" name="InventorySlot" />
+        <ui:Instance template="InventorySlot" name="InventorySlot" />
+        <ui:Instance template="InventorySlot" name="InventorySlot" />
+        <ui:Instance template="InventorySlot" name="InventorySlot" />
+        <ui:Instance template="InventorySlot" name="InventorySlot" />
+        <ui:Instance template="InventorySlot" name="InventorySlot" />
+        <ui:Instance template="InventorySlot" name="InventorySlot" />
+        <ui:Instance template="InventorySlot" name="InventorySlot" />
+        <ui:Instance template="InventorySlot" name="InventorySlot" />
+        <ui:Instance template="InventorySlot" name="InventorySlot" />
+        <ui:Instance template="InventorySlot" name="InventorySlot" />
+        <ui:Instance template="InventorySlot" name="InventorySlot" />
+        <ui:Instance template="InventorySlot" name="InventorySlot" />
+    </ui:VisualElement>
+</ui:UXML>

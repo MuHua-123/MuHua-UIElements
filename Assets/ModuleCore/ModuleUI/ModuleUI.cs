@@ -52,6 +52,6 @@ public class ModuleUI : ModuleUISingle<ModuleUI> {
 public enum Page {
 	/// <summary> 无 </summary>
 	None,
-	/// <summary> 登录 </summary>
-	Login,
+	/// <summary> 背包 </summary>
+	Backpack,
 }

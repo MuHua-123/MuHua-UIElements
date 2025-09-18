@@ -1,0 +1,20 @@
+.inventory-count {
+    margin-top: 0;
+    margin-right: 5px;
+    margin-bottom: 0;
+    margin-left: 5px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    -unity-text-align: upper-right;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.inventory-count-hide {
+    display: none;
+}
