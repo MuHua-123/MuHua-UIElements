@@ -8,37 +8,92 @@ using MuHua;
 /// UI拖拽物品
 /// </summary>
 public class UIDragItem : ModuleUIPanel, UIControl {
-	/// <summary> 数量 </summary>
-	private int count;
-	/// <summary> 物品 </summary>
-	private DataItem item;
+	/// <summary> 画布 </summary>
+	private VisualElement canvas;
+	/// <summary> 是否启用 </summary>
+	private bool isEnable;
+	/// <summary> 鼠标位置 </summary>
+	private Vector2 mousePosition;
+	/// <summary> 偏移位置 </summary>
+	private Vector2 offsetPosition;
+	/// <summary> 物品容器 </summary>
+	private DragContainer container;
+	/// <summary> 目标容器 </summary>
+	private DragContainer targetContainer;
+
 
 	public Label Count => Q<Label>("Count");
 	public VisualElement Image => Q<VisualElement>("Image");
 	public VisualElement Preview => Q<VisualElement>("Preview");
 
 	public UIDragItem(VisualElement element, VisualElement canvas) : base(element) {
+		this.canvas = canvas;
+		ModuleUI.AddControl(this);
+		canvas.RegisterCallback<MouseUpEvent>(MouseUpEvent);
 		canvas.RegisterCallback<MouseMoveEvent>(FloatingFunc);
 	}
+	private void MouseUpEvent(MouseUpEvent evt) {
+		if (!isEnable) { return; }
+		isEnable = false;
+		container?.Cancel();
+		element.EnableInClassList("document-page-hide", !isEnable);
+		if (container == null || targetContainer == null) { return; }
+		int count = container.Count;
+		DataItem item = container.Item;
+		container.Exchange(targetContainer.Item, targetContainer.Count);
+		targetContainer.Exchange(item, count);
+	}
 	private void FloatingFunc(MouseMoveEvent evt) {
-		Preview.transform.position = evt.mousePosition;
+		mousePosition = evt.mousePosition;
 	}
 	public void Update() {
-
+		Preview.transform.position = mousePosition + offsetPosition;
+		// if (targetContainer == null) { return; }
+		// Preview.transform.position = targetContainer.Anchor.worldBound.position;
 	}
 	public void Dispose() {
-		// throw new System.NotImplementedException();
+		canvas.UnregisterCallback<MouseUpEvent>(MouseUpEvent);
+		canvas.UnregisterCallback<MouseMoveEvent>(FloatingFunc);
 	}
 
-	/// <summary> 打开菜单 </summary>
-	public void Open(DataItem item, int count) {
-		this.item = item;
-		this.count = count;
-		Count.text = count.ToString();
-		Count.EnableInClassList("dragitem-count-hide", count <= 1);
-		Image.style.backgroundImage = new StyleBackground(item.sprite);
-		element.EnableInClassList("document-page-hide", item == null);
+	/// <summary> 设置容器 </summary>
+	public void Settings(DragContainer container) {
+		this.container = container;
+
+		isEnable = container.Item != null;
+		element.EnableInClassList("document-page-hide", !isEnable);
+		if (isEnable) { UpdatePreview(); }
+	}
+	/// <summary> 进入容器 </summary>
+	public void EnterContainer(DragContainer container) {
+		targetContainer = container;
+	}
+	/// <summary> 退出容器 </summary>
+	public void ExitContainer(DragContainer container) {
+		if (targetContainer == container) { targetContainer = null; }
 	}
 
+	private void UpdatePreview() {
+		offsetPosition = container.Anchor.worldBound.position - mousePosition;
 
+		Count.text = container.Count.ToString();
+		Count.EnableInClassList("dragitem-count-hide", container.Count <= 1);
+		Image.style.backgroundImage = new StyleBackground(container.Item.sprite);
+	}
+}
+/// <summary>
+/// 项目拖拽
+/// </summary>
+public interface DragContainer {
+	/// <summary> 数量 </summary>
+	public int Count { get; }
+	/// <summary> 物品 </summary>
+	public DataItem Item { get; }
+	/// <summary> 锚点 </summary>
+	public VisualElement Anchor { get; }
+
+	/// <summary> 取消拖拽 </summary>
+	public void Cancel();
+	/// <summary> 交换物品 </summary>
+	public void Exchange(DataItem item, int count);
 }

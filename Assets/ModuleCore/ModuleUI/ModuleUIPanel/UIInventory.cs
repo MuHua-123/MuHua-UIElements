@@ -38,23 +38,48 @@ public class UIInventory : ModuleUIPanel {
 	}
 
 	/// <summary> UI项目 </summary>
-	public class UIItem : ModuleUIItem<InventorySlot> {
+	public class UIItem : ModuleUIItem<InventorySlot>, DragContainer {
 
-		public Label Count => Q<Label>("Count");
+		public Label CountLabel => Q<Label>("Count");
 		public VisualElement Image => Q<VisualElement>("Image");
 
+		public int Count => value.count;
+		public DataItem Item => value.item;
+		public VisualElement Anchor => element;
+
 		public UIItem(InventorySlot value, VisualElement element) : base(value, element) {
-			Count.text = value.count.ToString();
-			Count.EnableInClassList("inventory-count-hide", value.count <= 1);
-			Image.style.backgroundImage = new StyleBackground(value.Sprite);
+			UpdatePreview();
 			element.RegisterCallback<MouseDownEvent>(MouseDownEvent);
+			element.RegisterCallback<MouseOverEvent>(MouseOverEvent);
+			element.RegisterCallback<MouseLeaveEvent>(MouseLeaveEvent);
 			element.RegisterCallback<ClickEvent>(ClickEvent);
 		}
 		private void MouseDownEvent(MouseDownEvent evt) {
-			UIPopupManager.I.dragItem.Open(value.item, value.count);
+			UIPopupManager.I.dragItem.Settings(this);
+			Image.EnableInClassList("inventory-image-drag", true);
+		}
+		private void MouseOverEvent(MouseOverEvent evt) {
+			UIPopupManager.I.dragItem.EnterContainer(this);
+		}
+		private void MouseLeaveEvent(MouseLeaveEvent evt) {
+			UIPopupManager.I.dragItem.ExitContainer(this);
 		}
 		private void ClickEvent(ClickEvent evt) {
-			Debug.Log("sss");
+			// Debug.Log("sss");
+		}
+
+		public void Cancel() {
+			Image.EnableInClassList("inventory-image-drag", false);
+		}
+		public void Exchange(DataItem item, int count) {
+			value.Settings(item, count);
+			UpdatePreview();
+		}
+
+		private void UpdatePreview() {
+			CountLabel.text = value.count.ToString();
+			CountLabel.EnableInClassList("inventory-count-hide", value.count <= 1);
+			Image.style.backgroundImage = new StyleBackground(value.Sprite);
 		}
 	}
 }

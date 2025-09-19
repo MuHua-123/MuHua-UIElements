@@ -1,3 +1,11 @@
+.inventory-image {
+    flex-grow: 1;
+}
+
+.inventory-image-drag {
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.4);
+}
+
 .inventory-count {
     margin-top: 0;
     margin-right: 5px;

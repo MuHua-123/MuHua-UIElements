@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 装备 - 物品
 /// </summary>
-public class DataItemEquipment : DataItem {
-
+public class DataEquipment : DataItem {
+	/// <summary> 装备类型 </summary>
+	public string type;
 }

@@ -9,6 +9,7 @@ using MuHua;
 public class SingleManager : ModuleSingle<SingleManager> {
 
 	public Inventory inventory;
+	public Equipment equipment;
 
 	public ItemReward materialReward;
 	public ItemReward equipmentReward;
@@ -17,6 +18,22 @@ public class SingleManager : ModuleSingle<SingleManager> {
 
 	private void Start() {
 		inventory = new Inventory(40);
+		equipment = new Equipment();
+		equipment.AddSlot(new WeaponSlot("主手"));
+		equipment.AddSlot(new DeputySlot("副手"));
+
+		equipment.AddSlot(new ArmorSlot("上衣"));
+		equipment.AddSlot(new ArmorSlot("头盔"));
+		equipment.AddSlot(new ArmorSlot("手套"));
+		equipment.AddSlot(new ArmorSlot("腰带"));
+		equipment.AddSlot(new ArmorSlot("鞋子"));
+
+		equipment.AddSlot(new AccessorySlot("项链"));
+		equipment.AddSlot(new AccessorySlot("戒指1"));
+		equipment.AddSlot(new AccessorySlot("戒指2"));
+		equipment.AddSlot(new AccessorySlot("手镯1"));
+		equipment.AddSlot(new AccessorySlot("手镯2"));
+
 		materialReward = new ItemReward();
 		materialReward.Settings(ManagerItem.I.materials);
 		equipmentReward = new ItemReward();

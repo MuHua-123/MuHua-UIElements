@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 材料 - 物品
 /// </summary>
-public class DataItemMaterial : DataItem {
+public class DataMaterial : DataItem {
 	/// <summary> 最大堆叠数 </summary>
 	public int maxStack;
 

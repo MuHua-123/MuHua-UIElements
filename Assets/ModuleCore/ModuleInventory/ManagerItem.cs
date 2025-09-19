@@ -8,9 +8,9 @@ using MuHua;
 /// </summary>
 public class ManagerItem : ModuleSingle<ManagerItem> {
 	/// <summary> 材料列表 </summary>
-	public List<ConstItemMaterial> materials;
+	public List<ConstMaterial> materials;
 	/// <summary> 装备列表 </summary>
-	public List<ConstItemEquipment> equipments;
+	public List<ConstEquipment> equipments;
 
 	protected override void Awake() => NoReplace(false);
 
