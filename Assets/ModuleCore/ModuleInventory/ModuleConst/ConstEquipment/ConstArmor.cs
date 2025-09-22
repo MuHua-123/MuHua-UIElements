@@ -6,7 +6,7 @@ using UnityEngine;
 /// 护甲 - 物品常量
 /// </summary>
 [CreateAssetMenu(menuName = "MuHua/物品系统/护甲")]
-public class ConstArmor : ConstItem {
+public class ConstArmor : ConstEquipment {
 	/// <summary> 护甲类型 </summary>
 	public ArmorType type;
 

@@ -3,29 +3,29 @@
     <Style src="project://database/Assets/UI%20Toolkit/GamePanel/Equipment/Equipment.uss?fileID=7433441132597879392&amp;guid=ea431661362425a4e9b547f470789774&amp;type=3#Equipment" />
     <ui:VisualElement>
         <ui:VisualElement style="flex-direction: row;">
-            <ui:Instance template="EquipmentTemplate" name="EquipmentTemplate" />
-            <ui:Instance template="EquipmentTemplate" name="EquipmentTemplate" />
-            <ui:Instance template="EquipmentTemplate" name="EquipmentTemplate" />
-            <ui:Instance template="EquipmentTemplate" name="EquipmentTemplate" />
+            <ui:Instance template="EquipmentTemplate" name="EquipmentSlot1" />
+            <ui:Instance template="EquipmentTemplate" name="EquipmentSlot2" />
+            <ui:Instance template="EquipmentTemplate" name="EquipmentSlot3" />
+            <ui:Instance template="EquipmentTemplate" name="EquipmentSlot4" />
         </ui:VisualElement>
         <ui:VisualElement style="flex-direction: row;">
             <ui:VisualElement>
-                <ui:Instance template="EquipmentTemplate" name="EquipmentTemplate" />
-                <ui:Instance template="EquipmentTemplate" name="EquipmentTemplate" />
+                <ui:Instance template="EquipmentTemplate" name="EquipmentSlot5" />
+                <ui:Instance template="EquipmentTemplate" name="EquipmentSlot6" />
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1;">
                 <ui:VisualElement style="width: 190px; height: 190px; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; background-color: rgb(102, 102, 102); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px;" />
             </ui:VisualElement>
             <ui:VisualElement>
-                <ui:Instance template="EquipmentTemplate" name="EquipmentTemplate" />
-                <ui:Instance template="EquipmentTemplate" name="EquipmentTemplate" />
+                <ui:Instance template="EquipmentTemplate" name="EquipmentSlot7" />
+                <ui:Instance template="EquipmentTemplate" name="EquipmentSlot8" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement style="flex-direction: row;">
-            <ui:Instance template="EquipmentTemplate" name="EquipmentTemplate" />
-            <ui:Instance template="EquipmentTemplate" name="EquipmentTemplate" />
-            <ui:Instance template="EquipmentTemplate" name="EquipmentTemplate" />
-            <ui:Instance template="EquipmentTemplate" name="EquipmentTemplate" />
+            <ui:Instance template="EquipmentTemplate" name="EquipmentSlot9" />
+            <ui:Instance template="EquipmentTemplate" name="EquipmentSlot10" />
+            <ui:Instance template="EquipmentTemplate" name="EquipmentSlot11" />
+            <ui:Instance template="EquipmentTemplate" name="EquipmentSlot12" />
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement style="flex-grow: 1;">

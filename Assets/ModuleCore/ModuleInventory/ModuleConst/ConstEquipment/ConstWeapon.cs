@@ -6,7 +6,7 @@ using UnityEngine;
 /// 武器 - 物品常量
 /// </summary>
 [CreateAssetMenu(menuName = "MuHua/物品系统/武器")]
-public class ConstWeapon : ConstItem {
+public class ConstWeapon : ConstEquipment {
 	/// <summary> 武器类型 </summary>
 	public WeaponType type;
 

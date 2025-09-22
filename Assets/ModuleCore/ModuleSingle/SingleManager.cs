@@ -19,8 +19,14 @@ public class SingleManager : ModuleSingle<SingleManager> {
 	private void Start() {
 		inventory = new Inventory(40);
 		equipment = new Equipment();
-		equipment.AddSlot(new WeaponSlot("主手"));
-		equipment.AddSlot(new DeputySlot("副手"));
+
+		WeaponSlot weaponSlot = new WeaponSlot("主手");
+		DeputySlot deputySlot = new DeputySlot("副手");
+		weaponSlot.deputy = deputySlot;
+		deputySlot.weapon = weaponSlot;
+
+		equipment.AddSlot(weaponSlot);
+		equipment.AddSlot(deputySlot);
 
 		equipment.AddSlot(new ArmorSlot("上衣"));
 		equipment.AddSlot(new ArmorSlot("头盔"));

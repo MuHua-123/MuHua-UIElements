@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using MuHua;
-using System;
 
 /// <summary>
 /// UI库存
@@ -71,12 +70,20 @@ public class UIInventory : ModuleUIPanel {
 		public void Cancel() {
 			Image.EnableInClassList("inventory-image-drag", false);
 		}
-		public void Exchange(DataItem item, int count) {
+		public void Exchange(DragContainer container) {
+			int count = container.Count;
+			DataItem item = container.Item;
+
+			if (container is UIItem inventoryItem) {
+				inventoryItem.value.Settings(value.item, value.count);
+				inventoryItem.UpdatePreview();
+			}
+
 			value.Settings(item, count);
 			UpdatePreview();
 		}
 
-		private void UpdatePreview() {
+		public void UpdatePreview() {
 			CountLabel.text = value.count.ToString();
 			CountLabel.EnableInClassList("inventory-count-hide", value.count <= 1);
 			Image.style.backgroundImage = new StyleBackground(value.Sprite);

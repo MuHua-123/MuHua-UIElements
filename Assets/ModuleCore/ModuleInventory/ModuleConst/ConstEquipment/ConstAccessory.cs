@@ -6,7 +6,7 @@ using UnityEngine;
 /// 饰品 - 物品常量
 /// </summary>
 [CreateAssetMenu(menuName = "MuHua/物品系统/饰品")]
-public class ConstAccessory : ConstItem {
+public class ConstAccessory : ConstEquipment {
 	/// <summary> 饰品类型 </summary>
 	public AccessoryType type;
 

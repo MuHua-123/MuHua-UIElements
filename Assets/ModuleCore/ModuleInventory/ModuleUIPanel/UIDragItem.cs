@@ -37,10 +37,7 @@ public class UIDragItem : ModuleUIPanel, UIControl {
 		container?.Cancel();
 		element.EnableInClassList("document-page-hide", !isEnable);
 		if (container == null || targetContainer == null) { return; }
-		int count = container.Count;
-		DataItem item = container.Item;
-		container.Exchange(targetContainer.Item, targetContainer.Count);
-		targetContainer.Exchange(item, count);
+		container.Exchange(targetContainer);
 	}
 	private void FloatingFunc(MouseMoveEvent evt) {
 		mousePosition = evt.mousePosition;
@@ -94,5 +91,5 @@ public interface DragContainer {
 	/// <summary> 取消拖拽 </summary>
 	public void Cancel();
 	/// <summary> 交换物品 </summary>
-	public void Exchange(DataItem item, int count);
+	public void Exchange(DragContainer container);
 }
