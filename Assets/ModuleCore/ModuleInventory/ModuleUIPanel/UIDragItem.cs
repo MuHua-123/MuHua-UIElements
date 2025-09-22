@@ -21,7 +21,6 @@ public class UIDragItem : ModuleUIPanel, UIControl {
 	/// <summary> 目标容器 </summary>
 	private DragContainer targetContainer;
 
-
 	public Label Count => Q<Label>("Count");
 	public VisualElement Image => Q<VisualElement>("Image");
 	public VisualElement Preview => Q<VisualElement>("Preview");
