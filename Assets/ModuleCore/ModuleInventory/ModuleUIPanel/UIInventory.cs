@@ -10,13 +10,13 @@ using MuHua;
 public class UIInventory : ModuleUIPanel {
 
 	public Inventory inventory;
-	public ModuleUIItems<UIItem, InventorySlot> items;
+	public ModuleUIItems<UIInventorySlot, InventorySlot> items;
 
 	public VisualElement Container => Q<VisualElement>("Container");
 
 	public UIInventory(VisualElement element, VisualTreeAsset templateAsset) : base(element) {
-		items = new ModuleUIItems<UIItem, InventorySlot>(Container, templateAsset,
-		(data, element) => new UIItem(data, element));
+		items = new ModuleUIItems<UIInventorySlot, InventorySlot>(Container, templateAsset,
+		(data, element) => new UIInventorySlot(data, element));
 	}
 	public void Dispose() {
 		items.Release();
@@ -35,58 +35,51 @@ public class UIInventory : ModuleUIPanel {
 	private void Inventory_OnChange(Inventory inventory) {
 		items.Create(inventory.slots);
 	}
+}
+/// <summary> 
+/// UI库存插槽
+/// </summary>
+public class UIInventorySlot : ModuleUIItem<InventorySlot>, DragContainer {
 
-	/// <summary> UI项目 </summary>
-	public class UIItem : ModuleUIItem<InventorySlot>, DragContainer {
+	public Label CountLabel => Q<Label>("Count");
+	public VisualElement Image => Q<VisualElement>("Image");
 
-		public Label CountLabel => Q<Label>("Count");
-		public VisualElement Image => Q<VisualElement>("Image");
+	public int Count => value.count;
+	public DataItem Item => value.item;
+	public VisualElement Anchor => element;
 
-		public int Count => value.count;
-		public DataItem Item => value.item;
-		public VisualElement Anchor => element;
+	public UIInventorySlot(InventorySlot value, VisualElement element) : base(value, element) {
+		UpdatePreview();
+		element.RegisterCallback<MouseDownEvent>(MouseDownEvent);
+		element.RegisterCallback<MouseOverEvent>(MouseOverEvent);
+		element.RegisterCallback<MouseLeaveEvent>(MouseLeaveEvent);
+		element.RegisterCallback<ClickEvent>(ClickEvent);
+	}
+	private void MouseDownEvent(MouseDownEvent evt) {
+		UIPopupManager.I.dragItem.Settings(this);
+		Image.EnableInClassList("inventory-image-drag", true);
+	}
+	private void MouseOverEvent(MouseOverEvent evt) {
+		UIPopupManager.I.dragItem.EnterContainer(this);
+	}
+	private void MouseLeaveEvent(MouseLeaveEvent evt) {
+		UIPopupManager.I.dragItem.ExitContainer(this);
+	}
+	private void ClickEvent(ClickEvent evt) {
+		// Debug.Log("sss");
+	}
 
-		public UIItem(InventorySlot value, VisualElement element) : base(value, element) {
-			UpdatePreview();
-			element.RegisterCallback<MouseDownEvent>(MouseDownEvent);
-			element.RegisterCallback<MouseOverEvent>(MouseOverEvent);
-			element.RegisterCallback<MouseLeaveEvent>(MouseLeaveEvent);
-			element.RegisterCallback<ClickEvent>(ClickEvent);
-		}
-		private void MouseDownEvent(MouseDownEvent evt) {
-			UIPopupManager.I.dragItem.Settings(this);
-			Image.EnableInClassList("inventory-image-drag", true);
-		}
-		private void MouseOverEvent(MouseOverEvent evt) {
-			UIPopupManager.I.dragItem.EnterContainer(this);
-		}
-		private void MouseLeaveEvent(MouseLeaveEvent evt) {
-			UIPopupManager.I.dragItem.ExitContainer(this);
-		}
-		private void ClickEvent(ClickEvent evt) {
-			// Debug.Log("sss");
-		}
+	public void Settings(DataItem item, int count) {
+		value.Settings(item, count);
+		UpdatePreview();
+	}
+	public void Cancel() {
+		Image.EnableInClassList("inventory-image-drag", false);
+	}
 
-		public void Cancel() {
-			Image.EnableInClassList("inventory-image-drag", false);
-		}
-		public void Exchange(DragContainer container) {
-			int count = container.Count;
-			DataItem item = container.Item;
-
-			if (container is UIItem inventoryItem) {
-				inventoryItem.value.Settings(value.item, value.count);
-				inventoryItem.UpdatePreview();
-			}
-
-			value.Settings(item, count);
-			UpdatePreview();
-		}
-
-		public void UpdatePreview() {
-			CountLabel.text = value.count.ToString();
-			CountLabel.EnableInClassList("inventory-count-hide", value.count <= 1);
-			Image.style.backgroundImage = new StyleBackground(value.Sprite);
-		}
+	private void UpdatePreview() {
+		CountLabel.text = value.count.ToString();
+		CountLabel.EnableInClassList("inventory-count-hide", value.count <= 1);
+		Image.style.backgroundImage = new StyleBackground(value.Sprite);
 	}
 }

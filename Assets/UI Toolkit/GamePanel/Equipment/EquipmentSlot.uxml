@@ -2,6 +2,6 @@
     <Style src="project://database/Assets/UI%20Toolkit/GamePanel/Equipment/Equipment.uss?fileID=7433441132597879392&amp;guid=ea431661362425a4e9b547f470789774&amp;type=3#Equipment" />
     <ui:VisualElement style="width: 90px; height: 90px; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; background-color: rgb(102, 102, 102); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px;">
         <ui:VisualElement name="Image" class="equipment-image" />
-        <ui:Label tabindex="-1" text="999" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="true" name="Count" class="equipment-count" />
+        <ui:Label tabindex="-1" text="999" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="true" name="Count" class="equipment-count equipment-count-hide" />
     </ui:VisualElement>
 </ui:UXML>

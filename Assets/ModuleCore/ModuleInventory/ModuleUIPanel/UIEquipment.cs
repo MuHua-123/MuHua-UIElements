@@ -9,21 +9,45 @@ using MuHua;
 /// </summary>
 public class UIEquipment : ModuleUIPanel {
 
-	public VisualElement EquipmentSlot1 => Q<VisualElement>("EquipmentSlot1");// 主手
-	public VisualElement EquipmentSlot2 => Q<VisualElement>("EquipmentSlot2");// 副手
-	public VisualElement EquipmentSlot3 => Q<VisualElement>("EquipmentSlot3");// 衣服
-	public VisualElement EquipmentSlot4 => Q<VisualElement>("EquipmentSlot4");// 项链
-	public VisualElement EquipmentSlot5 => Q<VisualElement>("EquipmentSlot5");// 戒指1
-	public VisualElement EquipmentSlot6 => Q<VisualElement>("EquipmentSlot6");// 戒指2
-	public VisualElement EquipmentSlot7 => Q<VisualElement>("EquipmentSlot7");// 手镯1
-	public VisualElement EquipmentSlot8 => Q<VisualElement>("EquipmentSlot8");// 手镯2
-	public VisualElement EquipmentSlot9 => Q<VisualElement>("EquipmentSlot9");// 头盔
-	public VisualElement EquipmentSlot10 => Q<VisualElement>("EquipmentSlot10");// 手套
-	public VisualElement EquipmentSlot11 => Q<VisualElement>("EquipmentSlot11");// 腰带
-	public VisualElement EquipmentSlot12 => Q<VisualElement>("EquipmentSlot12");// 鞋子
+	public Equipment equipment;
+	/// <summary> 插槽字典 </summary>
+	public Dictionary<string, UIEquipmentSlot> dictionary = new Dictionary<string, UIEquipmentSlot>();
 
 	public UIEquipment(VisualElement element) : base(element) {
+		InitialSlot(1, SlotType.主手);
+		InitialSlot(2, SlotType.副手);
+		InitialSlot(3, SlotType.上衣);
+		InitialSlot(4, SlotType.项链);
 
+		InitialSlot(4, SlotType.戒指1);
+		InitialSlot(4, SlotType.戒指2);
+		InitialSlot(4, SlotType.手镯1);
+		InitialSlot(4, SlotType.手镯2);
+
+		InitialSlot(4, SlotType.头盔);
+		InitialSlot(4, SlotType.手套);
+		InitialSlot(4, SlotType.腰带);
+		InitialSlot(4, SlotType.鞋子);
+	}
+	public void Dispose() {
+
+	}
+
+	public void Settings(Equipment equipment) {
+		if (this.equipment != null) { Dispose(); }
+		this.equipment = equipment;
+		if (equipment == null) { return; }
+		foreach (var item in dictionary) {
+			if (!equipment.ContainsKey(item.Key)) { continue; }
+			EquipmentSlot slot = equipment[item.Key];
+			item.Value.Settings(slot);
+		}
+	}
+
+	private void InitialSlot(int index, SlotType type) {
+		VisualElement element = Q<VisualElement>($"EquipmentSlot{index}");
+		UIEquipmentSlot uiSlot = new UIEquipmentSlot(element);
+		dictionary.Add(type.ToString(), uiSlot);
 	}
 }
 /// <summary>
@@ -51,6 +75,7 @@ public class UIEquipmentSlot : ModuleUIPanel, DragContainer {
 		Image.EnableInClassList("equipment-image-drag", true);
 	}
 	private void MouseOverEvent(MouseOverEvent evt) {
+		if (!Verify()) { return; }
 		UIPopupManager.I.dragItem.EnterContainer(this);
 	}
 	private void MouseLeaveEvent(MouseLeaveEvent evt) {
@@ -64,24 +89,22 @@ public class UIEquipmentSlot : ModuleUIPanel, DragContainer {
 		this.value = value;
 		UpdatePreview();
 	}
+	public void Settings(DataItem item, int count) {
+		value.Settings(item, count);
+		UpdatePreview();
+	}
 	public void Cancel() {
 		Image.EnableInClassList("equipment-image-drag", false);
-	}
-	public void Exchange(DragContainer container) {
-		int count = container.Count;
-		DataEquipment item = container.Item as DataEquipment;
-
-		if (container is UIInventory.UIItem inventoryItem) {
-			inventoryItem.value.Settings(value.item, 1);
-			inventoryItem.UpdatePreview();
-		}
-
-		value.item = item;
-		UpdatePreview();
 	}
 
 	private void UpdatePreview() {
 		Sprite sprite = value == null || value.item == null ? null : value.item.sprite;
 		Image.style.backgroundImage = new StyleBackground(sprite);
+	}
+	private bool Verify() {
+		DragContainer container = UIPopupManager.I.dragItem.container;
+		if (container == null) { return false; }
+		if (container.Item is DataEquipment equipment) { return value.Verify(equipment); }
+		return false;
 	}
 }

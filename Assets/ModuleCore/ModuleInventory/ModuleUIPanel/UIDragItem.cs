@@ -9,17 +9,17 @@ using MuHua;
 /// </summary>
 public class UIDragItem : ModuleUIPanel, UIControl {
 	/// <summary> 画布 </summary>
-	private VisualElement canvas;
+	public VisualElement canvas;
 	/// <summary> 是否启用 </summary>
-	private bool isEnable;
+	public bool isEnable;
 	/// <summary> 鼠标位置 </summary>
-	private Vector2 mousePosition;
+	public Vector2 mousePosition;
 	/// <summary> 偏移位置 </summary>
-	private Vector2 offsetPosition;
+	public Vector2 offsetPosition;
 	/// <summary> 物品容器 </summary>
-	private DragContainer container;
+	public DragContainer container;
 	/// <summary> 目标容器 </summary>
-	private DragContainer targetContainer;
+	public DragContainer targetContainer;
 
 	public Label Count => Q<Label>("Count");
 	public VisualElement Image => Q<VisualElement>("Image");
@@ -36,8 +36,12 @@ public class UIDragItem : ModuleUIPanel, UIControl {
 		isEnable = false;
 		container?.Cancel();
 		element.EnableInClassList("document-page-hide", !isEnable);
+		// 交换物品
 		if (container == null || targetContainer == null) { return; }
-		container.Exchange(targetContainer);
+		int count = targetContainer.Count;
+		DataItem item = targetContainer.Item;
+		targetContainer.Settings(container.Item, container.Count);
+		container.Settings(item, count);
 	}
 	private void FloatingFunc(MouseMoveEvent evt) {
 		mousePosition = evt.mousePosition;
@@ -90,6 +94,6 @@ public interface DragContainer {
 
 	/// <summary> 取消拖拽 </summary>
 	public void Cancel();
-	/// <summary> 交换物品 </summary>
-	public void Exchange(DragContainer container);
+	/// <summary> 设置物品 </summary>
+	public void Settings(DataItem item, int count);
 }

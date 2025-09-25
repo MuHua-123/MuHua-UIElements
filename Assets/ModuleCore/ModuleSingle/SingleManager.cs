@@ -20,25 +20,25 @@ public class SingleManager : ModuleSingle<SingleManager> {
 		inventory = new Inventory(40);
 		equipment = new Equipment();
 
-		WeaponSlot weaponSlot = new WeaponSlot("主手");
-		DeputySlot deputySlot = new DeputySlot("副手");
+		WeaponSlot weaponSlot = new WeaponSlot(SlotType.主手);
+		DeputySlot deputySlot = new DeputySlot(SlotType.副手);
 		weaponSlot.deputy = deputySlot;
 		deputySlot.weapon = weaponSlot;
 
 		equipment.AddSlot(weaponSlot);
 		equipment.AddSlot(deputySlot);
 
-		equipment.AddSlot(new ArmorSlot("上衣"));
-		equipment.AddSlot(new ArmorSlot("头盔"));
-		equipment.AddSlot(new ArmorSlot("手套"));
-		equipment.AddSlot(new ArmorSlot("腰带"));
-		equipment.AddSlot(new ArmorSlot("鞋子"));
+		equipment.AddSlot(new ArmorSlot(SlotType.上衣, ArmorType.上衣));
+		equipment.AddSlot(new ArmorSlot(SlotType.头盔, ArmorType.头盔));
+		equipment.AddSlot(new ArmorSlot(SlotType.手套, ArmorType.手套));
+		equipment.AddSlot(new ArmorSlot(SlotType.腰带, ArmorType.腰带));
+		equipment.AddSlot(new ArmorSlot(SlotType.鞋子, ArmorType.鞋子));
 
-		equipment.AddSlot(new AccessorySlot("项链"));
-		equipment.AddSlot(new AccessorySlot("戒指1"));
-		equipment.AddSlot(new AccessorySlot("戒指2"));
-		equipment.AddSlot(new AccessorySlot("手镯1"));
-		equipment.AddSlot(new AccessorySlot("手镯2"));
+		equipment.AddSlot(new AccessorySlot(SlotType.项链, AccessoryType.项链));
+		equipment.AddSlot(new AccessorySlot(SlotType.戒指1, AccessoryType.戒指));
+		equipment.AddSlot(new AccessorySlot(SlotType.戒指2, AccessoryType.戒指));
+		equipment.AddSlot(new AccessorySlot(SlotType.手镯1, AccessoryType.手镯));
+		equipment.AddSlot(new AccessorySlot(SlotType.手镯2, AccessoryType.手镯));
 
 		materialReward = new ItemReward();
 		materialReward.Settings(ManagerItem.I.materials);
