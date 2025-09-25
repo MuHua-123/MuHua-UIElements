@@ -10,8 +10,8 @@ using MuHua;
 public class UIBackpackPage : ModuleUIPage {
 	public VisualTreeAsset inventorySlot;
 
-	private UIEquipment equipment;
 	private UIInventory inventory;
+	private UIEquipmentColumn equipment;
 
 	public override VisualElement Element => root.Q<VisualElement>("BackpackPage");
 
@@ -19,7 +19,7 @@ public class UIBackpackPage : ModuleUIPage {
 	public VisualElement Inventory => Q<VisualElement>("Inventory");
 
 	protected void Awake() {
-		equipment = new UIEquipment(Equipment);
+		equipment = new UIEquipmentColumn(Equipment);
 		inventory = new UIInventory(Inventory, inventorySlot);
 
 		ModuleUI.OnJumpPage += ModuleUI_OnJumpPage;

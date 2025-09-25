@@ -9,7 +9,7 @@ using MuHua;
 public class SingleManager : ModuleSingle<SingleManager> {
 
 	public Inventory inventory;
-	public Equipment equipment;
+	public EquipmentColumn equipment;
 
 	public ItemReward materialReward;
 	public ItemReward equipmentReward;
@@ -18,27 +18,7 @@ public class SingleManager : ModuleSingle<SingleManager> {
 
 	private void Start() {
 		inventory = new Inventory(40);
-		equipment = new Equipment();
-
-		WeaponSlot weaponSlot = new WeaponSlot(SlotType.主手);
-		DeputySlot deputySlot = new DeputySlot(SlotType.副手);
-		weaponSlot.deputy = deputySlot;
-		deputySlot.weapon = weaponSlot;
-
-		equipment.AddSlot(weaponSlot);
-		equipment.AddSlot(deputySlot);
-
-		equipment.AddSlot(new ArmorSlot(SlotType.上衣, ArmorType.上衣));
-		equipment.AddSlot(new ArmorSlot(SlotType.头盔, ArmorType.头盔));
-		equipment.AddSlot(new ArmorSlot(SlotType.手套, ArmorType.手套));
-		equipment.AddSlot(new ArmorSlot(SlotType.腰带, ArmorType.腰带));
-		equipment.AddSlot(new ArmorSlot(SlotType.鞋子, ArmorType.鞋子));
-
-		equipment.AddSlot(new AccessorySlot(SlotType.项链, AccessoryType.项链));
-		equipment.AddSlot(new AccessorySlot(SlotType.戒指1, AccessoryType.戒指));
-		equipment.AddSlot(new AccessorySlot(SlotType.戒指2, AccessoryType.戒指));
-		equipment.AddSlot(new AccessorySlot(SlotType.手镯1, AccessoryType.手镯));
-		equipment.AddSlot(new AccessorySlot(SlotType.手镯2, AccessoryType.手镯));
+		equipment = new EquipmentColumn();
 
 		materialReward = new ItemReward();
 		materialReward.Settings(ManagerItem.I.materials);
@@ -53,11 +33,11 @@ public class SingleManager : ModuleSingle<SingleManager> {
 
 
 	private void RewardMaterial() {
-		(DataItem item, int count) = materialReward.Get(10);
+		(InventoryItem item, int count) = materialReward.Get(10);
 		inventory.AddItem(item, count);
 	}
 	private void RewardEquipment() {
-		(DataItem item, int count) = equipmentReward.Get(1);
+		(InventoryItem item, int count) = equipmentReward.Get(1);
 		inventory.AddItem(item, count);
 	}
 }

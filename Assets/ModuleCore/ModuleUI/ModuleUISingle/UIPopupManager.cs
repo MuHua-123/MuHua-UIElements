@@ -13,7 +13,7 @@ public class UIPopupManager : ModuleUISingle<UIPopupManager> {
 	/// <summary> 项目模板 </summary>
 	public VisualTreeAsset itemTreeAsset;
 
-	public UIDragItem dragItem;
+	public UIInventoryDrag inventoryDrag;
 	public UIShortcutMenu shortcutMenu;
 
 	public override VisualElement Element => root.Q<VisualElement>("Popup");
@@ -23,7 +23,7 @@ public class UIPopupManager : ModuleUISingle<UIPopupManager> {
 
 	protected override void Awake() {
 		NoReplace(false);
-		dragItem = new UIDragItem(DragItem, root);
+		inventoryDrag = new UIInventoryDrag(DragItem, root);
 		shortcutMenu = new UIShortcutMenu(ShortcutMenu, menuTreeAsset, itemTreeAsset);
 	}
 }

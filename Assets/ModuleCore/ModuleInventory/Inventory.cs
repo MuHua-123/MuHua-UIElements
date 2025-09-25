@@ -28,7 +28,7 @@ public class Inventory {
 	public void ForEach(Action<InventorySlot> action) => slots.ForEach(action);
 
 	/// <summary> 添加物品 </summary>
-	public void AddItem(DataItem item, int count) {
+	public void AddItem(InventoryItem item, int count) {
 		int remain = MergeToSlots(item, count);
 		// 如果还有剩余，按照MaxStack分批放入空位
 		if (remain > 0) { AddToSlots(item, remain, true); }
@@ -36,13 +36,13 @@ public class Inventory {
 	}
 
 	/// <summary> 添加物品 </summary>
-	public void AddToSlots(DataItem item, int count, bool isWhile) {
+	public void AddToSlots(InventoryItem item, int count, bool isWhile) {
 		(bool isComplete, int remain) = AddToSlots(item, count);
 		if (!isComplete || remain == 0 || !isWhile) { return; }
 		AddToSlots(item, remain, isWhile);
 	}
 	/// <summary> 添加到插槽 bool = 是否添加成功，int = 余量 </summary>
-	public (bool, int) AddToSlots(DataItem item, int count) {
+	public (bool, int) AddToSlots(InventoryItem item, int count) {
 		InventorySlot emptySlot = slots.FirstOrDefault(s => s.item == null);
 		if (emptySlot == null) { return (false, count); }
 		int addCount = Mathf.Min(count, item.MaxStack);
@@ -51,7 +51,7 @@ public class Inventory {
 	}
 
 	/// <summary> 合并到插槽 </summary> 
-	public int MergeToSlots(DataItem item, int count) {
+	public int MergeToSlots(InventoryItem item, int count) {
 		// 查询所有可合并的插槽
 		List<InventorySlot> sameSlots = slots.Where(slot => slot.Same(item)).ToList();
 		// 合并到已有插槽
@@ -64,35 +64,5 @@ public class Inventory {
 		int addCount = Mathf.Min(canAdd, count);
 		slot.count += addCount;
 		count -= addCount;
-	}
-}
-/// <summary>
-/// 库存插槽
-/// </summary>
-public class InventorySlot {
-	/// <summary> 数量 </summary>
-	public int count;
-	/// <summary> 物品 </summary>
-	public DataItem item;
-
-	// /// <summary> 图片 </summary>
-	public Sprite Sprite => item != null ? item.sprite : null;
-	// /// <summary> 堆叠数量 </summary>
-	public int MaxStack => item != null ? item.MaxStack : 0;
-
-	public InventorySlot() { }
-
-	public InventorySlot(DataItem item, int count) {
-		this.item = item;
-		this.count = count;
-	}
-	/// <summary> 设置 </summary>
-	public void Settings(DataItem item, int count) {
-		this.item = item;
-		this.count = count;
-	}
-	/// <summary> 是否相同 </summary>
-	public bool Same(DataItem obj) {
-		return item != null && item.name == obj.name && count < MaxStack;
 	}
 }
