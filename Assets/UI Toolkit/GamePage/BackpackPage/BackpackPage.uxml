@@ -1,11 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="Equipment" src="project://database/Assets/UI%20Toolkit/GamePanel/Equipment/Equipment.uxml?fileID=9197481963319205126&amp;guid=5cc8bcb294d4fe241a2e6d3deb627c57&amp;type=3#Equipment" />
+    <ui:Template name="Equipment" src="project://database/Assets/UI%20Toolkit/GamePanel/Equipment/EquipmentColumn.uxml?fileID=9197481963319205126&amp;guid=5cc8bcb294d4fe241a2e6d3deb627c57&amp;type=3#EquipmentColumn" />
     <ui:Template name="Inventory" src="project://database/Assets/UI%20Toolkit/GamePanel/Inventory/Inventory.uxml?fileID=9197481963319205126&amp;guid=66c4934900f42194a928ece38b3e68eb&amp;type=3#Inventory" />
-    <ui:Template name="ItemInfo" src="project://database/Assets/UI%20Toolkit/GamePanel/ItemInfo/ItemInfo.uxml?fileID=9197481963319205126&amp;guid=7b84b855a52611f4291ff7a90fdb83dd&amp;type=3#ItemInfo" />
+    <ui:Template name="ItemInfo" src="project://database/Assets/UI%20Toolkit/GamePanel/InventoryTip/InventoryTip.uxml?fileID=9197481963319205126&amp;guid=7b84b855a52611f4291ff7a90fdb83dd&amp;type=3#InventoryTip" />
     <Style src="project://database/Assets/UI%20Toolkit/GamePage/BackpackPage/BackpackPage.uss?fileID=7433441132597879392&amp;guid=06b8f7d50f09d2f4b9f9d44aae8a0455&amp;type=3#BackpackPage" />
     <ui:VisualElement style="flex-grow: 1; flex-direction: row; align-items: stretch; justify-content: center; padding-top: 100px; padding-right: 100px; padding-bottom: 100px; padding-left: 100px;">
-        <ui:Instance template="Equipment" name="Equipment" />
+        <ui:Instance template="Equipment" name="EquipmentColumn" />
         <ui:Instance template="Inventory" name="Inventory" style="width: 500px; margin-right: 10px; margin-left: 10px;" />
-        <ui:Instance template="ItemInfo" name="ItemInfo" style="width: 400px; display: none;" />
+        <ui:Instance template="ItemInfo" name="InventoryTip" style="width: 400px;" />
     </ui:VisualElement>
 </ui:UXML>

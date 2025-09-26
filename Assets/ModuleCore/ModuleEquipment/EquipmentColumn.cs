@@ -14,25 +14,42 @@ public class EquipmentColumn {
 	public EquipmentSlot this[string key] => dictionary[key];
 
 	public EquipmentColumn() {
-		AddSlot(new EquipmentSlot(EquipmentSlotType.主手, VerifyWeapon));
-		AddSlot(new EquipmentSlot(EquipmentSlotType.副手, VerifyDeputy));
+		AddSlot(WeaponSlot());
+		AddSlot(DeputySlot());
 
-		AddSlot(new EquipmentSlot(EquipmentSlotType.上衣, (equipment) => VerifyCommon(equipment, ArmorType.上衣.ToString())));
-		AddSlot(new EquipmentSlot(EquipmentSlotType.头盔, (equipment) => VerifyCommon(equipment, ArmorType.头盔.ToString())));
-		AddSlot(new EquipmentSlot(EquipmentSlotType.手套, (equipment) => VerifyCommon(equipment, ArmorType.手套.ToString())));
-		AddSlot(new EquipmentSlot(EquipmentSlotType.腰带, (equipment) => VerifyCommon(equipment, ArmorType.腰带.ToString())));
-		AddSlot(new EquipmentSlot(EquipmentSlotType.鞋子, (equipment) => VerifyCommon(equipment, ArmorType.鞋子.ToString())));
+		AddSlot(ArmorSlot(EquipmentSlotType.上衣, ArmorType.上衣));
+		AddSlot(ArmorSlot(EquipmentSlotType.头盔, ArmorType.头盔));
+		AddSlot(ArmorSlot(EquipmentSlotType.手套, ArmorType.手套));
+		AddSlot(ArmorSlot(EquipmentSlotType.腰带, ArmorType.腰带));
+		AddSlot(ArmorSlot(EquipmentSlotType.鞋子, ArmorType.鞋子));
 
-		AddSlot(new EquipmentSlot(EquipmentSlotType.项链, (equipment) => VerifyCommon(equipment, AccessoryType.项链.ToString())));
-		AddSlot(new EquipmentSlot(EquipmentSlotType.戒指1, (equipment) => VerifyCommon(equipment, AccessoryType.戒指.ToString())));
-		AddSlot(new EquipmentSlot(EquipmentSlotType.戒指2, (equipment) => VerifyCommon(equipment, AccessoryType.戒指.ToString())));
-		AddSlot(new EquipmentSlot(EquipmentSlotType.手镯1, (equipment) => VerifyCommon(equipment, AccessoryType.手镯.ToString())));
-		AddSlot(new EquipmentSlot(EquipmentSlotType.手镯2, (equipment) => VerifyCommon(equipment, AccessoryType.手镯.ToString())));
+		AddSlot(AccessorySlot(EquipmentSlotType.项链, AccessoryType.项链));
+		AddSlot(AccessorySlot(EquipmentSlotType.戒指1, AccessoryType.戒指));
+		AddSlot(AccessorySlot(EquipmentSlotType.戒指2, AccessoryType.戒指));
+		AddSlot(AccessorySlot(EquipmentSlotType.手镯1, AccessoryType.手镯));
+		AddSlot(AccessorySlot(EquipmentSlotType.手镯2, AccessoryType.手镯));
 	}
 
 	public bool ContainsKey(string key) => dictionary.ContainsKey(key);
 	/// <summary> 添加插槽 </summary>
 	public void AddSlot(EquipmentSlot slot) => dictionary.Add(slot.name, slot);
+
+	/// <summary> 武器插槽 </summary>
+	public EquipmentSlot WeaponSlot() {
+		return new EquipmentSlot(EquipmentSlotType.主手, VerifyWeapon);
+	}
+	/// <summary> 副手插槽 </summary>
+	public EquipmentSlot DeputySlot() {
+		return new EquipmentSlot(EquipmentSlotType.副手, VerifyDeputy);
+	}
+	/// <summary> 护甲插槽 </summary>
+	public EquipmentSlot ArmorSlot(EquipmentSlotType type, ArmorType armor) {
+		return new EquipmentSlot(type, (equipment) => VerifyCommon(equipment, armor.ToString()));
+	}
+	/// <summary> 饰品插槽 </summary>
+	public EquipmentSlot AccessorySlot(EquipmentSlotType type, AccessoryType accessory) {
+		return new EquipmentSlot(type, (equipment) => VerifyCommon(equipment, accessory.ToString()));
+	}
 
 	/// <summary> 通用校验 </summary>
 	public static bool VerifyCommon(Equipment equipment, string type) {

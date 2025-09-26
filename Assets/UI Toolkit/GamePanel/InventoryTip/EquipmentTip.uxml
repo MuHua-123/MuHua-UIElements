@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/GamePanel/InventoryTip/InventoryTip.uss?fileID=7433441132597879392&amp;guid=6e24d6aca80b52c479d5de875f77b8fc&amp;type=3#InventoryTip" />
+    <ui:VisualElement class="inventorytip-bg">
+        <ui:VisualElement>
+            <ui:Label tabindex="-1" text="灾厄之巨剑" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Name" class="inventorytip-text" style="font-size: 20px; -unity-font-style: bold;" />
+            <ui:Label tabindex="-1" text="双手 剑" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Type" class="inventorytip-text" />
+        </ui:VisualElement>
+        <ui:VisualElement style="height: 2px; background-color: rgb(255, 255, 255);" />
+    </ui:VisualElement>
+</ui:UXML>

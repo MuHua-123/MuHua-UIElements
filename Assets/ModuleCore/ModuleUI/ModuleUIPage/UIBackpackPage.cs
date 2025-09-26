@@ -15,11 +15,11 @@ public class UIBackpackPage : ModuleUIPage {
 
 	public override VisualElement Element => root.Q<VisualElement>("BackpackPage");
 
-	public VisualElement Equipment => Q<VisualElement>("Equipment");
 	public VisualElement Inventory => Q<VisualElement>("Inventory");
+	public VisualElement EquipmentColumn => Q<VisualElement>("EquipmentColumn");
 
 	protected void Awake() {
-		equipment = new UIEquipmentColumn(Equipment);
+		equipment = new UIEquipmentColumn(EquipmentColumn);
 		inventory = new UIInventory(Inventory, inventorySlot);
 
 		ModuleUI.OnJumpPage += ModuleUI_OnJumpPage;
