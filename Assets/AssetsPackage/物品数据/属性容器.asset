@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 0
   defaultValue: 0
   minValue: 0
-  maxValue: 3.4028235e+38
+  maxValue: 9999
   container: {fileID: 11400000}
 --- !u!114 &-1377547097575584075
 MonoBehaviour:
@@ -32,7 +32,7 @@ MonoBehaviour:
   type: 0
   defaultValue: 0
   minValue: 0
-  maxValue: 3.4028235e+38
+  maxValue: 9999
   container: {fileID: 11400000}
 --- !u!114 &11400000
 MonoBehaviour:

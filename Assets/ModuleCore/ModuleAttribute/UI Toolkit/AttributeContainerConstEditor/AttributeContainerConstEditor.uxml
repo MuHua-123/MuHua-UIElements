@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="AttributeTemplate" src="project://database/Assets/ModuleCore/ModuleAttribute/UI%20Toolkit/AttributeContainerConstEditor/AttributeTemplate.uxml?fileID=9197481963319205126&amp;guid=1749a10e5ffdea045b442dfa323e4028&amp;type=3#AttributeTemplate" />
+    <Style src="project://database/Assets/ModuleCore/ModuleAttribute/UI%20Toolkit/AttributeContainerConstEditor/AttributeContainerConstEditor.uss?fileID=7433441132597879392&amp;guid=6f6de86e3bf3ec348a2cfde1e36e77bd&amp;type=3#AttributeContainerConstEditor" />
+    <ui:VisualElement name="AttributeList" style="flex-grow: 1;">
+        <ui:Instance template="AttributeTemplate" name="AttributeTemplate" />
+        <ui:Instance template="AttributeTemplate" name="AttributeTemplate" />
+        <ui:Instance template="AttributeTemplate" name="AttributeTemplate" />
+        <ui:Instance template="AttributeTemplate" name="AttributeTemplate" />
+    </ui:VisualElement>
+    <ui:VisualElement name="ButtonGroup" style="flex-direction: row;">
+        <ui:Button text="创建属性" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button1" style="margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;" />
+        <ui:Button text="删除全部属性" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button2" style="margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;" />
+        <ui:VisualElement style="flex-grow: 1;" />
+        <ui:Button text="删除属性" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button3" style="margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;" />
+    </ui:VisualElement>
+</ui:UXML>

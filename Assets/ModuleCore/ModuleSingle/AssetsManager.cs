@@ -8,7 +8,7 @@ using MuHua;
 /// </summary>
 public class AssetsManager : ModuleSingle<AssetsManager> {
 
-	public List<ConstInventoryItem> items;
+	public List<InventoryItemConst> items;
 
 	protected override void Awake() => NoReplace(false);
 

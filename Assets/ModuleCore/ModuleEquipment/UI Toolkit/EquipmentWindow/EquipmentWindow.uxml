@@ -1,0 +1,32 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="Button1" src="project://database/Assets/ModuleCore/ModuleEquipment/UI%20Toolkit/Button/ButtonTemplate.uxml?fileID=9197481963319205126&amp;guid=72d39f3bc55f0a94196e83e8bfea1857&amp;type=3#ButtonTemplate" />
+    <ui:Template name="EquipmentList" src="project://database/Assets/ModuleCore/ModuleEquipment/UI%20Toolkit/EquipmentWindow/EquipmentList.uxml?fileID=9197481963319205126&amp;guid=723d660a1c7f9a148829ed36eacad3df&amp;type=3#EquipmentList" />
+    <Style src="project://database/Assets/ModuleCore/ModuleEquipment/UI%20Toolkit/EquipmentWindow/EquipmentWindow.uss?fileID=7433441132597879392&amp;guid=8bceec5d72cb41343aace6e8d7439e3b&amp;type=3#EquipmentWindow" />
+    <ui:VisualElement name="EquipmentType" style="flex-direction: row; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px;">
+        <ui:Instance template="Button1" name="Button1" />
+        <ui:Instance template="Button1" name="Button1" />
+        <ui:Instance template="Button1" name="Button1" />
+        <ui:Instance template="Button1" name="Button1" />
+        <ui:Instance template="Button1" name="Button1" />
+        <ui:Instance template="Button1" name="Button1" />
+        <ui:Instance template="Button1" name="Button1" />
+        <ui:Instance template="Button1" name="Button1" />
+    </ui:VisualElement>
+    <ui:VisualElement style="height: 2px; background-color: rgb(38, 38, 38);" />
+    <ui:VisualElement name="EquipmentExtendType" style="flex-direction: row; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px;">
+        <ui:Instance template="Button1" name="Button1" />
+        <ui:Instance template="Button1" name="Button1" />
+        <ui:Instance template="Button1" name="Button1" />
+        <ui:Instance template="Button1" name="Button1" />
+    </ui:VisualElement>
+    <ui:VisualElement style="height: 2px; background-color: rgb(38, 38, 38);" />
+    <ui:VisualElement name="FunctionPanel" style="flex-grow: 1; flex-direction: row;">
+        <ui:Instance template="EquipmentList" name="EquipmentList" style="width: 100px;" />
+        <ui:VisualElement style="background-color: rgb(38, 38, 38); width: 2px;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="height: 2px; background-color: rgb(38, 38, 38);" />
+    <ui:VisualElement name="ButtonGroup" style="flex-direction: row;">
+        <ui:Button text="创建" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button1" style="margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; width: 96px;" />
+        <ui:Button text="创建(随机)" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button2" style="margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; width: 96px;" />
+    </ui:VisualElement>
+</ui:UXML>

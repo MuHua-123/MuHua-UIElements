@@ -10,7 +10,7 @@ public class ManagerItem : ModuleSingle<ManagerItem> {
 	/// <summary> 材料列表 </summary>
 	public List<ConstMaterial> materials;
 	/// <summary> 装备列表 </summary>
-	public List<ConstEquipment> equipments;
+	public List<EquipmentConst> equipments;
 
 	protected override void Awake() => NoReplace(false);
 
@@ -22,7 +22,7 @@ public class ItemReward {
 	/// <summary> 物品列表 </summary>
 	public List<InventoryItem> items;
 
-	public void Settings<T>(List<T> list) where T : ConstInventoryItem {
+	public void Settings<T>(List<T> list) where T : InventoryItemConst {
 		items = new List<InventoryItem>();
 		list.ForEach(obj => items.Add(obj.To()));
 	}

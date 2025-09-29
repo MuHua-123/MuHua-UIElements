@@ -1,0 +1,21 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="Button1" src="project://database/Assets/UI%20Toolkit/Component/Button/Button1.uxml?fileID=9197481963319205126&amp;guid=72d39f3bc55f0a94196e83e8bfea1857&amp;type=3#Button1" />
+    <Style src="project://database/Assets/UI%20Toolkit/EditorWindow/EquipmentWindow/EquipmentWindow.uss?fileID=7433441132597879392&amp;guid=8bceec5d72cb41343aace6e8d7439e3b&amp;type=3#EquipmentWindow" />
+    <ui:VisualElement name="ScrollView" class="scrollview">
+        <ui:VisualElement name="Viewport" class="scrollview-viewport" style="margin-right: 0; margin-bottom: 0; margin-top: 0; margin-left: 0;">
+            <ui:VisualElement name="Container" class="scrollview-container" style="padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px;">
+                <ui:Instance template="Button1" name="Button1" />
+                <ui:Instance template="Button1" name="Button1" />
+                <ui:Instance template="Button1" name="Button1" />
+                <ui:Instance template="Button1" name="Button1" />
+                <ui:Instance template="Button1" name="Button1" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="ScrollerHorizontal" class="scroller-horizontal scrollview-horizontal-scroller" style="display: none;">
+            <ui:VisualElement name="Dragger" class="scroller-horizontal-dragger scrollview-horizontal-scroller-dragger" />
+        </ui:VisualElement>
+        <ui:VisualElement name="ScrollerVertical" class="scroller-vertical scrollview-vertical-scroller" style="display: none;">
+            <ui:VisualElement name="Dragger" class="scroller-vertical-dragger scrollview-vertical-scroller-dragger" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
