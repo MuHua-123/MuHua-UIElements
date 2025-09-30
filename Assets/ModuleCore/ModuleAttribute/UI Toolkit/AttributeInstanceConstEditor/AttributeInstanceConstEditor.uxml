@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/ModuleCore/ModuleAttribute/UI%20Toolkit/AttributeInstanceConstEditor/AttributeInstanceConstEditor.uss?fileID=7433441132597879392&amp;guid=51817b5555c3c584f846b2c05b877f72&amp;type=3#AttributeInstanceConstEditor" />
+    <ui:VisualElement name="AttributePanel" style="flex-direction: row; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; background-color: rgb(51, 51, 51); margin-top: 1px; margin-right: 1px; margin-bottom: 1px; margin-left: 1px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;">
+        <ui:TextField picking-mode="Ignore" value="filler text" keyboard-type="Default" name="Name" style="margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; width: 100px;" />
+        <ui:EnumField type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" name="Type" style="margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; width: 100px;" />
+        <ui:Toggle name="Boolean" style="flex-grow: 1;" />
+        <ui:FloatField value="42.2" name="Value" style="flex-grow: 1; margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px;" />
+        <ui:Label tabindex="-1" text="0-9999" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Range" style="width: 100px; -unity-text-align: middle-center; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-direction: row; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; background-color: rgb(51, 51, 51); margin-top: 1px; margin-right: 1px; margin-bottom: 1px; margin-left: 1px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;">
+        <ui:FloatField value="42.2" name="Min" style="flex-grow: 1; margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px;" />
+        <ui:Label tabindex="-1" text="min ~ max" parse-escape-sequences="true" display-tooltip-when-elided="true" style="width: 100px; -unity-text-align: middle-center; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+        <ui:FloatField value="42.2" name="Max" style="flex-grow: 1; margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px;" />
+    </ui:VisualElement>
+    <ui:Button text="删除" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button" style="margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;" />
+</ui:UXML>

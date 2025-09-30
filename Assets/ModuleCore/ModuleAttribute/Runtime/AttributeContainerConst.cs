@@ -9,7 +9,7 @@ using UnityEngine;
 public class AttributeContainerConst : ScriptableObject {
 	/// <summary> 属性列表 </summary>
 	[HideInInspector]
-	public List<AttributeInstanceConst> instances;
+	public List<AttributeInstanceConst> instances = new List<AttributeInstanceConst>();
 
 	/// <summary> 转换数据 </summary>
 	public AttributeContainer To() {

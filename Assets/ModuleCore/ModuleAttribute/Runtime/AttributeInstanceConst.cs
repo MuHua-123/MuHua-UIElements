@@ -20,6 +20,31 @@ public class AttributeInstanceConst : ScriptableObject {
 	[HideInInspector]
 	public AttributeContainerConst container;
 
+	public void InitialFloat() {
+		type = AttributeType.Float;
+		defaultValue = 0;
+		minValue = 0;
+		maxValue = 9999;
+	}
+	public void InitialInteger() {
+		type = AttributeType.Integer;
+		defaultValue = 0;
+		minValue = 0;
+		maxValue = 9999;
+	}
+	public void InitialBoolean() {
+		type = AttributeType.Boolean;
+		defaultValue = 0;
+		minValue = 0;
+		maxValue = 1;
+	}
+	public void InitialPercentage() {
+		type = AttributeType.Percentage;
+		defaultValue = 0;
+		minValue = 0;
+		maxValue = 100;
+	}
+
 	/// <summary> 转换数据 </summary>
 	public AttributeInstance To() {
 		AttributeInstance instance = new AttributeInstance();

@@ -1,0 +1,8 @@
+.acce-preview {
+    position: absolute;
+    width: 100%;
+}
+
+.acce-hide {
+    visibility: hidden;
+}
