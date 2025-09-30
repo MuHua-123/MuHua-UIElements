@@ -7,10 +7,10 @@ using UnityEngine;
 /// </summary>
 [CreateAssetMenu(menuName = "MuHua/物品系统/武器")]
 public class WeaponConst : EquipmentConst {
-	/// <summary> 武器类型 </summary>
+	/// <summary> 武器分类 </summary>
 	public WeaponType type;
-	/// <summary> 武器类别 </summary>
-	public string category;
+	/// <summary> 武器类型 </summary>
+	public WeaponCategory category;
 
 	public override InventoryItem To() {
 		Equipment item = new Equipment();

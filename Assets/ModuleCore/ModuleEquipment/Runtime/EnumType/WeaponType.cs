@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 武器类型
+/// 武器分类
 /// </summary>
 public enum WeaponType {
 	单手 = 0,

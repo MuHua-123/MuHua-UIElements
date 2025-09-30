@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:Template name="EquipmentInfo" src="project://database/Assets/ModuleCore/ModuleEquipment/UI%20Toolkit/EquipmentWindow/EquipmentInput.uxml?fileID=9197481963319205126&amp;guid=b67c220f946395e4bb23a70520a0ec55&amp;type=3#EquipmentInput" />
+    <Style src="project://database/Assets/ModuleCore/ModuleEquipment/UI%20Toolkit/EquipmentWindow/EquipmentWindow.uss?fileID=7433441132597879392&amp;guid=8bceec5d72cb41343aace6e8d7439e3b&amp;type=3#EquipmentWindow" />
+    <Style src="project://database/Assets/ModuleCore/ModuleEquipment/UI%20Toolkit/EquipmentPanel/EquipmentPanel.uss?fileID=7433441132597879392&amp;guid=8659d41deeaac2e4c83d9287f11f74bd&amp;type=3#EquipmentPanel" />
+    <ui:Instance template="EquipmentInfo" name="EquipmentInput" />
+    <ui:VisualElement name="EquipmentSeparate">
+        <ui:VisualElement style="flex-direction: row; align-items: center;">
+            <ui:Label tabindex="-1" text="基础属性" parse-escape-sequences="true" display-tooltip-when-elided="true" class="ep-separate-label" />
+            <ui:VisualElement style="height: 2px; flex-grow: 1; background-color: rgb(38, 38, 38); margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="EquipmentSeparate">
+        <ui:VisualElement style="flex-direction: row; align-items: center;">
+            <ui:Label tabindex="-1" text="效果" parse-escape-sequences="true" display-tooltip-when-elided="true" class="ep-separate-label" />
+            <ui:VisualElement style="height: 2px; flex-grow: 1; background-color: rgb(38, 38, 38); margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

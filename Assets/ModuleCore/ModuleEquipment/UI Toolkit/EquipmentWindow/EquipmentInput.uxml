@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/ModuleCore/ModuleEquipment/UI%20Toolkit/EquipmentWindow/EquipmentWindow.uss?fileID=7433441132597879392&amp;guid=8bceec5d72cb41343aace6e8d7439e3b&amp;type=3#EquipmentWindow" />
+    <ui:TextField picking-mode="Ignore" label="名字" value="filler text" name="Name" />
+    <ui:IntegerField label="等级" value="42" name="Level" />
+    <uie:ObjectField label="预览图" name="Sprite" type="UnityEngine.Sprite, UnityEngine.CoreModule" />
+    <ui:EnumField label="稀有度" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" name="Rarity" />
+    <ui:EnumField label="武器类型" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" name="WeaponCategory" class="ew-hide" />
+</ui:UXML>
