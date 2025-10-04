@@ -23,7 +23,7 @@
     flex-grow: 0;
     height: 30px;
     width: 30px;
-    background-image: url("project://database/Assets/UI%20Toolkit/DefaultTheme/UnityDefaultRuntimeTheme.tss?fileID=-1087164816274819069&guid=05f864e67ee1ecb4bbe67427564d394c&type=3#arrow-right@2x");
+    background-image: url("project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-1087164816274819069&guid=05f864e67ee1ecb4bbe67427564d394c&type=3#arrow-right@2x");
     -unity-background-image-tint-color: rgb(51, 51, 51);
 }
 
