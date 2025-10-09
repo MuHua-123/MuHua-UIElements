@@ -29,7 +29,7 @@ MonoBehaviour:
   m_Name: "\u9632\u5FA1"
   m_EditorClassIdentifier: 
   type: 0
-  defaultValue: 0
+  defaultValue: 5
   minValue: 0
   maxValue: 9999
   container: {fileID: 11400000}

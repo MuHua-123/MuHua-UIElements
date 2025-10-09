@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/ModuleCore/ModuleValue/UI%20Toolkit/ValueInstanceConst/ValueInstanceConst.uss?fileID=7433441132597879392&amp;guid=4bc02877fa0b64145a2b6ec73a5e8670&amp;type=3#ValueInstanceConst" />
+    <ui:TextField picking-mode="Ignore" label="数值名称" value="filler text" name="Name" />
+    <ui:EnumField label="数值类型" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" name="Type" />
+    <ui:FloatField label="最小值" value="42.2" name="Min" />
+    <ui:FloatField label="最大值" value="42.2" name="Max" />
+    <ui:FloatField label="基础值" value="42.2" name="Base" />
+    <ui:Toggle name="Boolean" label="基础值" />
+    <ui:Button text="删除" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Delete" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+</ui:UXML>

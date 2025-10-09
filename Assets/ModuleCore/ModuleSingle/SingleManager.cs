@@ -29,8 +29,9 @@ public class SingleManager : ModuleSingle<SingleManager> {
 		shortcutMenu.Add("背包", () => { ModuleUI.Settings(Page.Backpack); });
 		shortcutMenu.Add("奖励/材料", RewardMaterial);
 		shortcutMenu.Add("奖励/装备", RewardEquipment);
-	}
 
+		ValueSystem.I.Initial();
+	}
 
 	private void RewardMaterial() {
 		(InventoryItem item, int count) = materialReward.Get(10);

@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:Template name="ValueTemplate" src="project://database/Assets/ModuleCore/ModuleValue/UI%20Toolkit/ValueContainerConst/ValueTemplate.uxml?fileID=9197481963319205126&amp;guid=d53f6d483079a3048aa12c1433cd3748&amp;type=3#ValueTemplate" />
+    <Style src="project://database/Assets/ModuleCore/ModuleValue/UI%20Toolkit/ValueContainerConst/ValueContainerConst.uss?fileID=7433441132597879392&amp;guid=41806459e36ec82419ba1fabd9b53230&amp;type=3#ValueContainerConst" />
+    <ui:VisualElement name="ValueList" style="flex-grow: 0;">
+        <ui:Instance template="ValueTemplate" name="ValueTemplate" />
+        <ui:Instance template="ValueTemplate" name="ValueTemplate" />
+        <ui:Instance template="ValueTemplate" name="ValueTemplate" />
+    </ui:VisualElement>
+    <ui:VisualElement name="ButtonGroup" style="flex-direction: row; justify-content: space-between;">
+        <ui:Button text="创建属性" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button1" />
+        <ui:Button text="删除全部属性" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button2" />
+    </ui:VisualElement>
+</ui:UXML>

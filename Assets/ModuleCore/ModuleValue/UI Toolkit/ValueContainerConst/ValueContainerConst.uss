@@ -1,0 +1,8 @@
+.value-preview {
+    position: absolute;
+    width: 100%;
+}
+
+.value-hide {
+    visibility: hidden;
+}
