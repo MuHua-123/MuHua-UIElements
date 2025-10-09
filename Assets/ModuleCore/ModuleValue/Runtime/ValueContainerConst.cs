@@ -14,6 +14,10 @@ public class ValueContainerConst : ScriptableObject {
 	/// <summary> 转换数据 </summary>
 	public ValueContainer To() {
 		ValueContainer container = new ValueContainer();
+		return To(container);
+	}
+	/// <summary> 转换数据 </summary>
+	public ValueContainer To(ValueContainer container) {
 		instances.ForEach(obj => container.AddInstance(obj.To()));
 		return container;
 	}

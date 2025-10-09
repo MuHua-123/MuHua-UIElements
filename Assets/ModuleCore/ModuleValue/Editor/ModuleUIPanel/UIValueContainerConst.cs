@@ -48,8 +48,6 @@ namespace MuHuaEditor {
 
 			public UIValueContainerConst parent;
 
-			public UIAttributePanel attributePanel;
-
 			public Label Range => Q<Label>("Range");
 			public TextField Name => Q<TextField>("Name");
 			public EnumField Type => Q<EnumField>("Type");
