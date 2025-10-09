@@ -16,14 +16,16 @@ public class ValueInstance {
 	/// <summary> 最大值 </summary>
 	public float maxValue;
 
+	/// <summary> 最终数值 </summary>
+	public float value;
+	/// <summary> 默认值 </summary>
+	public float defaultValue;
 	/// <summary> 基础值 </summary>
 	public float baseValue;
 	/// <summary> 附加值% </summary>
 	public float addedValue;
 	/// <summary> 当前值 </summary>
 	public float currentValue;
-	/// <summary> 最终数值 </summary>
-	public float value;
 
 	/// <summary> 修改器列表 </summary>
 	public List<ValueModifier> modifiers = new List<ValueModifier>();
@@ -53,15 +55,15 @@ public class ValueInstance {
 	/// <summary> 重新计算值 </summary>
 	public void RecalculateValue() {
 		addedValue = 1;
-		currentValue = baseValue;
+		baseValue = defaultValue;
 		modifiers.ForEach(Modify);
 	}
 
 	/// <summary> 修改 </summary>
 	public void Modify(ValueModifier modifier) {
+		baseValue += modifier.FixedValue;
 		addedValue += modifier.AddedValue;
-		currentValue += modifier.FixedValue;
-		value = currentValue * addedValue;
-		value = Mathf.Clamp(currentValue, minValue, maxValue);
+		float temp = baseValue * addedValue;
+		value = Mathf.Clamp(temp, minValue, maxValue);
 	}
 }

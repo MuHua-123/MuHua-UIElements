@@ -52,7 +52,7 @@ public class ValueInstanceConst : ScriptableObject {
 		ValueInstance instance = new ValueInstance(type, name);
 		instance.minValue = minValue;
 		instance.maxValue = maxValue;
-		instance.baseValue = baseValue;
+		instance.defaultValue = baseValue;
 		instance.RecalculateValue();
 		return instance;
 	}
