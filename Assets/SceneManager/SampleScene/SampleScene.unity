@@ -652,7 +652,7 @@ GameObject:
   - component: {fileID: 1922845063}
   - component: {fileID: 1922845064}
   m_Layer: 5
-  m_Name: UIMenuManager
+  m_Name: UIShortcutMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

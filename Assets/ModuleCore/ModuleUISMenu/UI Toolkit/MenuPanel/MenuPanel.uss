@@ -1,14 +1,9 @@
-.menu {
-    position: absolute;
-}
-
-.menu-hide {
-    display: none;
-}
-
 .menu-unit {
     flex-direction: row;
     align-self: flex-start;
+    flex-grow: 0;
+    width: 100%;
+    height: 25px;
 }
 
 .menu-unit:hover {
@@ -21,8 +16,8 @@
 
 .menu-arrow {
     flex-grow: 0;
-    height: 30px;
-    width: 30px;
+    height: 25px;
+    width: 25px;
     background-image: url("project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-1087164816274819069&guid=05f864e67ee1ecb4bbe67427564d394c&type=3#arrow-right@2x");
     -unity-background-image-tint-color: rgb(51, 51, 51);
 }
