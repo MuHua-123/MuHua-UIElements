@@ -2,9 +2,11 @@
     <ui:Template name="EquipmentSeparate" src="project://database/Assets/ModuleCore/ModuleEquipment/UI%20Toolkit/EquipmentPanel/EquipmentSeparate.uxml?fileID=9197481963319205126&amp;guid=9560b815ca2481d48bb0dd7f66557436&amp;type=3#EquipmentSeparate" />
     <Style src="project://database/Assets/ModuleCore/ModuleEquipment/UI%20Toolkit/EquipmentPanel/EquipmentPanel.uss?fileID=7433441132597879392&amp;guid=8659d41deeaac2e4c83d9287f11f74bd&amp;type=3#EquipmentPanel" />
     <ui:Label tabindex="-1" text="符文主宰者" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Name" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; font-size: 20px; -unity-font-style: bold;" />
-    <ui:Label tabindex="-1" text="Lv77 神话级 单手 斧头" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Type" class="ep-label" />
+    <ui:Label tabindex="-1" text="Lv77 神话级 单手武器 斧头" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Type" class="ep-label" />
+    <ui:Label tabindex="-1" text="Lv66 稀有级 皮甲 上衣" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Type" class="ep-label" />
+    <ui:Label tabindex="-1" text="Lv99 传奇级 首饰 项链" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Type" class="ep-label" />
     <ui:Instance template="EquipmentSeparate" name="EquipmentSeparate" />
-    <ui:Label tabindex="-1" text="基础攻击力 2-99" parse-escape-sequences="true" display-tooltip-when-elided="true" class="ep-label" />
+    <ui:Label tabindex="-1" text="攻击力 2-99" parse-escape-sequences="true" display-tooltip-when-elided="true" class="ep-label" />
     <ui:Label tabindex="-1" text="攻击速度 -10%" parse-escape-sequences="true" display-tooltip-when-elided="true" class="ep-label" />
     <ui:VisualElement name="EquipmentSeparate">
         <ui:VisualElement style="flex-direction: row; align-items: center;">
