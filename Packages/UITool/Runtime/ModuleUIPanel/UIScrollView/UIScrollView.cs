@@ -71,9 +71,16 @@ namespace MuHua {
 		}
 		/// <summary> 视图滚轮滑动 </summary>
 		private void ViewportWheel(WheelEvent evt) {
-			float x = Mathf.Clamp(evt.delta.x, -1, 1);
-			float y = Mathf.Clamp(evt.delta.y, -1, 1);
-			UpdateValue(new Vector2(value.x - x, value.y - y));
+			float maxWidth = Viewport.resolvedStyle.width - Container.resolvedStyle.width;
+			float minWidth = Mathf.Min(Viewport.resolvedStyle.width, Container.resolvedStyle.width);
+			float x = evt.delta.x * minWidth / maxWidth;
+
+			float maxHeight = Viewport.resolvedStyle.height - Container.resolvedStyle.height;
+			float minHeight = Mathf.Min(Viewport.resolvedStyle.height, Container.resolvedStyle.height);
+			float y = evt.delta.y * minHeight / maxHeight;
+
+			value = value - new Vector2(x, y);
+			UpdateValue(value);
 		}
 		/// <summary> 拖拽按下 </summary>
 		private void DraggerDown(PointerDownEvent evt) {

@@ -1,8 +1,8 @@
 {
-    "name": "ModuleEditor",
+    "name": "MuHuaEditor.UITool",
     "rootNamespace": "",
     "references": [
-        "GUID:432b70115e987f44abb984cfe7de384f"
+        "GUID:6206345d516a2bb4a821a7ee90e1b5d5"
     ],
     "includePlatforms": [
         "Editor"
