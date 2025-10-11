@@ -10,11 +10,11 @@ public class AccessoryConst : EquipmentConst {
 	/// <summary> 饰品类型 </summary>
 	public AccessoryType type;
 
-	public override InventoryItem To() {
-		Equipment item = new Equipment();
-		item.name = name;
-		item.sprite = sprite;
-		item.type = type.ToString();
-		return item;
-	}
+	// public override InventoryItem To() {
+	// 	Equipment item = new Equipment();
+	// 	item.name = name;
+	// 	item.sprite = sprite;
+	// 	item.type = type.ToString();
+	// 	return item;
+	// }
 }

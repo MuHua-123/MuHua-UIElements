@@ -10,7 +10,7 @@
     font-size: 14px;
     -unity-font-style: bold;
     -unity-font: url("project://database/Assets/UI%20Toolkit/FontLibrary/Fonts/SourceHanSansCN-Medium.otf?fileID=12800000&guid=3ceb88ff2ced01a439c5b2d1b63c86a5&type=3#SourceHanSansCN-Medium");
-    -unity-font-definition: url("project://database/Assets/UI%20Toolkit/FontLibrary/Fonts/SourceHanSansCN-Medium%20SDF.asset?fileID=11400000&guid=0239ab36009b94e479c9c67877764f1e&type=2#SourceHanSansCN-Medium SDF");
+    -unity-font-definition: url('project://database/Assets/UI%20Toolkit/FontLibrary/Fonts/SourceHanSansCN-Medium%20SDF.asset?fileID=11400000&guid=0239ab36009b94e479c9c67877764f1e&type=2#SourceHanSansCN-Medium SDF');
 }
 
 .ep-separate-label {
@@ -24,6 +24,7 @@
     padding-left: 2px;
     font-size: 12px;
     -unity-font: url("project://database/Assets/UI%20Toolkit/FontLibrary/Fonts/SourceHanSansCN-Medium.otf?fileID=12800000&guid=3ceb88ff2ced01a439c5b2d1b63c86a5&type=3#SourceHanSansCN-Medium");
-    -unity-font-definition: url("project://database/Assets/UI%20Toolkit/FontLibrary/Fonts/SourceHanSansCN-Medium%20SDF.asset?fileID=11400000&guid=0239ab36009b94e479c9c67877764f1e&type=2#SourceHanSansCN-Medium SDF");
+    -unity-font-definition: url('project://database/Assets/UI%20Toolkit/FontLibrary/Fonts/SourceHanSansCN-Medium%20SDF.asset?fileID=11400000&guid=0239ab36009b94e479c9c67877764f1e&type=2#SourceHanSansCN-Medium SDF');
     -unity-font-style: normal;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
 }

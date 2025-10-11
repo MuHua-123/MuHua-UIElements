@@ -22,8 +22,7 @@ public class ValueContainer {
 
 	/// <summary> 添加数值 </summary>
 	public void AddInstance(ValueType type, Enum name) {
-		var instance = ValueInstance.Create(type, name);
-		AddInstance(instance);
+		AddInstance(type, name.ToString());
 	}
 	/// <summary> 添加数值 </summary>
 	public void AddInstance(ValueType type, string name) {

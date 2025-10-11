@@ -11,11 +11,11 @@ public class ArmorConst : EquipmentConst {
 	/// <summary> 护甲类型 </summary>
 	public ArmorType type;
 
-	public override InventoryItem To() {
-		Equipment item = new Equipment();
-		item.name = name;
-		item.sprite = sprite;
-		item.type = type.ToString();
-		return item;
-	}
+	// public override InventoryItem To() {
+	// 	Equipment item = new Equipment();
+	// 	item.name = name;
+	// 	item.sprite = sprite;
+	// 	item.type = type.ToString();
+	// 	return item;
+	// }
 }

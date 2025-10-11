@@ -15,5 +15,5 @@ public class EquipmentAffix {
 	/// <summary> 最小值 </summary>
 	public float maxValue = float.MaxValue;
 	/// <summary> 属性类型 </summary>
-	public AttributeType attributeType;
+	public ValueType attributeType;
 }

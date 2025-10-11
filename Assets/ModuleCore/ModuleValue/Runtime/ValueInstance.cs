@@ -33,10 +33,6 @@ public class ValueInstance {
 	/// <summary> 是布尔值 </summary>
 	public bool IsBoolean => type == ValueType.Boolean && CurrentValue == MaxValue;
 
-	/// <summary> 创建数值(用枚举命名) </summary>
-	public static ValueInstance Create(ValueType type, Enum name) {
-		return Create(type, name.ToString());
-	}
 	/// <summary> 创建数值 </summary>
 	public static ValueInstance Create(ValueType type, string name) {
 		ValueInstance instance = new ValueInstance(type, name);

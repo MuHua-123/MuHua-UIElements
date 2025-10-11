@@ -12,11 +12,11 @@ public class WeaponConst : EquipmentConst {
 	/// <summary> 武器类型 </summary>
 	public WeaponCategory category;
 
-	public override InventoryItem To() {
-		Equipment item = new Equipment();
-		item.name = name;
-		item.sprite = sprite;
-		item.type = $"{type}/{category}";
-		return item;
-	}
+	// public override InventoryItem To() {
+	// 	Equipment item = new Equipment();
+	// 	item.name = name;
+	// 	item.sprite = sprite;
+	// 	item.type = $"{type}/{category}";
+	// 	return item;
+	// }
 }
