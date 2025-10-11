@@ -1,10 +1,4 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="LoginPage" src="project://database/Assets/UI%20Toolkit/GamePage/LoginPage/LoginPage.uxml?fileID=9197481963319205126&amp;guid=7ebceaef0e3991040bf96648c85589a4&amp;type=3#LoginPage" />
-    <ui:Template name="BannerTip" src="project://database/Assets/UI%20Toolkit/GamePopup/BannerTip/BannerTip.uxml?fileID=9197481963319205126&amp;guid=e4a01fc5cb705fe4c9bedf1d0c5df107&amp;type=3#BannerTip" />
-    <Style src="project://database/Assets/UI%20Toolkit/Document/Document.uss?fileID=7433441132597879392&amp;guid=9205939af30a4394f8f2e34232b27890&amp;type=3#Document" />
-    <ui:Instance template="LoginPage" name="LoginPage" class="document-page document-page-hide" />
-    <ui:VisualElement name="Window" picking-mode="Ignore" class="document-page" style="flex-grow: 1;" />
-    <ui:VisualElement name="Popup" picking-mode="Ignore" class="document-page" style="flex-grow: 1;">
-        <ui:Instance template="BannerTip" name="BannerTip" class="document-page document-page-hide" />
-    </ui:VisualElement>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:Template name="ShortcutMenu" src="project://database/Assets/UI%20Toolkit/GamePanel/ShortcutMenu/ShortcutMenu.uxml?fileID=9197481963319205126&amp;guid=531a74f84d51b5d49a048079629e13e0&amp;type=3#ShortcutMenu" />
+    <ui:Instance template="ShortcutMenu" name="ShortcutMenu" />
 </ui:UXML>
