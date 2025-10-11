@@ -10,9 +10,9 @@ using MuHua;
 /// </summary>
 public class UIShortcutMenu : ModuleUISingle<UIShortcutMenu> {
 	/// <summary> 菜单模板 </summary>
-	public VisualTreeAsset menuTreeAsset;
+	public VisualTreeAsset MenuPanel;
 	/// <summary> 项目模板 </summary>
-	public VisualTreeAsset itemTreeAsset;
+	public VisualTreeAsset MenuTemplate;
 
 	/// <summary> 控件列表 </summary>
 	public static List<UIControl> controls = new List<UIControl>();
@@ -41,10 +41,10 @@ public class UIShortcutMenu : ModuleUISingle<UIShortcutMenu> {
 	/// <summary> 创建子菜单 </summary>
 	public UIMenuPanel Create() {
 		// 创建菜单元素
-		VisualElement element = menuTreeAsset.Instantiate();
+		VisualElement element = MenuPanel.Instantiate();
 		element.EnableInClassList("menu", true);
 		Element.Add(element);
-		UIMenuPanel menuPanel = new UIMenuPanel(element, itemTreeAsset);
+		UIMenuPanel menuPanel = new UIMenuPanel(element, MenuTemplate);
 		controls.Add(menuPanel);
 		return menuPanel;
 	}

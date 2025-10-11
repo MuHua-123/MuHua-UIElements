@@ -12,12 +12,12 @@ public class UIMenuPanel : ModuleUIPanel, UIControl {
 
 	public UIMenuPanel menuPanel;
 	public VisualElement submenu;
-	public ModuleUIItems<UIItem, MenuItem> items;
+	public ModuleUIItems<UIItem, ShortcutMenuItem> items;
 
 	public VisualElement Container => Q<VisualElement>("Container");
 
 	public UIMenuPanel(VisualElement element, VisualTreeAsset templateAsset) : base(element) {
-		items = new ModuleUIItems<UIItem, MenuItem>(Container, templateAsset,
+		items = new ModuleUIItems<UIItem, ShortcutMenuItem>(Container, templateAsset,
 		(data, element) => new UIItem(data, element, this));
 	}
 	public void Update() {
@@ -27,13 +27,13 @@ public class UIMenuPanel : ModuleUIPanel, UIControl {
 		items.Release();
 	}
 
-	public void Settings(Vector3 position, List<MenuItem> datas) {
+	public void Settings(Vector3 position, List<ShortcutMenuItem> datas) {
 		items.Create(datas);
 		element.transform.position = position;
 	}
 
 	/// <summary> 打开子菜单 </summary>
-	public void Open(VisualElement submenu, List<MenuItem> datas) {
+	public void Open(VisualElement submenu, List<ShortcutMenuItem> datas) {
 		if (this.submenu == submenu) { return; }
 		// 更新子菜单
 		this.submenu = submenu;
@@ -51,13 +51,13 @@ public class UIMenuPanel : ModuleUIPanel, UIControl {
 	}
 
 	/// <summary> UI项目 </summary>
-	public class UIItem : ModuleUIItem<MenuItem> {
+	public class UIItem : ModuleUIItem<ShortcutMenuItem> {
 		public readonly UIMenuPanel parent;
 
 		public Label Name => element.Q<Label>("Name");
 		public VisualElement Arrow => element.Q<VisualElement>("Arrow");
 
-		public UIItem(MenuItem value, VisualElement element, UIMenuPanel parent) : base(value, element) {
+		public UIItem(ShortcutMenuItem value, VisualElement element, UIMenuPanel parent) : base(value, element) {
 			this.parent = parent;
 			Name.text = value.name;
 			Arrow.EnableInClassList("menu-arrow-hide", value.menuItems == null || value.menuItems.Count == 0);
