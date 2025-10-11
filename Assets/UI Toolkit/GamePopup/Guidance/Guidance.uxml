@@ -9,7 +9,7 @@
                     <ui:VisualElement class="toggle" style="flex-direction: row-reverse;">
                         <ui:Label tabindex="-1" text="不在提示" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" class="toggle-title" style="color: rgb(28, 28, 28); padding-bottom: 5px; padding-top: 3px; padding-right: 3px; padding-left: 3px;" />
                         <ui:VisualElement name="Input" class="toggle-input">
-                            <ui:VisualElement name="Check" class="toggle-check toggle-check-hide" style="background-image: url(&quot;project://database/Assets/UI%20Toolkit/DefaultTheme/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=05f864e67ee1ecb4bbe67427564d394c&amp;type=3#check&quot;); -unity-background-image-tint-color: rgb(51, 51, 51);" />
+                            <ui:VisualElement name="Check" class="toggle-check toggle-check-hide" style="background-image: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=05f864e67ee1ecb4bbe67427564d394c&amp;type=3#check&quot;); -unity-background-image-tint-color: rgb(51, 51, 51);" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
