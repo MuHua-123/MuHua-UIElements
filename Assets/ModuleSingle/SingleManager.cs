@@ -25,10 +25,9 @@ public class SingleManager : ModuleSingle<SingleManager> {
 		equipmentReward = new ItemReward();
 		equipmentReward.Settings(ManagerItem.I.equipments);
 
-		UIShortcutMenu shortcutMenu = UIPopupManager.I.shortcutMenu;
-		shortcutMenu.Add("背包", () => { ModuleUI.Settings(Page.Backpack); });
-		shortcutMenu.Add("奖励/材料", RewardMaterial);
-		shortcutMenu.Add("奖励/装备", RewardEquipment);
+		ShortcutMenu.I.Add("背包", () => { ModuleUI.Settings(Page.Backpack); });
+		ShortcutMenu.I.Add("奖励/材料", RewardMaterial);
+		ShortcutMenu.I.Add("奖励/装备", RewardEquipment);
 
 		ValueSystem.I.Initial();
 	}

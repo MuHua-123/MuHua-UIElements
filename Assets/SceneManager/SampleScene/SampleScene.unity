@@ -199,6 +199,53 @@ Transform:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &567377853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 567377854}
+  - component: {fileID: 567377855}
+  m_Layer: 5
+  m_Name: UIShortcutMenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &567377854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567377853}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 670296964}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &567377855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567377853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422a458e7229d6b4a8fff66af1840238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  document: {fileID: 670296963}
+  MenuPanel: {fileID: 9197481963319205126, guid: 5034a86c1b336b644968fdb3be5f851a, type: 3}
+  MenuTemplate: {fileID: 9197481963319205126, guid: 1ee167986f6e9a840a45450b4b6adfc2, type: 3}
 --- !u!1 &670296962
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,6 +295,7 @@ Transform:
   m_Children:
   - {fileID: 1330756993}
   - {fileID: 1532585504}
+  - {fileID: 567377854}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &670296965
@@ -257,7 +305,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 670296962}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea89ac05041b5d74582ee9d0add233ac, type: 3}
   m_Name: 
@@ -686,15 +734,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287f1e957d7061a42977427a98b178b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materials:
-  - {fileID: 11400000, guid: 9bab95ad6d8464f479c14ff315c21003, type: 2}
-  - {fileID: 11400000, guid: 0e8026d397d773c40be344cda8f74733, type: 2}
-  - {fileID: 11400000, guid: de15140ad41f7694faa3f93732713d89, type: 2}
-  - {fileID: 11400000, guid: d871485f33cb47941b1ded80b4b957e4, type: 2}
-  - {fileID: 11400000, guid: 91644dc2132b79a43a2c2132430d620c, type: 2}
-  - {fileID: 11400000, guid: 2cae58756c953364cb82ebeab9044f91, type: 2}
-  - {fileID: 11400000, guid: 3730099e2e68c3542b98c0dfb4021852, type: 2}
-  - {fileID: 11400000, guid: cc75bbd52a24b2444be229933da52925, type: 2}
   equipments:
   - {fileID: 11400000, guid: 03acc552c7399334f989ab93c1c4cc29, type: 2}
   - {fileID: 11400000, guid: 905c298f3d6d27a40a2ca6a5f6339091, type: 2}

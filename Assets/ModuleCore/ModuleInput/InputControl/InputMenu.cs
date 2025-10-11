@@ -9,8 +9,6 @@ using MuHua;
 /// </summary>
 public class InputMenu : InputControl {
 
-	private UIMenuPanel menu;
-
 	protected override void ModuleInput_OnInputMode(InputMode mode) {
 		// throw new System.NotImplementedException();
 	}
@@ -19,11 +17,11 @@ public class InputMenu : InputControl {
 	/// <summary> 鼠标左键 </summary>
 	public void OnMouseLeft(InputValue inputValue) {
 		if (inputValue.isPressed) return;
-		UIPopupManager.I.shortcutMenu.Close();
+		ShortcutMenu.I.Close();
 	}
 	/// <summary> 鼠标右键 </summary>
 	public void OnMouseRight(InputValue inputValue) {
-		UIPopupManager.I.shortcutMenu.Open();
+		ShortcutMenu.I.Open();
 	}
 	#endregion
 }
