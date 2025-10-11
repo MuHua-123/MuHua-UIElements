@@ -12,6 +12,8 @@ public class ValueContainer {
 
 	/// <summary> 所引器 </summary>
 	public ValueInstance this[string id] => dictionary[id];
+	/// <summary> 所引器(枚举) </summary>
+	public ValueInstance this[Enum id] => dictionary[id.ToString()];
 
 	/// <summary> 循环集合 </summary>
 	public void ForEach(Action<string, ValueInstance> action) {
@@ -19,8 +21,13 @@ public class ValueContainer {
 	}
 
 	/// <summary> 添加数值 </summary>
+	public void AddInstance(ValueType type, Enum name) {
+		var instance = ValueInstance.Create(type, name);
+		AddInstance(instance);
+	}
+	/// <summary> 添加数值 </summary>
 	public void AddInstance(ValueType type, string name) {
-		var instance = new ValueInstance(type, name);
+		var instance = ValueInstance.Create(type, name);
 		AddInstance(instance);
 	}
 	/// <summary> 添加数值 </summary>

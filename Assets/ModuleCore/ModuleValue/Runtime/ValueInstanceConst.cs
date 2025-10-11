@@ -23,37 +23,28 @@ public class ValueInstanceConst : ScriptableObject {
 	public ValueContainerConst container;
 
 	public void InitialFloat() {
-		type = ValueType.Float;
-		minValue = 0;
-		maxValue = 9999;
-		baseValue = 0;
+		Initial(ValueType.Float, 0, 9999, 0);
 	}
 	public void InitialInteger() {
-		type = ValueType.Integer;
-		minValue = 0;
-		maxValue = 9999;
-		baseValue = 0;
+		Initial(ValueType.Integer, 0, 9999, 0);
 	}
 	public void InitialBoolean() {
-		type = ValueType.Boolean;
-		minValue = 0;
-		maxValue = 1;
-		baseValue = 0;
+		Initial(ValueType.Boolean, 0, 1, 0);
 	}
 	public void InitialPercentage() {
-		type = ValueType.Percentage;
-		minValue = 0;
-		maxValue = 100;
-		baseValue = 0;
+		Initial(ValueType.Percentage, 0, 100, 0);
+	}
+	public void Initial(ValueType type, float minValue, float maxValue, float baseValue) {
+		this.type = type;
+		this.minValue = minValue;
+		this.maxValue = maxValue;
+		this.baseValue = baseValue;
 	}
 
 	/// <summary> 转换数据 </summary>
 	public ValueInstance To() {
-		ValueInstance instance = new ValueInstance(type, name);
-		instance.minValue = minValue;
-		instance.maxValue = maxValue;
-		instance.defaultValue = baseValue;
-		instance.RecalculateValue();
+		var instance = ValueInstance.Create(type, name);
+		instance.Settings(baseValue, minValue, maxValue);
 		return instance;
 	}
 }
