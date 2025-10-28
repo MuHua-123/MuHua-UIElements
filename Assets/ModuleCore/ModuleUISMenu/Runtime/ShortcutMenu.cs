@@ -12,7 +12,7 @@ public class ShortcutMenu : Module<ShortcutMenu> {
 	public List<ShortcutMenuItem> menuItems = new List<ShortcutMenuItem>();
 
 	/// <summary> 打开菜单 </summary>
-	public void Open() => UIShortcutMenu.I?.Open();
+	public void Open() => UIShortcutMenu.I?.Open(menuItems);
 
 	/// <summary> 关闭菜单 </summary>
 	public void Close() => UIShortcutMenu.I?.Close();

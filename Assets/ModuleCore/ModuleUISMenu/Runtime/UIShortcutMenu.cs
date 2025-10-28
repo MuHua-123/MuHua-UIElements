@@ -26,11 +26,11 @@ public class UIShortcutMenu : ModuleUISingle<UIShortcutMenu> {
 	private void OnDestroy() => controls.ForEach(control => control.Dispose());
 
 	/// <summary> 打开菜单 </summary>
-	public void Open() {
+	public void Open(List<ShortcutMenuItem> datas) {
 		Close();
 		Vector3 position = UITool.GetMousePosition(Element);
 		UIMenuPanel menuPanel = Create();
-		menuPanel.Settings(position, ShortcutMenu.I.menuItems);
+		menuPanel.Settings(position, datas);
 	}
 	/// <summary> 关闭菜单 </summary>
 	public void Close() {
