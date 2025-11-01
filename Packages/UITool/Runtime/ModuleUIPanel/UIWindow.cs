@@ -44,7 +44,7 @@ namespace MuHua {
 		/// <summary> 按下Top </summary>
 		private void TopDown(PointerDownEvent evt) {
 			isDownMove = true;
-			pointerPosition = UITool.GetMousePosition();
+			pointerPosition = UITool.GetMousePosition(canvas);
 			originalPosition = Window.transform.position;
 		}
 		/// <summary> 鼠标松开或离开 </summary>
@@ -64,7 +64,7 @@ namespace MuHua {
 		/// <summary> 更新状态 </summary>
 		public virtual void Update() {
 			if (!isDownMove) { return; }
-			Vector3 mousePosition = UITool.GetMousePosition();
+			Vector3 mousePosition = UITool.GetMousePosition(canvas);
 			Vector3 offset = mousePosition - pointerPosition;
 			Vector3 position = originalPosition + new Vector3(offset.x, -offset.y);
 
