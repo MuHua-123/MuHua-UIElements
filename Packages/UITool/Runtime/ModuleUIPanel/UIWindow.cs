@@ -66,7 +66,7 @@ namespace MuHua {
 			if (!isDownMove) { return; }
 			Vector3 mousePosition = UITool.GetMousePosition(canvas);
 			Vector3 offset = mousePosition - pointerPosition;
-			Vector3 position = originalPosition + new Vector3(offset.x, -offset.y);
+			Vector3 position = originalPosition + new Vector3(offset.x, offset.y);
 
 			float width = canvas.resolvedStyle.width - Window.resolvedStyle.width;
 			float height = canvas.resolvedStyle.height - Window.resolvedStyle.height;
