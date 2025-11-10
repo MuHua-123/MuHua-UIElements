@@ -46,6 +46,7 @@ namespace MuHua {
 			isDownMove = true;
 			pointerPosition = UITool.GetMousePosition();
 			originalPosition = Window.transform.position;
+			element.BringToFront();
 		}
 		/// <summary> 鼠标松开或离开 </summary>
 		private void DraggerUpOrLeave(EventBase evt) {
