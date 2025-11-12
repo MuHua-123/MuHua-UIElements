@@ -1,0 +1,7 @@
+.menu {
+    position: absolute;
+}
+
+.menu-hide {
+    display: none;
+}
