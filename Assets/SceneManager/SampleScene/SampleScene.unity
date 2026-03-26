@@ -186,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: 782028a3ae72af7429ad2ecdce684390, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 31e24fa07355f6e42841c8f1d0e77e54, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: dbd43929292199240bd6ff61200e2afb, type: 3}
   m_SortingOrder: 0
 --- !u!4 &670296964
 Transform:
@@ -686,8 +686,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   document: {fileID: 670296963}
-  menuTreeAsset: {fileID: 9197481963319205126, guid: 5034a86c1b336b644968fdb3be5f851a, type: 3}
-  itemTreeAsset: {fileID: 9197481963319205126, guid: 1ee167986f6e9a840a45450b4b6adfc2, type: 3}
+  MenuPanel: {fileID: 0}
+  MenuTemplate: {fileID: 0}
 --- !u!1 &1937258154
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; flex-direction: row; padding-top: 1px; padding-right: 1px; padding-bottom: 1px; padding-left: 1px;">
+        <ui:VisualElement style="flex-grow: 1; flex-direction: column; background-color: rgb(0, 0, 0);">
+            <ui:VisualElement style="height: 540px; background-color: rgb(155, 178, 55); border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px;" />
+            <ui:VisualElement name="L" style="height: 1px;" />
+            <ui:VisualElement style="height: 540px; background-color: rgb(68, 197, 191); border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px;" />
+            <ui:VisualElement name="L" style="height: 1px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="L" style="width: 1px;" />
+        <ui:VisualElement style="width: 400px; background-color: rgb(186, 255, 124); border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px;" />
+        <ui:VisualElement name="L" style="width: 1px;" />
+        <ui:VisualElement style="width: 200px; border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px; background-color: rgb(71, 255, 195);" />
+        <ui:VisualElement name="L" style="width: 1px;" />
+        <ui:VisualElement style="width: 200px; background-color: rgb(157, 86, 188); border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px;" />
+    </ui:VisualElement>
+</ui:UXML>
